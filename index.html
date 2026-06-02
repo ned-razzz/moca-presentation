@@ -106,12 +106,74 @@
       z-index: 1;
     }
 
+    .cover-photo {
+      background: #111827;
+    }
+
+    .cover-photo::before {
+      background: url("assets/cover.png") center / cover no-repeat;
+      opacity: 1;
+    }
+
+    .cover-photo::after {
+      z-index: 3;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(10, 18, 34, 0.45);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(8px);
+    }
+
+    .cover-photo .hero-content,
+    .cover-photo .meta-row {
+      color: white;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .cover-photo .hero-content::before {
+      content: "";
+      position: absolute;
+      inset: -24px -44px -26px -44px;
+      background:
+        linear-gradient(90deg, rgba(10, 18, 34, 0.78), rgba(10, 18, 34, 0.5) 68%, transparent);
+      z-index: -1;
+    }
+
+    .cover-photo .hero-content {
+      position: absolute;
+      left: clamp(36px, 7vw, 96px);
+      bottom: clamp(108px, 15vh, 142px);
+      margin: 0;
+    }
+
+    .cover-photo .eyebrow {
+      color: #ff4f9a;
+    }
+
+    .cover-photo h1 {
+      color: white;
+    }
+
+    .cover-photo .lead,
+    .cover-photo .meta-row {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .cover-photo .meta-row {
+      margin: clamp(24px, 3vh, 34px) 0 0;
+      gap: 2px;
+      font-size: clamp(13px, 1.1vw, 16px);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
     .hero-content {
       z-index: 2;
       align-self: center;
       max-width: 980px;
       margin-left: clamp(32px, 7vw, 110px);
       padding-right: 28px;
+      position: relative;
     }
 
     .eyebrow {
@@ -621,6 +683,27 @@
       border-top: 5px solid var(--secondary);
     }
 
+    .qa-slide .content {
+      place-items: center;
+      text-align: center;
+    }
+
+    .qa-title {
+      color: var(--secondary);
+      font-size: clamp(72px, 12vw, 172px);
+      line-height: .9;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .qa-subtitle {
+      margin-top: clamp(18px, 2vw, 32px);
+      color: color-mix(in srgb, var(--text) 70%, white);
+      font-size: clamp(20px, 2vw, 32px);
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
     .controls {
       position: fixed;
       left: 50%;
@@ -756,16 +839,16 @@
 <body>
   <main class="deck" aria-label="HTML presentation layout">
     <div class="slides" id="slides">
-      <section class="slide hero" data-kicker="Cover">
+      <section class="slide hero cover-photo" data-kicker="Cover">
         <div class="hero-content">
           <p class="eyebrow">Physical AI 기반 로봇 시스템 구현</p>
           <h1>MOCA</h1>
           <p class="lead">Dynamic Robotics</p>
-        </div>
-        <div class="meta-row">
-          <span>팀장 송민규</span>
-          <span>팀원 류재상, 김진우, 김덕현, 안순혁, 공국진</span>
-          <span>발표자 김덕현</span>
+          <div class="meta-row">
+            <span>팀장 송민규</span>
+            <span>팀원 류재상, 김진우, 김덕현, 안순혁, 공국진</span>
+            <span>발표자 김덕현</span>
+          </div>
         </div>
       </section>
 
@@ -1168,6 +1251,17 @@
                 <li>서비스 흐름 중심의 발표 자료 구성</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide qa-slide" data-kicker="Q&A">
+        <div class="header">
+          <p class="section-mark">16 / Q&A</p>
+        </div>
+        <div class="content">
+          <div>
+            <div class="qa-title">Q&A</div>
           </div>
         </div>
       </section>
