@@ -5,21 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MOCA | Dynamic Robotics</title>
   <style>
+    /* Design tokens: colors, type, spacing, surfaces */
     :root {
       color-scheme: light;
       --primary: #d83f87;
       --secondary: #224087;
       --background: #fbfcff;
+      --surface: #ffffff;
+      --surface-soft: color-mix(in srgb, var(--secondary) 5%, white);
+      --surface-tint: color-mix(in srgb, var(--secondary) 12%, white);
       --dark: var(--secondary);
       --text: #1f2a44;
       --line: #d9e0ec;
+      --muted-text: color-mix(in srgb, var(--text) 72%, white);
+      --faint-text: color-mix(in srgb, var(--text) 34%, transparent);
       --slide-title-size: clamp(24px, 3vw, 42px);
       --content-title-size: clamp(24px, 2.3vw, 34px);
       --content-body-size: clamp(20px, 1.75vw, 28px);
       --content-small-size: clamp(18px, 1.45vw, 23px);
       --content-highlight-size: clamp(22px, 2vw, 32px);
+      --radius-card: 8px;
+      --radius-pill: 999px;
+      --shadow-card: 0 14px 32px rgba(23, 32, 51, 0.08);
+      --shadow-ui: 0 10px 28px rgba(23, 32, 51, 0.12);
+      --slide-x-pad: clamp(28px, 4vw, 72px);
+      --slide-y-pad: clamp(18px, 2.5vw, 42px);
+      --slide-bottom-pad: clamp(28px, 4vw, 72px);
+      --content-pad: clamp(22px, 2.4vw, 36px);
+      --content-gap: clamp(18px, 2.3vw, 30px);
+      --item-gap: 12px;
     }
 
+    /* Reset and deck shell */
     * {
       box-sizing: border-box;
     }
@@ -61,7 +78,7 @@
       flex: 0 0 100dvh;
       width: 100vw;
       height: 100dvh;
-      padding: clamp(18px, 2.5vw, 42px) clamp(28px, 4vw, 72px) clamp(28px, 4vw, 72px);
+      padding: var(--slide-y-pad) var(--slide-x-pad) var(--slide-bottom-pad);
       display: grid;
       grid-template-rows: auto 1fr;
       gap: clamp(12px, 1.8vw, 24px);
@@ -72,9 +89,9 @@
     .slide::after {
       content: "(산대특) ROS2·VLA 기반 Physical AI 로봇&자율주행 SW개발 부트캠프 1기";
       position: absolute;
-      right: clamp(24px, 4vw, 64px);
+      right: var(--slide-x-pad);
       top: clamp(18px, 3vw, 42px);
-      color: color-mix(in srgb, var(--text) 34%, transparent);
+      color: var(--faint-text);
       max-width: min(62vw, 780px);
       font-size: clamp(12px, 1vw, 16px);
       line-height: 1.45;
@@ -82,8 +99,9 @@
       word-break: keep-all;
     }
 
+    /* Individual slide style: section divider */
     .section-divider {
-      padding: clamp(28px, 4vw, 72px);
+      padding: var(--slide-bottom-pad);
       display: grid;
       place-items: center;
       grid-template-rows: 1fr;
@@ -139,13 +157,14 @@
       right: clamp(12px, 1.5vw, 24px);
       bottom: clamp(10px, 1.4vw, 20px);
       z-index: 20;
-      color: color-mix(in srgb, var(--text) 34%, transparent);
+      color: var(--faint-text);
       font-size: clamp(12px, 1vw, 16px);
       line-height: 1.45;
       text-align: right;
       word-break: keep-all;
     }
 
+    /* Individual slide style: cover */
     .hero {
       grid-template-rows: 1fr auto;
       padding: 0;
@@ -167,14 +186,16 @@
     }
 
     .cover-photo::before {
-      background: url("assets/cover.png") center / cover no-repeat;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
+        url("assets/cover.png") center / cover no-repeat;
       opacity: 1;
     }
 
     .cover-photo::after {
       z-index: 3;
       padding: 8px 14px;
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       color: rgba(255, 255, 255, 0.9);
       background: rgba(10, 18, 34, 0.45);
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.42);
@@ -246,6 +267,7 @@
       margin: 0;
     }
 
+    /* Shared typography */
     h1 {
       color: var(--dark);
       font-size: clamp(46px, 7.6vw, 108px);
@@ -271,7 +293,7 @@
 
     .lead {
       margin-top: 24px;
-      color: color-mix(in srgb, var(--text) 72%, white);
+      color: var(--muted-text);
       font-size: clamp(18px, 2.1vw, 30px);
       line-height: 1.48;
       max-width: 880px;
@@ -283,11 +305,12 @@
       display: grid;
       gap: 6px;
       margin: 0 clamp(32px, 7vw, 110px) clamp(76px, 8vw, 112px);
-      color: color-mix(in srgb, var(--text) 72%, white);
+      color: var(--muted-text);
       font-size: clamp(13px, 1.2vw, 17px);
       line-height: 1.6;
     }
 
+    /* Shared slide structure */
     .header {
       display: grid;
       gap: 6px;
@@ -304,12 +327,13 @@
     .content {
       min-height: 0;
       display: grid;
-      gap: clamp(18px, 2.3vw, 30px);
+      gap: var(--content-gap);
       align-items: center;
       z-index: 2;
       overflow: hidden;
     }
 
+    /* Shared layout utilities */
     .two-col {
       grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr);
     }
@@ -330,26 +354,27 @@
       overflow: hidden;
     }
 
+    /* Shared content components */
     .card,
     .metric,
     .media-frame,
     .timeline-step {
-      background: white;
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 14px 32px rgba(23, 32, 51, 0.08);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
     }
 
     .card {
       padding: clamp(18px, 2vw, 28px);
       display: grid;
-      gap: 12px;
+      gap: var(--item-gap);
       min-height: 0;
     }
 
     .card p,
     li {
-      color: color-mix(in srgb, var(--text) 72%, white);
+      color: var(--muted-text);
       font-size: var(--content-body-size);
       line-height: 1.52;
       word-break: keep-all;
@@ -392,7 +417,7 @@
       border-style: dashed;
       background:
         linear-gradient(135deg, rgba(216, 63, 135, 0.06), rgba(34, 64, 135, 0.08)),
-        white;
+        var(--surface);
     }
 
     .highlight {
@@ -406,12 +431,12 @@
       width: 100%;
       max-width: 100%;
       border-left: 6px solid var(--secondary);
-      background: color-mix(in srgb, var(--secondary) 12%, white);
+      background: var(--surface-tint);
     }
 
     .planning-list {
       display: grid;
-      gap: 12px;
+      gap: var(--item-gap);
       margin: 0;
       padding-left: 1.1em;
     }
@@ -419,7 +444,7 @@
     .requirements-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: var(--item-gap);
     }
 
     .requirement {
@@ -428,9 +453,9 @@
       gap: 8px;
       align-content: start;
       min-height: 150px;
-      background: white;
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius-card);
     }
 
     .requirement b {
@@ -440,7 +465,7 @@
     }
 
     .requirement span {
-      color: color-mix(in srgb, var(--text) 72%, white);
+      color: var(--muted-text);
       font-size: var(--content-body-size);
       line-height: 1.45;
       word-break: keep-all;
@@ -449,7 +474,7 @@
     .service-flow {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: var(--item-gap);
     }
 
     .service-flow .card {
@@ -457,8 +482,9 @@
       min-height: 170px;
     }
 
+    /* Individual slide style: planning slides */
     .slide[data-kicker="Planning"] {
-      padding: clamp(18px, 2.5vw, 42px) clamp(28px, 4vw, 72px) clamp(28px, 4vw, 72px);
+      padding: var(--slide-y-pad) var(--slide-x-pad) var(--slide-bottom-pad);
       gap: clamp(12px, 1.8vw, 24px);
       overflow: hidden;
     }
@@ -499,7 +525,7 @@
 
     .slide[data-kicker="Planning"] .card {
       padding: clamp(18px, 2vw, 28px);
-      gap: 12px;
+      gap: var(--item-gap);
       align-content: start;
     }
 
@@ -562,7 +588,7 @@
       min-height: 34px;
       padding: 6px 12px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       color: var(--text);
       background: color-mix(in srgb, var(--primary) 10%, white);
       font-size: clamp(12px, 1vw, 15px);
@@ -576,11 +602,12 @@
       align-items: stretch;
     }
 
+    /* Individual slide style: agenda */
     .timeline-step {
       padding: 22px;
       min-height: 168px;
       display: grid;
-      gap: 12px;
+      gap: var(--item-gap);
       align-content: start;
       border-top: 5px solid var(--secondary);
     }
@@ -616,7 +643,7 @@
     }
 
     .agenda-slide .timeline-step p {
-      color: color-mix(in srgb, var(--text) 72%, white);
+      color: var(--muted-text);
       font-size: clamp(17px, 1.55vw, 24px);
       line-height: 1.5;
     }
@@ -651,7 +678,7 @@
     }
 
     .metric span {
-      color: color-mix(in srgb, var(--text) 72%, white);
+      color: var(--muted-text);
       font-size: var(--content-small-size);
       line-height: 1.45;
     }
@@ -669,7 +696,7 @@
       height: 100%;
       min-height: 0;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: var(--radius-card);
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--secondary) 10%, white);
     }
@@ -677,7 +704,7 @@
     .image-grid.contain img {
       object-fit: contain;
       padding: 8px;
-      background: white;
+      background: var(--surface);
     }
 
     .diagram-row {
@@ -690,12 +717,13 @@
       width: 100%;
       aspect-ratio: 1.6;
       object-fit: contain;
-      border-radius: 8px;
-      background: #fff;
+      border-radius: var(--radius-card);
+      background: var(--surface);
       border: 1px solid var(--line);
       padding: 8px;
     }
 
+    /* Individual slide style: feature slides */
     .feature-slide .content {
       align-items: stretch;
     }
@@ -712,7 +740,7 @@
     .feature-slide .media-frame img {
       object-fit: contain;
       padding: 10px;
-      background: white;
+      background: var(--surface);
     }
 
     .tech-list {
@@ -742,12 +770,13 @@
       border-top: 5px solid var(--secondary);
     }
 
+    /* Common content container for body slides */
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content {
-      padding: clamp(22px, 2.4vw, 36px);
-      background: white;
+      padding: var(--content-pad);
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 14px 32px rgba(23, 32, 51, 0.08);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
     }
 
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content h3,
@@ -796,9 +825,9 @@
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .service-flow .card,
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .summary-band .card {
       padding: clamp(16px, 1.6vw, 24px);
-      background: color-mix(in srgb, var(--secondary) 5%, white);
+      background: var(--surface-soft);
       border: 1px solid color-mix(in srgb, var(--line) 76%, white);
-      border-radius: 8px;
+      border-radius: var(--radius-card);
     }
 
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .summary-band .card {
@@ -806,9 +835,10 @@
     }
 
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .highlight {
-      border-radius: 8px;
+      border-radius: var(--radius-card);
     }
 
+    /* Individual slide style: Q&A */
     .qa-slide .content {
       place-items: center;
       text-align: center;
@@ -830,6 +860,7 @@
       word-break: keep-all;
     }
 
+    /* Runtime controls */
     .controls {
       position: fixed;
       left: 50%;
@@ -840,10 +871,10 @@
       gap: 12px;
       z-index: 20;
       padding: 8px;
-      border-radius: 999px;
-      background: white;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
       border: 1px solid var(--line);
-      box-shadow: 0 10px 28px rgba(23, 32, 51, 0.12);
+      box-shadow: var(--shadow-ui);
       backdrop-filter: blur(12px);
     }
 
@@ -851,7 +882,7 @@
       width: 34px;
       height: 34px;
       border: 0;
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       color: white;
       background: var(--secondary);
       cursor: pointer;
@@ -888,6 +919,7 @@
       transition: width 260ms ease;
     }
 
+    /* Responsive behavior */
     @media (max-width: 900px) {
       body {
         overflow: auto;
@@ -934,6 +966,7 @@
       }
     }
 
+    /* Print export */
     @media print {
       body {
         overflow: visible;
