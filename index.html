@@ -56,22 +56,38 @@
       flex: 0 0 100dvh;
       width: 100vw;
       height: 100dvh;
-      padding: clamp(28px, 4vw, 72px);
+      padding: clamp(18px, 2.5vw, 42px) clamp(28px, 4vw, 72px) clamp(28px, 4vw, 72px);
       display: grid;
       grid-template-rows: auto 1fr;
-      gap: clamp(20px, 3vw, 36px);
+      gap: clamp(12px, 1.8vw, 24px);
       position: relative;
+      overflow: hidden;
     }
 
     .slide::after {
-      content: attr(data-kicker);
+      content: "(산대특) ROS2·VLA 기반 Physical AI 로봇&자율주행 SW개발 부트캠프 1기";
       position: absolute;
       right: clamp(24px, 4vw, 64px);
       top: clamp(18px, 3vw, 42px);
       color: color-mix(in srgb, var(--text) 34%, transparent);
-      font-size: clamp(12px, 1.2vw, 16px);
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      max-width: min(62vw, 780px);
+      font-size: clamp(12px, 1vw, 16px);
+      line-height: 1.45;
+      text-align: right;
+      word-break: keep-all;
+    }
+
+    .deck::after {
+      content: "애드인에듀";
+      position: fixed;
+      right: clamp(12px, 1.5vw, 24px);
+      bottom: clamp(10px, 1.4vw, 20px);
+      z-index: 20;
+      color: color-mix(in srgb, var(--text) 34%, transparent);
+      font-size: clamp(12px, 1vw, 16px);
+      line-height: 1.45;
+      text-align: right;
+      word-break: keep-all;
     }
 
     .hero {
@@ -129,10 +145,11 @@
 
     h2 {
       color: var(--dark);
-      font-size: clamp(28px, 4.2vw, 58px);
-      line-height: 1.02;
+      font-size: clamp(22px, 3vw, 42px);
+      line-height: 1.04;
       letter-spacing: 0;
-      max-width: 15ch;
+      max-width: none;
+      white-space: nowrap;
     }
 
     h3 {
@@ -162,7 +179,7 @@
 
     .header {
       display: grid;
-      gap: 12px;
+      gap: 6px;
       max-width: 1180px;
       z-index: 2;
     }
@@ -170,7 +187,7 @@
     .section-mark {
       color: var(--primary);
       font-weight: 800;
-      font-size: clamp(13px, 1.2vw, 17px);
+      font-size: clamp(11px, .95vw, 14px);
     }
 
     .content {
@@ -179,6 +196,7 @@
       gap: clamp(18px, 2.3vw, 30px);
       align-items: center;
       z-index: 2;
+      overflow: hidden;
     }
 
     .two-col {
@@ -197,6 +215,8 @@
     .stack {
       display: grid;
       gap: 16px;
+      min-height: 0;
+      overflow: hidden;
     }
 
     .card,
@@ -254,6 +274,160 @@
     .media-frame.contain img {
       object-fit: contain;
       padding: 10px;
+    }
+
+    .empty-media {
+      min-height: 100%;
+      border-style: dashed;
+      background:
+        linear-gradient(135deg, rgba(216, 63, 135, 0.06), rgba(34, 64, 135, 0.08)),
+        white;
+    }
+
+    .highlight {
+      padding: clamp(18px, 2vw, 26px);
+      color: var(--dark);
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: 800;
+      line-height: 1.35;
+      word-break: keep-all;
+      border-left: 6px solid var(--primary);
+      background: color-mix(in srgb, var(--primary) 8%, white);
+    }
+
+    .planning-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 1.1em;
+    }
+
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .requirement {
+      padding: clamp(16px, 1.6vw, 22px);
+      display: grid;
+      gap: 8px;
+      min-height: 150px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .requirement b {
+      color: var(--dark);
+      font-size: clamp(18px, 1.5vw, 23px);
+      line-height: 1.25;
+    }
+
+    .requirement span {
+      color: color-mix(in srgb, var(--text) 72%, white);
+      font-size: clamp(14px, 1.15vw, 18px);
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .service-flow {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .service-flow .card {
+      align-content: start;
+      min-height: 170px;
+    }
+
+    .slide[data-kicker="Planning"] {
+      padding: clamp(14px, 1.8vw, 28px) clamp(24px, 3vw, 48px) clamp(24px, 3vw, 48px);
+      gap: clamp(10px, 1.3vw, 18px);
+      overflow: hidden;
+    }
+
+    .slide[data-kicker="Planning"] .header {
+      gap: 5px;
+    }
+
+    .slide[data-kicker="Planning"] h2 {
+      font-size: clamp(20px, 2.25vw, 32px);
+      line-height: 1.06;
+      max-width: none;
+    }
+
+    .slide[data-kicker="Planning"] h3 {
+      font-size: clamp(18px, 1.65vw, 25px);
+      line-height: 1.18;
+    }
+
+    .slide[data-kicker="Planning"] .content {
+      align-items: stretch;
+      gap: clamp(16px, 1.8vw, 24px);
+      min-height: 0;
+    }
+
+    .slide[data-kicker="Planning"] .two-col {
+      grid-template-columns: minmax(0, 1.06fr) minmax(300px, .78fr);
+    }
+
+    .slide[data-kicker="Planning"] .stack {
+      min-height: 0;
+      gap: 12px;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    .slide[data-kicker="Planning"] .card {
+      padding: clamp(16px, 1.5vw, 22px);
+      gap: 9px;
+    }
+
+    .slide[data-kicker="Planning"] .card p,
+    .slide[data-kicker="Planning"] li {
+      font-size: clamp(14px, 1.16vw, 18px);
+      line-height: 1.38;
+    }
+
+    .slide[data-kicker="Planning"] .planning-list {
+      gap: 7px;
+    }
+
+    .slide[data-kicker="Planning"] .highlight {
+      padding: clamp(14px, 1.4vw, 20px);
+      font-size: clamp(17px, 1.55vw, 23px);
+      line-height: 1.28;
+    }
+
+    .slide[data-kicker="Planning"] .empty-media {
+      min-height: 0;
+      height: 100%;
+    }
+
+    .slide[data-kicker="Planning"] .requirements-grid,
+    .slide[data-kicker="Planning"] .service-flow {
+      gap: 10px;
+    }
+
+    .slide[data-kicker="Planning"] .requirement {
+      min-height: 0;
+      padding: clamp(14px, 1.3vw, 18px);
+      gap: 6px;
+    }
+
+    .slide[data-kicker="Planning"] .requirement b {
+      font-size: clamp(16px, 1.3vw, 20px);
+    }
+
+    .slide[data-kicker="Planning"] .requirement span {
+      font-size: clamp(13px, 1vw, 16px);
+      line-height: 1.35;
+    }
+
+    .slide[data-kicker="Planning"] .service-flow .card {
+      min-height: 0;
     }
 
     .badge-row {
@@ -490,7 +664,9 @@
       .split-wide,
       .flow,
       .metrics,
-      .diagram-row {
+      .diagram-row,
+      .requirements-grid,
+      .service-flow {
         grid-template-columns: 1fr;
       }
 
@@ -537,7 +713,7 @@
     <div class="slides" id="slides">
       <section class="slide hero" data-kicker="Cover">
         <div class="hero-content">
-          <p class="eyebrow">Physical AI Project</p>
+          <p class="eyebrow">Physical AI 기반 로봇 시스템 구현</p>
           <h1>MOCA</h1>
           <p class="lead">Dynamic Robotics</p>
         </div>
@@ -589,25 +765,175 @@
         </div>
       </section>
 
-      <section class="slide" data-kicker="Example">
+      <section class="slide" data-kicker="Planning">
         <div class="header">
-          <p class="section-mark">02 / 내용 예시</p>
-          <h2>내용 예시 슬라이드</h2>
+          <p class="section-mark">02 / 기획</p>
+          <h2>왜 이동형 로봇 케이터링 서비스인가?</h2>
         </div>
         <div class="content two-col">
           <div class="stack">
             <div class="card">
-              <h3>핵심 메시지</h3>
-              <p>본문 내용을 입력합니다.</p>
+              <h3>주제 선정 이유</h3>
+              <ul class="planning-list">
+                <li>행사장, 팝업스토어, 테마 공간마다 필요한 매장 형태가 다름</li>
+                <li>기존 방식은 인력 운영과 인프라 구축 비용 부담이 큼</li>
+                <li>로봇과 사람이 협업하면 최소 인력으로 운영 가능</li>
+                <li>메뉴와 공간 변화에 유연하게 대응하는 서비스가 필요함</li>
+              </ul>
+            </div>
+            <div class="highlight">
+              어디든 이동하고, 공간에 맞게 바뀌며, 최소 인력으로 운영되는 서비스
+            </div>
+          </div>
+          <div class="media-frame contain empty-media" aria-label="이미지 영역"></div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Planning">
+        <div class="header">
+          <p class="section-mark">03 / 기획</p>
+          <h2>MOCA: 이동형 로봇 케이터링 서비스</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>프로젝트 개요</h3>
+              <p>MOCA는 <strong>점주 1명과 로봇이 협업</strong>하여 주문, 제조, 서빙, 모객까지 수행하는 이동형 로봇 케이터링 플랫폼이다.</p>
             </div>
             <div class="card">
-              <h3>보조 설명</h3>
-              <p>필요한 설명이나 근거를 입력합니다.</p>
+              <h3>서비스 구성</h3>
+              <ul class="planning-list">
+                <li><strong>제조 로봇 뚜비</strong>: 주문 메뉴 제조</li>
+                <li><strong>서빙 로봇 도비</strong>: 픽업, 테이블 서빙, 모객</li>
+                <li><strong>관리자 시스템</strong>: 주문·로봇·매장 상태 통합 관리</li>
+                <li><strong>맞춤형 매장 맵</strong>: 행사장 환경에 맞게 구성</li>
+              </ul>
+            </div>
+            <div class="highlight">
+              사람은 운영을 관리하고, 로봇은 반복 업무를 수행한다.
             </div>
           </div>
-          <div class="media-frame contain">
-            <p>이미지 또는 도표 영역</p>
+          <div class="media-frame contain empty-media" aria-label="이미지 영역"></div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Planning">
+        <div class="header">
+          <p class="section-mark">04 / 기획</p>
+          <h2>MOCA 서비스를 구현하기 위한 핵심 요건</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="requirements-grid">
+              <div class="requirement">
+                <b>맞춤형 매장 구성</b>
+                <span>다양한 행사장에 맞게 맵과 서비스 환경을 구성</span>
+              </div>
+              <div class="requirement">
+                <b>자동 제조·서빙</b>
+                <span>주문 후 뚜비와 도비가 유기적으로 작업 수행</span>
+              </div>
+              <div class="requirement">
+                <b>안전·인터랙션</b>
+                <span>사람과 함께 움직이는 로봇의 안전성과 친밀감 확보</span>
+              </div>
+              <div class="requirement">
+                <b>통합 관리</b>
+                <span>점주 1명이 전체 주문, 로봇, 매장 상태를 관리</span>
+              </div>
+            </div>
+            <div class="highlight">
+              이동성, 자동화, 안전성, 관리성을 모두 만족해야 한다.
+            </div>
           </div>
+          <div class="media-frame contain empty-media" aria-label="이미지 영역"></div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Planning">
+        <div class="header">
+          <p class="section-mark">05 / 기획</p>
+          <h2>초기 세팅부터 서빙까지</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="service-flow">
+              <div class="card">
+                <span class="num">01</span>
+                <h3>초기 세팅</h3>
+                <p>매장 맵, 메뉴, 로봇 위치를 설정한다.</p>
+              </div>
+              <div class="card">
+                <span class="num">02</span>
+                <h3>주문·결제</h3>
+                <p>고객이 메뉴를 선택하고 결제를 완료한다.</p>
+              </div>
+              <div class="card">
+                <span class="num">03</span>
+                <h3>제조</h3>
+                <p>제조 로봇 뚜비가 주문 메뉴를 제조한다.</p>
+              </div>
+              <div class="card">
+                <span class="num">04</span>
+                <h3>서빙</h3>
+                <p>서빙 로봇 도비가 픽업 후 고객 테이블까지 전달한다.</p>
+              </div>
+            </div>
+            <div class="highlight">
+              주문이 들어오면 제조와 서빙이 자동으로 연결된다.
+            </div>
+          </div>
+          <div class="media-frame contain empty-media" aria-label="이미지 영역"></div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Planning">
+        <div class="header">
+          <p class="section-mark">06 / 기획</p>
+          <h2>유휴 시간의 도비 활용</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>모객 서비스</h3>
+              <ul class="planning-list">
+                <li>서빙 대기 시간에 도비가 홀을 순회</li>
+                <li>고객에게 메뉴, 이벤트, 서비스 안내 제공</li>
+                <li>게임이나 간단한 인터랙션으로 관심 유도</li>
+                <li>고객 반응이 좋지 않으면 반복 접근하지 않음</li>
+                <li>안전거리와 주행 규칙을 기반으로 이동</li>
+              </ul>
+            </div>
+            <div class="highlight">
+              도비는 단순 서빙 로봇을 넘어 고객을 끌어들이는 서비스 로봇이다.
+            </div>
+          </div>
+          <div class="media-frame contain empty-media" aria-label="이미지 영역"></div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Planning">
+        <div class="header">
+          <p class="section-mark">07 / 기획</p>
+          <h2>점주 1명이 전체 매장을 관리하는 구조</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>통합 관리</h3>
+              <ul class="planning-list">
+                <li>주문 현황 확인</li>
+                <li>제조 진행 상태 모니터링</li>
+                <li>서빙 로봇 위치 및 상태 확인</li>
+                <li>매장 운영 모드 제어</li>
+                <li>이상 상황 발생 시 관리자 개입</li>
+              </ul>
+            </div>
+            <div class="highlight">
+              최소 인력 운영을 위해 모든 상태는 한눈에 관리되어야 한다.
+            </div>
+          </div>
+          <div class="media-frame contain empty-media" aria-label="이미지 영역"></div>
         </div>
       </section>
     </div>
