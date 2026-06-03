@@ -859,6 +859,82 @@
       padding: 8px;
     }
 
+    /* Individual slide style: core feature cards */
+    .core-feature-slide .content {
+      align-items: stretch;
+    }
+
+    .core-feature-slide .stack {
+      height: 100%;
+      grid-template-rows: minmax(0, 1fr);
+    }
+
+    .core-feature-slide .core-feature-grid {
+      position: relative;
+      width: min(820px, 88%);
+      aspect-ratio: 1.5;
+      justify-self: center;
+      align-self: center;
+      display: block;
+      min-height: 0;
+    }
+
+    .core-feature-slide .core-feature-card {
+      position: absolute;
+      z-index: 1;
+      width: clamp(230px, 21vw, 300px);
+      min-height: clamp(116px, 12vw, 148px);
+      display: grid;
+      align-content: center;
+      gap: clamp(8px, .8vw, 12px);
+      padding: clamp(16px, 1.6vw, 22px);
+      background: var(--surface-soft);
+      border: 1px solid color-mix(in srgb, var(--line) 76%, white);
+      border-top: 5px solid var(--secondary);
+      border-radius: var(--radius-card);
+      box-shadow: 0 12px 28px rgba(20, 32, 54, 0.07);
+    }
+
+    .core-feature-slide .core-feature-card.primary {
+      top: 4%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: 5px solid var(--primary);
+    }
+
+    .core-feature-slide .core-feature-card:nth-of-type(2) {
+      left: 8%;
+      bottom: 6%;
+    }
+
+    .core-feature-slide .core-feature-card:nth-of-type(3) {
+      right: 8%;
+      bottom: 6%;
+      border-top-color: color-mix(in srgb, var(--primary) 58%, var(--secondary));
+    }
+
+    .core-feature-slide .core-feature-card h3 {
+      color: var(--dark);
+      font-size: clamp(21px, 1.8vw, 28px);
+      line-height: 1.15;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .core-feature-slide .core-feature-card .tech-list {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding-left: 1.05em;
+    }
+
+    .core-feature-slide .core-feature-card li {
+      color: var(--muted-text);
+      font-size: clamp(17px, 1.25vw, 21px);
+      line-height: 1.36;
+      word-break: keep-all;
+    }
+
     /* Individual slide style: feature slides */
     .feature-slide .content {
       align-items: stretch;
@@ -1645,12 +1721,35 @@
         </div>
       </section>
 
-      <section class="slide" data-kicker="Design">
+      <section class="slide core-feature-slide" data-kicker="Design">
         <div class="header">
           <p class="section-mark">02 / 설계</p>
           <h2>핵심 기능</h2>
         </div>
-        <div class="content"></div>
+        <div class="content">
+          <div class="stack">
+            <div class="core-feature-grid">
+              <article class="core-feature-card primary">
+                <h3>식음료 제조 기능</h3>
+                <ul class="tech-list">
+                  <li>주문 정보를 기반으로 로봇팔이 음료와 간단한 식음료를 제조</li>
+                </ul>
+              </article>
+              <article class="core-feature-card">
+                <h3>테이블 서빙 기능</h3>
+                <ul class="tech-list">
+                  <li>완료된 주문을 서빙 로봇이 테이블까지 자율 주행으로 전달</li>
+                </ul>
+              </article>
+              <article class="core-feature-card">
+                <h3>모객 활동 기능</h3>
+                <ul class="tech-list">
+                  <li>유휴 서빙 로봇이 매장 밖 고객 후보에게 접근해 매장 방문 유도</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="slide architecture-slide" data-kicker="Design">
@@ -1765,7 +1864,7 @@
 
       <section class="slide section-divider" data-kicker="Functions">
         <div class="section-divider-inner">
-          <h2>주요 기능</h2>
+          <h2>기능</h2>
           <ul>
             <li>매장 준비</li>
             <li>주문</li>
