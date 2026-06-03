@@ -1521,7 +1521,6 @@
                 <li>제조</li>
                 <li>서빙</li>
                 <li>모객</li>
-                <li>관리</li>
               </ul>
             </div>
             <div class="timeline-step">
@@ -1910,16 +1909,15 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>주문: 자연어 기반 주문·결제 흐름</h2>
+          <h2>주문</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-rows: auto 1fr;">
             <div class="card">
-              <h3>대표 주문 방식</h3>
+              <h3> 자연어 기반 주문·결제</h3>
               <ul class="tech-list">
                 <li>메뉴 선택 GUI와 자연어 음성 입력을 함께 제공</li>
                 <li>QWEN3-ASR로 사용자 발화를 텍스트화하고 Audio LLM으로 주문 의도 파악</li>
-                <li>메뉴 확인 후 카드 결제와 앱 Pay 결제 흐름으로 연결</li>
               </ul>
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; min-height: 0; align-items: stretch;">
@@ -1949,12 +1947,12 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조: 주문 기반 핫도그·음료 제조</h2>
+          <h2>제조</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 1.05fr 1fr;">
             <div class="card">
-              <h3>제조 실행 흐름</h3>
+              <h3>주문 기반 핫도그·음료 제조</h3>
               <ul class="tech-list">
                 <li>웹 주문을 제조 태스크로 변환하고 레시피 순서에 따라 실행</li>
                 <li>핫도그는 케이스 지지, 빵·소시지 배치, 케첩 도포, 픽업존 배치로 구성</li>
@@ -1983,21 +1981,22 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조: Vision 기반 목표 pose 갱신</h2>
+          <h2>제조</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr;">
-            <div class="media-frame">
-              <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 물체 인식 화면">
-            </div>
-            <div class="card">
-              <h3>보고 → 파악하고 → 행동한다</h3>
+          <div class="stack" style="grid-template-columns: 0.4fr 0.6fr; gap: clamp(18px, 2vw, 28px); align-items: stretch;">
+            <div class="card" style="display: grid; grid-template-rows: auto auto auto; gap: 14px; align-content: start;">
+              <h3>Vision 기반 목표 pose 갱신</h3>
+              <p style="margin: 0; font-size: var(--content-body-size); line-height: 1.45; color: var(--muted-text);">보고 → 파악하고 → 행동한다</p>
               <ul class="tech-list">
                 <li>Depth 카메라 영상에서 식재료와 물품 후보 영역을 추출</li>
                 <li>YOLO 기반 객체 인식으로 클래스와 위치 후보를 추출</li>
                 <li>PCA로 주축을 계산하고 파지 진입 방향을 결정</li>
                 <li>인식 결과를 엔드 이펙터 goal pose 갱신에 사용</li>
               </ul>
+            </div>
+            <div class="media-frame">
+              <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 물체 인식 화면">
             </div>
           </div>
         </div>
@@ -2006,21 +2005,21 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조: Blender 기반 월드 제작 및 편집</h2>
+          <h2>제조</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1.2fr 0.8fr;">
-            <div class="media-frame">
-              <img src="assets/openarm/gazebo/모델링.png" alt="Blender 제조 월드 모델링">
-            </div>
-            <div class="card">
-              <h3>월드 제작 흐름</h3>
+          <div class="stack" style="grid-template-columns: 0.4fr 0.6fr; gap: clamp(18px, 2vw, 28px); align-items: stretch;">
+            <div class="card" style="display: grid; grid-template-rows: auto auto; gap: 14px; align-content: start;">
+              <h3>Blender 기반 월드 제작 및 편집</h3>
               <ul class="tech-list">
                 <li>Blender에서 테이블, 트레이, 진열대, 픽업존을 배치</li>
                 <li>케이스, 빵, 소시지, 케첩, 음료 모델의 크기와 위치를 조정</li>
                 <li>제조 환경 layout을 Gazebo 모델과 planning scene으로 export</li>
                 <li>색상과 collision 형상을 조정해 Vision·MoveIt 검증에 활용</li>
               </ul>
+            </div>
+            <div class="media-frame">
+              <img src="assets/openarm/gazebo/모델링.png" alt="Blender 제조 월드 모델링">
             </div>
           </div>
         </div>
@@ -2079,45 +2078,28 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조: 음료 제공 검증</h2>
+          <h2>제조</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr 0.9fr;">
-            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/gazebo/콜라.gif" alt="Gazebo 콜라 제공"></div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">Gazebo 콜라 제공 검증</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/커피.gif" alt="실물 커피 제공"></div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 커피 제공 검증</p>
-            </div>
+          <div class="stack" style="grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
             <div class="card">
-              <h3>제어 포인트</h3>
+              <h3>음료 제공</h3>
               <ul class="tech-list">
                 <li>왼팔이 음료를 꺼내고 오른팔이 인계받는 양팔 협응 구조</li>
                 <li>캔 높이와 중심을 기준으로 파지 위치 분리</li>
                 <li>인계 후 충돌을 피하도록 후퇴 waypoint를 구성</li>
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="card">
-              <h3>서빙 흐름</h3>
-              <ul class="tech-list">
-                <li>주문 확인 후 픽업존에서 상품을 수령하고 고객 테이블까지 운반</li>
-                <li>샌드위치, 음료, 스낵 등 상품 유형별 픽업·제공 동작 분리</li>
-                <li>ACT Policy를 채택해 하드웨어 리소스와 실시간 제어 안정성을 우선 확보</li>
-                <li>위치·각도 다변화 데이터와 밝기 변화 증강으로 실제 환경 변화 대응</li>
-              </ul>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2vw, 28px); min-height: 0;">
+              <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 0;">
+                <div class="media-frame"><img src="assets/openarm/gazebo/콜라.gif" alt="Gazebo 콜라 제공"></div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">Gazebo 콜라 제공 검증</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 0;">
+                <div class="media-frame"><img src="assets/openarm/manufacturing/커피.gif" alt="실물 커피 제공"></div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 커피 제공 검증</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2128,7 +2110,7 @@
           <h2>서빙: 픽업·운반</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: clamp(40px, 5vw, 80px) 0 0;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0;">
             <h3 style="margin: 0;">제조 완료된 음료/음식 픽업</h3>
             <h3 style="margin: 0;">픽업을 완료하고 table로 이송</h3>
           </div>
@@ -2159,7 +2141,7 @@
           <h2>서빙: 제공</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: clamp(40px, 5vw, 80px) 0 0;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0;">
             <h3 style="margin: 0;">주문자의 손 위치(좌/우)를 인식하여 주문자 앞에 음료 제공</h3>
             <h3 style="margin: 0;">음료 제공하고 테이블에서 대기장소로 이동</h3>
           </div>
@@ -2325,46 +2307,6 @@
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>관리: 맵 관리</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="card">
-              <h3>현장 맞춤 서비스 맵 구성</h3>
-              <ul class="tech-list">
-                <li>행사장 환경에 맞춰 서비스 맵을 편집하고 운영 구역을 구성</li>
-                <li>테이블, 픽업존, 카운터, 로봇 시작 위치를 관리자 화면에서 지정</li>
-                <li>현장 배치 변경 시 좌표와 서비스 동선을 빠르게 조정</li>
-                <li>맵 기반 설정을 주문, 제조, 서빙 흐름의 공통 기준으로 사용</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>관리: 주문 및 상품 관리</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="card">
-              <h3>주문 흐름과 상품 상태 관리</h3>
-              <ul class="tech-list">
-                <li>주문 접수, 제조 요청, 픽업 대기, 서빙 완료 상태를 단계별로 확인</li>
-                <li>상품 메뉴와 제공 가능 여부를 운영 상황에 맞춰 관리</li>
-                <li>제조 로봇 뚜비와 서빙 로봇 도비의 작업 연결 상태를 추적</li>
-                <li>이상 주문이나 지연 발생 시 관리자 개입으로 운영 흐름을 보정</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="slide section-divider" data-kicker="Technology">
         <div class="section-divider-inner">
           <h2>주요 기술</h2>
@@ -2376,14 +2318,6 @@
             <li>SLAM / Navigation</li>
           </ul>
         </div>
-      </section>
-
-      <section class="slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>비전 기반 매니퓰레이션</h2>
-        </div>
-        <div class="content"></div>
       </section>
 
       <section class="slide feature-slide" data-kicker="Technology">
@@ -2572,20 +2506,10 @@
         </div>
       </section>
 
-
-
-      <section class="slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>ACT 기반 pick&place</h2>
-        </div>
-        <div class="content"></div>
-      </section>
-
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>ACT Policy 기반 태스크 확장 및 Jittering 현상 억제</h2>
+          <h2>서빙: ACT Policy 기반 태스크 확장 및 Jittering 현상 억제</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 18px);">
 
