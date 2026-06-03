@@ -2431,19 +2431,28 @@
           <h2>제조: OpenArm 트러블 슈팅 - 엔드 이펙터 불일치</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+          <div class="stack" style="grid-template-columns: 1fr auto 0.9fr auto 1fr; gap: 14px; align-items: center;">
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">문제</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">문제 이미지 추가 예정</div>
+              <h3 style="margin: 0;">수정 전</h3>
+              <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/그리퍼_수정전.png" alt="그리퍼 수정 전"></div>
               <div class="card">
                 <p><strong>URDF 그리퍼와 실물 그리퍼 형상이 달라 파지 pose와 collision 기준이 어긋남</strong></p>
               </div>
             </div>
+            <div style="font-size: clamp(34px, 3.4vw, 58px); font-weight: 800; color: var(--secondary); align-self: center;">→</div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">해결</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="엔드 이펙터 불일치 해결"></div>
+              <h3 style="margin: 0;">모델링 및 description 수정</h3>
+              <div class="media-frame" style="height: clamp(180px, 34vh, 340px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="Blender 그리퍼 모델링"></div>
               <div class="card">
-                <p><strong>TCP, gripper collision, 파지 기준 pose를 실물 형상에 맞게 보정</strong></p>
+                <p><strong>Blender에서 실물 그리퍼를 모델링하고 URDF와 robot description을 수정</strong></p>
+              </div>
+            </div>
+            <div style="font-size: clamp(34px, 3.4vw, 58px); font-weight: 800; color: var(--secondary); align-self: center;">→</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">반영 후</h3>
+              <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/그리퍼_수정후.png" alt="그리퍼 수정 후"></div>
+              <div class="card">
+                <p><strong>실물 형상에 맞춘 gripper collision과 TCP 기준으로 파지 동작을 보정</strong></p>
               </div>
             </div>
           </div>
