@@ -2500,7 +2500,7 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">해결</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/가제보.png" alt="Gazebo 실행 환경 구성"></div>
               <div class="card">
                 <p><strong>URDF를 수정하고 robot description, Gazebo launch 구성을 추가</strong></p>
               </div>
@@ -2577,41 +2577,19 @@
           <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">문제</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/4.이슈:단선1.jpg" alt="액추에이터 단선 문제"></div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; height: clamp(220px, 42vh, 430px);">
+                <div class="media-frame" style="height: 100%;"><img src="assets/openarm/troble_shooting/1.openarm/4.이슈:단선1.jpg" alt="액추에이터 단선 문제"></div>
+                <div class="media-frame" style="height: 100%;"><img src="assets/openarm/troble_shooting/1.openarm/4.이슈:단선4.jpg" alt="전원선 마찰 위치"></div>
+              </div>
               <div class="card">
                 <p><strong>흰색 케이스와 전원선이 반복적으로 마찰되어 오른팔 액추에이터 전원선 단선 발생</strong></p>
               </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">해결</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/manufacturing/케첩.gif" alt="왼팔 단독 단계별 제조 진행"></div>
               <div class="card">
                 <p><strong>오른팔 command를 비활성화하고 왼팔 단독·단계별 수동 진행 모드 구성</strong></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide feature-slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>제조: 제어 트러블 슈팅 - Goal pose IK 실패</h2>
-        </div>
-        <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
-            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">문제</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">문제 이미지 추가 예정</div>
-              <div class="card">
-                <p><strong>MoveIt이 지정한 goal pose에 대해 IK 해를 찾지 못해 planning이 중단</strong></p>
-              </div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">해결</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
-              <div class="card">
-                <p><strong>guide pose를 추가하고 MoveIt Planning과 Cartesian Path를 구간별로 분리</strong></p>
               </div>
             </div>
           </div>
