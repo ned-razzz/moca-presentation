@@ -2654,108 +2654,47 @@
       <section class="slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>경량 ASR + 컨텍스트 바이어싱으로 인식 정확도 개선</h2>
+          <h2>음성 인식: 정확도 개선과 향후 응답 지연 단축</h2>
         </div>
-        <div class="content" style="grid-template-rows: auto auto 1fr; gap: clamp(12px, 1.6vw, 22px); align-items: stretch;">
+        <div class="content" style="grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); align-items: stretch;">
 
-          <!-- 요약 라인 -->
-          <p style="margin: 0; font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">
-            모델 <strong style="color: var(--text);">Qwen3-ASR-0.6B</strong> (0.6B 경량) · 기법 도메인 자주 쓰는 단어를 <strong style="color: var(--text);">context 인자</strong>로 사전 주입 · 도메인 매장 음성 주문 (핫도그 · 콜라 · 커피)
-          </p>
-
-          <!-- 핵심 지표 3개 -->
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 22px);">
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 6px; align-content: start;">
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">단어 인식 정확도 (평균)</span>
-              <div style="font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; line-height: 1.05;">
-                <span style="color: var(--primary); text-decoration: line-through; font-weight: 700;">65%</span>
-                <span style="color: var(--muted-text);"> → </span>
-                <span style="color: #1b9e5a;">95%</span>
-              </div>
-              <span style="font-size: var(--content-small-size); color: #1b9e5a; font-weight: 700;">▲ 30%p</span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 6px; align-content: start;">
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">문장 단위 WER (오류율)</span>
-              <div style="font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; line-height: 1.05;">
-                <span style="color: var(--primary); text-decoration: line-through; font-weight: 700;">30%</span>
-                <span style="color: var(--muted-text);"> → </span>
-                <span style="color: #1b9e5a;">5%</span>
-              </div>
-              <span style="font-size: var(--content-small-size); color: #1b9e5a; font-weight: 700;">상대 83% 감소</span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 6px; align-content: start;">
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">추가 비용</span>
-              <div style="font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; line-height: 1.05; color: #1b9e5a;">0</div>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">모델 교체·재학습 없음 (텍스트 1줄)</span>
-            </div>
-          </div>
-
-          <!-- 문제 · 접근 · 메커니즘 -->
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 22px); align-items: stretch;">
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 8px; align-content: start;">
+          <!-- 좌: 현재 문제 · 원인 · 해결 -->
+          <div style="display: grid; grid-template-rows: auto auto 1fr; gap: clamp(12px, 1.4vw, 18px);">
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 6px; align-content: start;">
               <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">① 문제</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">0.6B 경량 모델은 빠르지만, 짧은 메뉴·수량어를 자주 오인식. (예: 핫도그→핫독, 한 개→한게)</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">메뉴·수량어 오인식 <span style="color: var(--text);">(핫도그→핫독)</span></span>
             </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 8px; align-content: start;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 접근</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">모델을 키우는 대신, 매장에서 자주 틀릴 단어를 도메인 기준으로 추려 context로 미리 알려줌.</span>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 6px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 원인</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">0.6B 경량 모델 한계 · 정확도 65% / WER 30%</span>
             </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 8px; align-content: start;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 메커니즘</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">ASR 디코딩이 컨텍스트 어휘 쪽으로 바이어싱 → 발음이 비슷한 후보 중 도메인 단어를 선택.</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>향후 개선 방향: 스트리밍 처리로 응답 지연 단축</h2>
-        </div>
-        <div class="content" style="grid-template-rows: auto 1fr auto; gap: clamp(14px, 1.8vw, 26px); align-items: stretch;">
-
-          <!-- 근거 -->
-          <div style="background: var(--surface-tint); border-left: 6px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(16px, 1.8vw, 24px);">
-            <p style="margin: 0; font-size: var(--content-body-size); color: var(--text); line-height: 1.45;">근거 · 사람의 대화는 말이 끝난 뒤 평균 <strong style="color: var(--secondary);">약 0.3초</strong> 만에 응답이 시작된다 (대화 turn-taking gap 연구)</p>
-          </div>
-
-          <!-- 현재 한계 vs 개선 방향 -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.8vw, 26px); align-items: stretch;">
-            <!-- 현재 -->
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(16px, 1.8vw, 24px); display: grid; gap: 14px; align-content: start;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">현재 한계 · 비스트리밍</span>
-              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">발화 종료</span>
-                <span style="color: var(--muted-text); font-weight: 800;">→</span>
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">STT</span>
-                <span style="color: var(--muted-text); font-weight: 800;">→</span>
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">LLM 추론</span>
-                <span style="color: var(--muted-text); font-weight: 800;">→</span>
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">TTS</span>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 10px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 해결 · 컨텍스트 바이어싱</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">도메인 단어를 context로 사전 주입 → 디코딩 바이어싱</span>
+              <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
+                <span style="font-size: clamp(22px, 2.4vw, 34px); font-weight: 800; line-height: 1;"><span style="color: var(--primary); text-decoration: line-through;">65%</span> <span style="color: var(--muted-text);">→</span> <span style="color: #1b9e5a;">95%</span></span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">WER 30%→5% · 추가비용 0</span>
               </div>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">Qwen3-ASR은 비스트리밍 → 발화가 완전히 끝난 뒤에야 인식·추론·합성이 순차로 진행되어 응답이 늦다</span>
-            </div>
-            <!-- 개선 -->
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(16px, 1.8vw, 24px); display: grid; gap: 14px; align-content: start;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">개선 방향 · 스트리밍</span>
-              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM 추론</span>
-                <span style="color: var(--secondary); font-weight: 800;">→</span>
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
-                <span style="color: var(--secondary); font-weight: 800;">→</span>
-                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
-              </div>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">스트리밍 방식 STT·TTS 모델을 도입해 발화 도중부터 LLM이 미리 추론하고 음성 출력을 앞당겨, 대화 사이 간격을 줄인다</span>
             </div>
           </div>
 
-          <!-- 목표 -->
-          <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 22px); display: flex; align-items: baseline; gap: clamp(12px, 1.4vw, 20px); flex-wrap: wrap;">
-            <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
-            <b style="font-size: clamp(28px, 3.4vw, 48px); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준 (발화 종료 → 음성 응답 시작)</span>
+          <!-- 우: 향후 개선 방향 -->
+          <div style="background: var(--surface-tint); border: 1px solid var(--line); border-left: 6px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(18px, 1.9vw, 26px); display: grid; grid-template-rows: auto auto auto 1fr auto; gap: clamp(12px, 1.5vw, 20px); align-content: start;">
+            <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--secondary);">향후 개선 방향 · 스트리밍</span>
+            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">현재 비스트리밍 → 발화 종료 후 STT·LLM·TTS 순차 진행 → 응답 지연</span>
+            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM</span>
+              <span style="color: var(--secondary); font-weight: 800;">→</span>
+              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
+              <span style="color: var(--secondary); font-weight: 800;">→</span>
+              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
+            </div>
+            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45; align-self: start;">발화 도중부터 미리 추론·합성해 대화 간격 단축</span>
+            <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: clamp(10px, 1.2vw, 16px);">
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
+              <b style="font-size: clamp(26px, 3.2vw, 44px); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준</span>
+            </div>
           </div>
 
         </div>
