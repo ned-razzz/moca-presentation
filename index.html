@@ -1118,6 +1118,112 @@
       border-radius: var(--radius-card);
     }
 
+    .human-context-slide .header h2 {
+      font-size: clamp(44px, 3.9vw, 62px);
+      line-height: 1.08;
+    }
+
+    .human-context-slide .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 2vw, 26px);
+      height: 100%;
+      min-height: 0;
+    }
+
+    .human-context-slide .context-panel {
+      min-height: 0;
+      padding: clamp(12px, 1.25vw, 18px);
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+
+    .human-context-slide .context-panel.final {
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      gap: clamp(6px, .85vw, 10px);
+      border-left: 4px solid var(--secondary);
+    }
+
+    .human-context-slide .context-panel.before {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(8px, 1vw, 12px);
+    }
+
+    .human-context-slide .content .panel-title {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(14px, .95vw, 17px);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .human-context-slide .content .final .panel-title {
+      color: var(--secondary);
+    }
+
+    .human-context-slide .context-list {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .human-context-slide .content .context-list li {
+      font-size: clamp(11px, .78vw, 14px);
+      line-height: 1.32;
+      color: var(--muted-text);
+    }
+
+    .human-context-slide .content .context-list .is-strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .human-context-slide .content .final .context-list .is-strong {
+      color: var(--secondary);
+    }
+
+    .human-context-slide .content .context-media {
+      min-height: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+
+    .human-context-slide .context-media img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      padding: 2px;
+    }
+
+    .human-context-slide .context-caption {
+      padding: 5px 10px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+    }
+
+    .human-context-slide .content .context-caption p {
+      margin: 0;
+      font-size: clamp(9px, .64vw, 11px);
+      line-height: 1.25;
+      color: var(--muted-text);
+    }
+
+    .human-context-slide .context-caption strong {
+      display: block;
+      margin-bottom: 1px;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
     .slide.scenario-slide .stack {
       grid-template-rows: auto minmax(0, 1fr) auto;
       height: 100%;
@@ -2303,7 +2409,7 @@
                 <img src="assets/attract_follow/emotion_rapport.gif" alt="감정 분석 geva rapport 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">병렬: 감정 분석</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">전 과정에서 표정으로 감정을 살펴(geva→rapport) 불쾌 감지 시 즉시 멈춥니다(abort→idle)</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">전 과정에서 표정으로 감정을 살펴, 불쾌 감지 시 즉시 멈춥니다</p>
             </div>
           </div>
         </div>
@@ -2322,46 +2428,58 @@
         </div>
       </section>
 
-      <section class="slide" data-kicker="Technology">
+      <section class="slide scenario-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>비전 기반 매니퓰레이션</h2>
+          <h2>제조: 비전 기반 매니퓰레이션</h2>
         </div>
-        <div class="content" style="grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 16px); align-items: stretch;">
-          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
-            <div class="media-frame" style="flex: 1; min-height: 0;">
-              <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 객체 인식과 주축 추정">
+        <div class="content" style="grid-template-rows: auto clamp(118px, 16vh, 170px) minmax(0, 1fr); gap: clamp(26px, 3vw, 46px);">
+          <h3 style="margin: 0;">Vision 결과를 매니퓰레이터 제어로 연결</h3>
+          <div class="service-flow" style="height: 100%;">
+            <div class="scenario-card">
+              <div class="scenario-card-inner" style="padding: clamp(28px, 2.6vw, 42px) clamp(42px, 3.4vw, 62px) clamp(16px, 1.4vw, 24px); grid-template-rows: auto auto; align-content: center;">
+                <span class="num">01</span>
+                <h3>객체 인식</h3>
+              </div>
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">Vision으로 class, 위치, 주축 방향 추정</p>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
-            <div class="media-frame" style="flex: 1; min-height: 0;">
-              <img src="assets/openarm/gazebo/빵.gif" alt="Gazebo 매니퓰레이터 pick and place 제어">
+            <div class="scenario-card">
+              <div class="scenario-card-inner" style="padding: clamp(28px, 2.6vw, 42px) clamp(42px, 3.4vw, 62px) clamp(16px, 1.4vw, 24px); grid-template-rows: auto auto; align-content: center;">
+                <span class="num">02</span>
+                <h3>Pose 계산</h3>
+              </div>
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">Gazebo에서 goal pose 기반 pick/place 검증</p>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
-            <div class="media-frame" style="flex: 1; min-height: 0;">
-              <img src="assets/openarm/manufacturing/빵.gif" alt="실물 로봇 핫도그 제조 매니퓰레이션 검증">
+            <div class="scenario-card">
+              <div class="scenario-card-inner" style="padding: clamp(28px, 2.6vw, 42px) clamp(42px, 3.4vw, 62px) clamp(16px, 1.4vw, 24px); grid-template-rows: auto auto; align-content: center;">
+                <span class="num">03</span>
+                <h3>동작 실행</h3>
+              </div>
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">실물 로봇 핫도그 제조 동작 검증</p>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
-            <div class="media-frame" style="flex: 1; min-height: 0;">
-              <img src="assets/openarm/manufacturing/커피.gif" alt="실물 로봇 음료 제공 매니퓰레이션 검증">
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); min-height: 0; align-items: stretch;">
+            <div style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 객체 인식과 주축 추정">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">Vision 인식</p>
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">실물 로봇 음료 제공 동작 검증</p>
-          </div>
-          <div class="card" style="grid-column: 1 / -1;">
-            <h3>Vision 결과를 매니퓰레이터 제어로 연결</h3>
-            <ul class="tech-list" style="grid-template-columns: repeat(3, minmax(0, 1fr)); display: grid; gap: 0.65em 1.1em;">
-              <li>YOLO class 후보와 색상·형상 단서로 식재료와 물품을 매칭</li>
-              <li>Depth 중심 위치와 PCA 주축으로 파지 진입 방향을 계산</li>
-              <li>인식 결과를 엔드 이펙터 goal pose에 반영</li>
-              <li>MoveIt Planning으로 충돌 회피 경로를 생성</li>
-              <li>직선 진입·배치 구간은 Cartesian Path로 수행</li>
-              <li>Gazebo 검증 후 실물 로봇 제조 동작으로 전이</li>
-            </ul>
+            <div style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/openarm/gazebo/빵.gif" alt="Gazebo 매니퓰레이터 pick and place 제어">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">Gazebo 검증</p>
+            </div>
+            <div style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/openarm/manufacturing/빵.gif" alt="실물 로봇 핫도그 제조 매니퓰레이션 검증">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">제조 동작</p>
+            </div>
+            <div style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/openarm/manufacturing/커피.gif" alt="실물 로봇 음료 제공 매니퓰레이션 검증">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">음료 제공</p>
+            </div>
           </div>
         </div>
       </section>
@@ -2531,23 +2649,33 @@
           <p class="section-mark">04 / 주요 기술</p>
           <h2>향후 개선 방향: 제조 협동 로봇으로서의 발전</h2>
         </div>
-        <div class="content" style="grid-template-columns: 1fr 1fr; align-items: stretch; gap: clamp(18px, 2vw, 32px);">
-          <div class="card" style="align-content: start; gap: 1.2em;">
-            <h3>현재 제조 제어</h3>
-            <ul class="tech-list">
-              <li>핫도그 조립, 케첩 도포, 음료 제공을 단계 기반 제조 sequence로 수행</li>
-              <li>물체 상태에 따라 goal pose를 갱신하고 MoveIt Planning과 Cartesian Path를 조합</li>
-              <li>Gazebo에서 검증한 제조 동작을 실물 로봇으로 전이해 재현성을 확인</li>
-            </ul>
+        <div class="content" style="grid-template-rows: auto 1fr auto; gap: clamp(18px, 2vw, 30px);">
+          <div class="card" style="text-align: center;">
+            <h3 style="margin: 0;">단계 기반 제조 자동화에서 사람과 함께 일하는 제조 협동 로봇으로 확장</h3>
           </div>
-          <div class="card" style="align-content: start; gap: 1.2em;">
-            <h3>개선 목표</h3>
-            <ul class="tech-list">
-              <li>점주와 로봇이 같은 조리 공간을 공유하며 식재료 보충, 조립, 배치를 분담</li>
-              <li>safety zone 안에서 사람이 감지되면 즉시 정지하고 소리로 감지 상태를 알림</li>
-              <li>사람이 제조 중간 단계를 대신 수행해도 현재 상태를 반영해 다음 단계부터 재개</li>
-              <li>점주는 예외 판단과 재료 준비를 맡고, 로봇은 반복 제조 동작을 안정적으로 수행</li>
-            </ul>
+
+          <div style="display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: clamp(12px, 1.4vw, 20px); align-items: stretch; min-height: 0;">
+            <div class="card" style="display: grid; align-content: center; justify-items: center; align-self: stretch; height: 100%; text-align: center; gap: 10px; padding: clamp(18px, 2vw, 28px); background: var(--surface-soft); border-radius: var(--radius-card);">
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--primary);">현재</span>
+              <h3 style="margin: 0;">제조 동작 수행</h3>
+              <p style="margin: 0; color: var(--muted-text); font-size: var(--content-small-size);">조립 · 도포 · 제공</p>
+            </div>
+            <div style="display: grid; place-items: center; color: var(--secondary); font-size: clamp(28px, 3vw, 44px); font-weight: 900;">→</div>
+            <div class="card" style="display: grid; align-content: center; justify-items: center; align-self: stretch; height: 100%; text-align: center; gap: 10px; padding: clamp(18px, 2vw, 28px); background: var(--surface-soft); border-radius: var(--radius-card);">
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary);">보강</span>
+              <h3 style="margin: 0;">안전 감지</h3>
+              <p style="margin: 0; color: var(--muted-text); font-size: var(--content-small-size);">사람 감지 시 정지</p>
+            </div>
+            <div style="display: grid; place-items: center; color: var(--secondary); font-size: clamp(28px, 3vw, 44px); font-weight: 900;">→</div>
+            <div class="card" style="display: grid; align-content: center; justify-items: center; align-self: stretch; height: 100%; text-align: center; gap: 10px; padding: clamp(18px, 2vw, 28px); background: var(--surface-soft); border-radius: var(--radius-card);">
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary);">목표</span>
+              <h3 style="margin: 0;">협동 제조</h3>
+              <p style="margin: 0; color: var(--muted-text); font-size: var(--content-small-size);">사람 개입 후 다음 단계 재개</p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin: 0; text-align: center;">
+            점주는 보충과 예외 판단, 로봇은 반복 제조와 상태 기반 재개를 담당
           </div>
         </div>
       </section>
@@ -2555,123 +2683,80 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>서빙: ACT Policy 기반 태스크 확장 및 Jittering 현상 억제</h2>
+          <h2>서빙: ACT Policy 기반 Jittering 현상 억제</h2>
         </div>
-        <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 18px);">
-
-          <!-- 중앙: 좌우 GIF + 스펙 비교 (2×2 공통 그리드로 높이 자동 일치) -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 10px clamp(14px, 2vw, 28px); min-height: 0;">
-
-            <!-- 스펙 A (빨강) -->
-            <div style="background: #fff0f4; border: 2px solid #d83f87; border-radius: var(--radius-card); padding: 10px 16px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; align-self: stretch;">
-              <span style="font-size: var(--content-small-size); font-weight: 800; color: #d83f87;">실험 A</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">개선 전</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Task</span>
-              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">2가지</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Episodes</span>
-              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">100 ep</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Steps</span>
-              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">100,000</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">결과</span>
-              <span style="font-size: var(--content-small-size); font-weight: 800; color: #d83f87;">Jittering 심함 ✗</span>
+        <div class="content" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: clamp(12px, 1.5vw, 22px);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 28px); min-height: 0;">
+            <div class="card" style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: clamp(10px, 1.2vw, 16px); padding: clamp(14px, 1.6vw, 24px); background: color-mix(in srgb, var(--primary) 7%, white); border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--line)); border-radius: var(--radius-card);">
+              <div style="display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center;">
+                <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--primary);">실험 A</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">개선 전</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">Task</span>
+                <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">2가지</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">Episodes</span>
+                <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">100 ep</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">Steps</span>
+                <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">100,000</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">결과</span>
+                <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--primary);">Jittering 심함</span>
+              </div>
+              <div class="media-frame" style="min-height: 0; background: var(--surface);">
+                <img src="assets/serving_act/jittering_before.gif" alt="Jittering 발생 (실험 A)">
+              </div>
             </div>
-
-            <!-- 스펙 B (파랑) -->
-            <div style="background: #f0f6ff; border: 2px solid #224087; border-radius: var(--radius-card); padding: 10px 16px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; align-self: stretch;">
-              <span style="font-size: var(--content-small-size); font-weight: 800; color: #224087;">실험 B</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">개선 후</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Task</span>
-              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">5가지</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Episodes</span>
-              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">270 ep <span style="color:#224087;">↑2.7×</span></span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Steps</span>
-              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">400,000 <span style="color:#224087;">↑4×</span></span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">결과</span>
-              <span style="font-size: var(--content-small-size); font-weight: 800; color: #224087;">Jittering 감소 ✓</span>
-            </div>
-
-            <!-- GIF A -->
-            <div class="media-frame" style="min-height: 0;">
-              <img src="assets/serving_act/jittering_before.gif" alt="Jittering 발생 (실험 A)">
-            </div>
-
-            <!-- GIF B -->
-            <div class="media-frame" style="min-height: 0;">
-              <img src="assets/serving_act/jittering_after.gif" alt="Jittering 억제 (실험 B)">
+            <div class="card" style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: clamp(10px, 1.2vw, 16px); padding: clamp(14px, 1.6vw, 24px); background: color-mix(in srgb, var(--secondary) 8%, white); border: 1px solid color-mix(in srgb, var(--secondary) 32%, var(--line)); border-radius: var(--radius-card);">
+              <div style="display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center;">
+                <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary);">실험 B</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">개선 후</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">Task</span>
+                <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">5가지</span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">Episodes</span>
+                <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">270 ep <span style="color: var(--secondary);">↑2.7×</span></span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">Steps</span>
+                <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">400,000 <span style="color: var(--secondary);">↑4×</span></span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">결과</span>
+                <span style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary);">Jittering 감소</span>
+              </div>
+              <div class="media-frame" style="min-height: 0; background: var(--surface);">
+                <img src="assets/serving_act/jittering_after.gif" alt="Jittering 억제 (실험 B)">
+              </div>
             </div>
           </div>
-
-          <!-- 하단: 결론 한 줄 -->
-          <div style="background: color-mix(in srgb, var(--secondary) 8%, white); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
+          <div style="background: var(--surface); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
             <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">후처리 필터 없이 <strong>데이터 다양성 확장 + 학습 스케일링</strong>만으로 End-to-End 모션 안정화 성공</p>
           </div>
-
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Technology">
+      <section class="slide feature-slide human-context-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>Human Interaction 기반 제어 최적화: Language에서 Vision Context로의 전환</h2>
+          <h2>Language에서 Vision Context로의 전환</h2>
         </div>
         <div class="content">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 28px); min-height: 0; height: 100%;">
+          <div class="content-grid">
 
-            <!-- 좌: MediaPipe 이미지 + 입력 설명 -->
-            <div style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; justify-content: flex-start; min-height: 0;">
-              <div class="media-frame" style="min-height: 0; height: auto; flex-shrink: 0;">
-                <img src="assets/serving_act/palm_detection.png" alt="MediaPipe Hand Tracking">
-              </div>
-              <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 10px 16px; flex-shrink: 0;">
-                <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0 0 4px;">Input Context</p>
-                <p style="font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">MediaPipe Hand Tracking → 실시간 좌/우 목표 위치 인식 및 매핑</p>
-              </div>
+            <!-- 좌: 기존 시도 -->
+            <div class="context-panel before">
+              <p class="panel-title">기존 시도: Language Prompt (SmolVLA)</p>
+              <ul class="context-list">
+                <li>좌/우 방향 판단을 텍스트 지시어로 세분화하여 학습</li>
+                <li class="is-strong">프롬프트 지시를 제대로 이해하지 X</li>
+                <li class="is-strong">모델 추론 비용 증가로 실시간 제어 병목 발생</li>
+              </ul>
             </div>
 
-            <!-- 우: Before / After 2단 -->
-            <div style="display: grid; grid-template-rows: 1fr 1fr; gap: clamp(10px, 1.2vw, 16px); min-height: 0;">
-
-              <!-- 우 상단: Before (SmolVLA) -->
-              <div style="background: #fff8f0; border: 2px solid #e07020; border-radius: var(--radius-card); padding: 12px 18px; display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: hidden;">
-                <p style="font-size: var(--content-small-size); font-weight: 800; color: #e07020; margin: 0;">⚠️ 기존 시도 — Language Prompt (SmolVLA)</p>
-                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 5px;">
-                  <li style="font-size: var(--content-small-size); color: var(--muted-text);">방향 판단 → 텍스트 지시어로 세분화하여 SmolVLA 학습
-                    <div style="margin-top: 5px; padding: 7px 12px; background: #f3e8d8; border-radius: 6px; display: grid; gap: 2px;">
-                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 0, "task": "serve cup to the left"}</code>
-                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 1, "task": "serve cup to the right"}</code>
-                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 2, "task": "place plate at center"}</code>
-                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 3, "task": "return to home"}</code>
-                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 4, "task": "serve cup to the left and place plate at center"}</code>
-                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 5, "task": "serve cup to right &amp; plate center"}</code>
-                    </div>
-                  </li>
-                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">🔴 프롬프트 → Place 행동 연계 미흡</li>
-                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">🔴 무거운 추론 리소스 → 실시간 제어 병목</li>
-                </ul>
+            <!-- 우: 최종 해결 -->
+            <div class="context-panel final">
+              <p class="panel-title">최종 해결: Vision Context 주입 (ACT Policy)</p>
+              <ul class="context-list">
+                <li>Language를 배제하고 Vision 정보에 목적지(좌/우)를 직접 주입</li>
+                <li class="is-strong">Vision → Place 행동 연계 성공</li>
+                <li class="is-strong">VRAM 절감 + 제어 실시간성 보장</li>
+              </ul>
+              <div class="media-frame context-media">
+                <img src="assets/serving_act/palm_detection.png" alt="MediaPipe Hand Tracking">
               </div>
-
-              <!-- 우 하단: After (ACT) -->
-              <div style="background: #f0f9f4; border: 2px solid #1a7a45; border-radius: var(--radius-card); padding: 12px 18px; display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: hidden;">
-                <p style="font-size: var(--content-small-size); font-weight: 800; color: #1a7a45; margin: 0;">🚀 최종 해결 — Vision Context 주입 (ACT Policy)</p>
-                <ul style="margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 5px; flex: 1; min-height: 0;">
-                  <li style="font-size: var(--content-small-size); color: var(--muted-text); flex: 1; list-style: none; display: flex; flex-direction: column; min-height: 0;">
-                    <span style="white-space: nowrap; flex-shrink: 0;">• Language 배제 → <strong>Vision 정보에 목적지(좌/우) 직접 주입</strong>하여 추론 유도</span>
-                    <div style="display: flex; gap: 8px; margin-top: 6px; flex: 1; min-height: 0; align-items: stretch; justify-content: flex-start;">
-                      <div style="display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; min-height: 0;">
-                        <img src="assets/serving_act/place_left.png" alt="목표위치: 왼쪽" style="height: 100%; width: auto; flex: 1; min-height: 0; display: block; border-radius: 4px;">
-                        <span style="font-size: 0.82em; color: var(--muted-text); font-weight: 700; text-align: center; flex-shrink: 0;">좌</span>
-                      </div>
-                      <div style="display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; min-height: 0;">
-                        <img src="assets/serving_act/place_right.png" alt="우" style="height: 100%; width: auto; flex: 1; min-height: 0; display: block; border-radius: 4px;">
-                        <span style="font-size: 0.82em; color: var(--muted-text); font-weight: 700; text-align: center; flex-shrink: 0;">우</span>
-                      </div>
-                    </div>
-                  </li>
-                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700; flex-shrink: 0;">🟢 Vision → Place 행동 연계 성공</li>
-                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700; flex-shrink: 0;">🟢 VRAM 절감 + 제어 실시간성 보장</li>
-                </ul>
-              </div>
-
             </div>
           </div>
         </div>
@@ -2680,7 +2765,7 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>예외 상황 극복을 위한 데이터셋 고도화 및 실환경 강건성(Robustness) 확보</h2>
+          <h2>데이터셋 고도화 및 실환경 강건성(Robustness) 확보</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 16px);">
 
@@ -2692,11 +2777,11 @@
               <div class="media-frame" style="min-height: 0;">
                 <img src="assets/serving_act/unable_to_pickup.gif" alt="불균등 학습 실패 구동">
               </div>
-              <div style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
+              <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
                 <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 1 — 내비게이션 오차 &amp; 데이터 균등성</p>
                 <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
-                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">⚠️ Navigation 도착 위치 오차 → 오브젝트 상대 위치 변동 → Pick 실패</li>
-                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700;">🟢 다양한 위치에서 / 균등한 횟수로 Pick 데이터셋 재구축 → 공간적 일반화 확보</li>
+                  <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">Navigation 도착 위치 오차 → 오브젝트 상대 위치 변동 → Pick 실패</li>
+                  <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">다양한 위치에서 / 균등한 횟수로 Pick 데이터셋 재구축 → 공간적 일반화 확보</li>
                 </ul>
               </div>
             </div>
@@ -2706,11 +2791,11 @@
               <div class="media-frame" style="min-height: 0;">
                 <img src="assets/serving_act/flicker.png" alt="형광등 Flicker 노이즈">
               </div>
-              <div style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
+              <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
                 <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 2 — 실내 조명 Flicker 노이즈 대응</p>
                 <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
-                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">⚠️ 형광등 플리커 → Top-view 카메라 유입 → 플리커 환경에만 추론 적합</li>
-                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700;">🟢 Data Augmentation을 통해 플리커X 데이터셋 추가 → 조명 변화 강건성 확보</li>
+                  <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">형광등 플리커 → Top-view 카메라 유입 → 플리커 환경에만 추론 적합</li>
+                  <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">Data Augmentation을 통해 플리커X 데이터셋 추가 → 조명 변화 강건성 확보</li>
                 </ul>
               </div>
             </div>
@@ -2720,71 +2805,6 @@
           <!-- 하단: 핵심 성과 -->
           <div style="background: color-mix(in srgb, var(--secondary) 8%, white); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
             <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">두 가지 실환경 제약 조건 극복 → <strong>최종 Pick 성공률 90% 이상 달성</strong></p>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>감정 분석 모객</h2>
-        </div>
-        <div class="content"></div>
-      </section>
-
-      <section class="slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>음성 인식: 정확도 개선과 향후 응답 지연 단축</h2>
-        </div>
-        <div class="content" style="grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); align-items: stretch;">
-
-          <!-- 좌: 현재 문제 · 원인 · 해결 -->
-          <div style="display: grid; grid-template-rows: auto auto 1fr; gap: clamp(12px, 1.4vw, 18px);">
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 6px; align-content: start;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">① 문제</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">메뉴·수량어 오인식 <span style="color: var(--text);">(핫도그→핫독)</span></span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 6px; align-content: start;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 원인</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">0.6B 경량 모델 한계 · 정확도 65% / WER 30%</span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 10px; align-content: start; min-height: 0;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 해결 · 컨텍스트 바이어싱</span>
-              <div style="background: #1e1e2e; border: 1px solid #2c2c3d; border-radius: 10px; padding: clamp(16px, 1.6vw, 24px); overflow: hidden;">
-                <div style="font-size: clamp(15px, 1.25vw, 20px); font-weight: 700; color: #aab6ff; margin-bottom: 12px;">실제 주입한 컨텍스트 (텍스트 1줄)</div>
-                <pre style="margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(13px, 1.2vw, 18px); line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: #d4d4d4;"><span style="color: #6a9a6a;">// 메뉴 + 수량/세는 말을 ASR context 로 미리 바이어싱</span>
-<span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">ASR_CONTEXT</span> = <span style="color: #ce9178;">'매장 주문. 핫도그, 콜라, 커피. '</span>
-  + <span style="color: #ce9178;">'자주 쓰는 말: 하나, 한 개, 한 잔, 둘, 두 개, 두 잔, 개, 잔.'</span>;
-
-<span style="color: #6a9a6a;">// 호출부 — 음성마다 같은 1줄을 함께 전송</span>
-<span style="color: #9cdcfe;">fd</span>.<span style="color: #dcdcaa;">append</span>(<span style="color: #ce9178;">'context'</span>, <span style="color: #9cdcfe;">ASR_CONTEXT</span>);   <span style="color: #6a9a6a;">// → POST /asr/transcribe</span></pre>
-              </div>
-              <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
-                <span style="font-size: clamp(22px, 2.4vw, 34px); font-weight: 800; line-height: 1;"><span style="color: var(--primary); text-decoration: line-through;">65%</span> <span style="color: var(--muted-text);">→</span> <span style="color: #1b9e5a;">95%</span></span>
-                <span style="font-size: var(--content-small-size); color: var(--muted-text);">WER 30%→5% · 추가비용 0</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 우: 향후 개선 방향 -->
-          <div style="background: var(--surface-tint); border: 1px solid var(--line); border-left: 6px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(18px, 1.9vw, 26px); display: grid; grid-template-rows: auto auto auto 1fr auto; gap: clamp(12px, 1.5vw, 20px); align-content: start;">
-            <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--secondary);">향후 개선 방향 · 스트리밍</span>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">현재 비스트리밍 → 발화 종료 후 STT·LLM·TTS 순차 진행 → 응답 지연</span>
-            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM</span>
-              <span style="color: var(--secondary); font-weight: 800;">→</span>
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
-              <span style="color: var(--secondary); font-weight: 800;">→</span>
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
-            </div>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45; align-self: start;">발화 도중부터 미리 추론·합성해 대화 간격 단축</span>
-            <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: clamp(10px, 1.2vw, 16px);">
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
-              <b style="font-size: clamp(26px, 3.2vw, 44px); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준</span>
-            </div>
           </div>
 
         </div>
@@ -2858,20 +2878,21 @@
             </div>
             <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">주행 중 장애물 충돌 상황</p>
           </div>
-          <div class="stack" style="grid-template-rows: 1fr 1fr; gap: 16px;">
-            <div class="card" style="align-content: start; gap: 1.3em; padding-top: 6em;">
+          <div class="stack" style="grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; min-height: 0;">
+            <div class="card" style="align-content: center; gap: 0.9em;">
               <h3>충돌 블랙박스</h3>
-              <ul class="tech-list" style="gap: 0.5em;">
-                <li>충돌·복구(recovery) 이벤트 발생 시점의 센서·주행 데이터를 자동 기록</li>
-                <li>사고 직전 구간을 다시 재생해 원인 분석과 재발 방지에 활용</li>
+              <ul class="tech-list" style="gap: 0.45em;">
+                <li>충돌·복구 이벤트 자동 기록</li>
+                <li>센서·주행 데이터 저장</li>
+                <li>사고 직전 구간 재생·원인 분석</li>
               </ul>
             </div>
-            <div class="card" style="align-content: start; gap: 1.3em;">
+            <div class="card" style="align-content: center; gap: 0.9em;">
               <h3>Depth 카메라 기반 장애물 인지</h3>
-              <ul class="tech-list" style="gap: 0.5em;">
-                <li>현재 한계 · 2D LiDAR가 특정 높이의 평면만 스캔 → 그 높이에 걸리지 않는 장애물을 감지하지 못해 충돌</li>
-                <li>개선 · Depth 카메라를 추가 장착해 거리(depth) 값을 받아옴</li>
-                <li>받아온 거리 정보를 주행에 반영해 다양한 높이의 장애물을 회피</li>
+              <ul class="tech-list" style="gap: 0.45em;">
+                <li>한계 · 2D LiDAR는 특정 높이만 감지</li>
+                <li>보강 · Depth 카메라로 거리값 확보</li>
+                <li>목표 · 다양한 높이의 장애물 회피</li>
               </ul>
             </div>
           </div>
