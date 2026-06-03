@@ -328,7 +328,7 @@
       min-height: 0;
       display: grid;
       gap: var(--content-gap);
-      align-items: center;
+      align-items: start;
       z-index: 2;
       overflow: hidden;
     }
@@ -1310,7 +1310,9 @@
               <span class="num">05</span>
               <h3>결론</h3>
               <ul>
-                <li>프로젝트 관리</li>
+                <li>프로젝트 운영</li>
+                <li>프로젝트 문서 관리</li>
+                <li>코드 형상 관리</li>
                 <li>프로젝트 회고</li>
                 <li>담당 업무</li>
               </ul>
@@ -1704,7 +1706,9 @@
         <div class="section-divider-inner">
           <h2>결론</h2>
           <ul>
-            <li>프로젝트 관리</li>
+            <li>프로젝트 운영</li>
+            <li>프로젝트 문서 관리</li>
+            <li>코드 형상 관리</li>
             <li>프로젝트 회고</li>
             <li>담당 업무</li>
           </ul>
@@ -1717,22 +1721,13 @@
           <h2>프로젝트 관리</h2>
         </div>
         <div class="content">
-          <div class="summary-band">
-            <div class="card">
-              <span class="num">01</span>
-              <h3>스프린트 기반 일정 관리</h3>
-              <p>기획, 설계, 기능 구현, 통합 검증 단계를 나누고 주차별 목표와 산출물을 기준으로 진행 상황을 관리했다.</p>
-            </div>
-            <div class="card">
-              <span class="num">02</span>
-              <h3>브랜치 전략</h3>
-              <p>feat, dev, main 브랜치를 분리해 기능별 구현과 통합 검증 흐름을 관리하고 충돌 범위를 줄였다.</p>
-            </div>
-            <div class="card">
-              <span class="num">03</span>
-              <h3>통합 이슈 관리</h3>
-              <p>주문, 제조, 서빙, 모객, 관리 기능의 연결 지점을 기준으로 장애 원인과 수정 우선순위를 정리했다.</p>
-            </div>
+          <div class="stack">
+            <h3>프로젝트 운영</h3>
+            <ul>
+              <li>SCRUM 방식으로 주 단위 sprint를 계획하고 프로젝트 진행 상황을 관리</li>
+              <li>Jira를 활용해 sprint 목표, 담당 작업, 진행 상태를 추적</li>
+              <li>총 7번의 sprint를 기획, 설계, 전체 구현, 상세 구현, 통합 테스트 단계로 운영</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -1740,6 +1735,30 @@
       <section class="slide" data-kicker="Conclusion">
         <div class="header">
           <p class="section-mark">27 / 결론</p>
+          <h2>프로젝트 관리</h2>
+        </div>
+        <div class="content">
+          <div class="stack">
+            <h3>프로젝트 문서 관리</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Conclusion">
+        <div class="header">
+          <p class="section-mark">28 / 결론</p>
+          <h2>프로젝트 관리</h2>
+        </div>
+        <div class="content">
+          <div class="stack">
+            <h3>코드 형상 관리</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Conclusion">
+        <div class="header">
+          <p class="section-mark">29 / 결론</p>
           <h2>프로젝트 회고</h2>
         </div>
         <div class="content">
@@ -1783,8 +1802,8 @@
                   <li>로봇 작업 조율</li>
                   <li>관리자 GUI 구현</li>
                   <li>서빙 이송 모방학습</li>
-              </ul>
-            </div>
+                </ul>
+              </div>
             </div>
             <div class="role-card">
               <div class="role-photo" data-src=""></div>
@@ -1794,8 +1813,8 @@
                   <li>서빙 로봇 제어</li>
                   <li>ROS2 주행 연동</li>
                   <li>시뮬레이션 검증</li>
-              </ul>
-            </div>
+                </ul>
+              </div>
             </div>
             <div class="role-card">
               <div class="role-photo" data-src=""></div>
@@ -1805,7 +1824,7 @@
                   <li>제조 로봇 동작</li>
                   <li>비전 기반 조작</li>
                   <li>실물 동작 보정</li>
-              </ul>
+                </ul>
               </div>
             </div>
             <div class="role-card">
