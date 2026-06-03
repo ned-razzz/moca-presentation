@@ -2009,16 +2009,22 @@
           <h2>제조: Blender 기반 월드 제작 및 편집</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1.2fr 0.8fr;">
-            <div class="media-frame">
-              <img src="assets/openarm/gazebo/모델링.png" alt="Blender 제조 월드 모델링">
+          <div class="stack" style="grid-template-columns: 1.2fr 0.8fr; gap: clamp(14px, 1.6vw, 24px);">
+            <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 10px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/openarm/gazebo/모델링.png" alt="Blender 제조 월드 모델링">
+              </div>
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/openarm/gazebo/rviz.png" alt="MoveIt planning scene 반영">
+              </div>
             </div>
             <div class="card">
               <h3>월드 제작 흐름</h3>
               <ul class="tech-list">
                 <li>Blender에서 테이블, 트레이, 진열대, 픽업존을 배치</li>
                 <li>케이스, 빵, 소시지, 케첩, 음료 모델의 크기와 위치를 조정</li>
-                <li>제조 환경 layout을 Gazebo 모델과 planning scene으로 export</li>
+                <li>Python 기반 Blender exporter를 작성해 제조 환경 layout을 Gazebo 모델과 planning scene으로 export</li>
+                <li>export 결과가 충돌 회피를 위한 MoveIt planning scene에 자동 반영</li>
                 <li>색상과 collision 형상을 조정해 Vision·MoveIt 검증에 활용</li>
               </ul>
             </div>
