@@ -561,6 +561,20 @@
       line-height: 1.35;
     }
 
+    .planning-overview-slide .overview-image-frame {
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .planning-overview-slide .overview-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .slide[data-kicker="Planning"] .empty-media {
       min-height: 0;
       height: 100%;
@@ -598,6 +612,72 @@
 
     .slide.planning-reason-slide .planning-list {
       gap: 8px;
+    }
+
+    .slide.planning-card-grid-slide .stack {
+      height: 100%;
+      grid-template-rows: minmax(0, 1fr);
+    }
+
+    .slide.planning-card-grid-slide .reason-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 2vw, 26px);
+      height: 100%;
+      min-height: 0;
+    }
+
+    .slide.planning-card-grid-slide .reason-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(112px, 11vw, 168px);
+      align-items: center;
+      gap: clamp(16px, 2vw, 28px);
+      min-height: 0;
+      padding: clamp(20px, 2.2vw, 34px);
+      background: var(--surface-soft);
+      border: 1px solid color-mix(in srgb, var(--line) 76%, white);
+      border-top: 5px solid var(--secondary);
+      border-radius: var(--radius-card);
+    }
+
+    .slide.planning-card-grid-slide .reason-copy {
+      display: grid;
+      gap: clamp(10px, 1.2vw, 16px);
+      min-width: 0;
+    }
+
+    .slide.planning-card-grid-slide .reason-card h3 {
+      margin: 0;
+      color: var(--dark);
+      font-size: var(--content-title-size);
+      line-height: 1.22;
+      word-break: keep-all;
+    }
+
+    .slide.planning-card-grid-slide .reason-card p {
+      margin: 0;
+      color: var(--muted-text);
+      font-size: var(--content-body-size);
+      line-height: 1.48;
+      word-break: keep-all;
+    }
+
+    .slide.planning-card-grid-slide .reason-image {
+      width: 100%;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      align-self: center;
+      justify-self: end;
+    }
+
+    .slide.planning-card-grid-slide .reason-image svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+      filter: drop-shadow(0 12px 18px rgba(34, 64, 135, 0.1));
     }
 
     .slide.planning-requirements-slide .stack {
@@ -684,6 +764,7 @@
       flex-wrap: wrap;
       gap: clamp(18px, 2vw, 28px);
       width: 100%;
+      align-self: center;
     }
 
     .agenda-slide .timeline-step {
@@ -776,6 +857,82 @@
       background: var(--surface);
       border: 1px solid var(--line);
       padding: 8px;
+    }
+
+    /* Individual slide style: core feature cards */
+    .core-feature-slide .content {
+      align-items: stretch;
+    }
+
+    .core-feature-slide .stack {
+      height: 100%;
+      grid-template-rows: minmax(0, 1fr);
+    }
+
+    .core-feature-slide .core-feature-grid {
+      position: relative;
+      width: min(820px, 88%);
+      aspect-ratio: 1.5;
+      justify-self: center;
+      align-self: center;
+      display: block;
+      min-height: 0;
+    }
+
+    .core-feature-slide .core-feature-card {
+      position: absolute;
+      z-index: 1;
+      width: clamp(230px, 21vw, 300px);
+      min-height: clamp(116px, 12vw, 148px);
+      display: grid;
+      align-content: center;
+      gap: clamp(8px, .8vw, 12px);
+      padding: clamp(16px, 1.6vw, 22px);
+      background: var(--surface-soft);
+      border: 1px solid color-mix(in srgb, var(--line) 76%, white);
+      border-top: 5px solid var(--secondary);
+      border-radius: var(--radius-card);
+      box-shadow: 0 12px 28px rgba(20, 32, 54, 0.07);
+    }
+
+    .core-feature-slide .core-feature-card.primary {
+      top: 4%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: 5px solid var(--primary);
+    }
+
+    .core-feature-slide .core-feature-card:nth-of-type(2) {
+      left: 8%;
+      bottom: 6%;
+    }
+
+    .core-feature-slide .core-feature-card:nth-of-type(3) {
+      right: 8%;
+      bottom: 6%;
+      border-top-color: color-mix(in srgb, var(--primary) 58%, var(--secondary));
+    }
+
+    .core-feature-slide .core-feature-card h3 {
+      color: var(--dark);
+      font-size: clamp(21px, 1.8vw, 28px);
+      line-height: 1.15;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .core-feature-slide .core-feature-card .tech-list {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding-left: 1.05em;
+    }
+
+    .core-feature-slide .core-feature-card li {
+      color: var(--muted-text);
+      font-size: clamp(17px, 1.25vw, 21px);
+      line-height: 1.36;
+      word-break: keep-all;
     }
 
     /* Individual slide style: feature slides */
@@ -1010,10 +1167,12 @@
     .scenario-card-inner {
       height: 100%;
       min-height: 0;
-      padding: clamp(18px, 1.7vw, 24px) clamp(56px, 4vw, 72px);
+      padding: clamp(78px, 6vw, 112px) clamp(56px, 4vw, 72px) clamp(18px, 1.7vw, 24px);
       display: grid;
+      grid-template-rows: auto auto minmax(2.9em, auto);
       gap: var(--item-gap);
-      place-content: center;
+      align-content: start;
+      justify-content: center;
       justify-items: center;
       text-align: center;
       background: var(--surface-soft);
@@ -1034,6 +1193,9 @@
     .slide.scenario-slide .scenario-card-inner p {
       font-size: clamp(20px, 1.55vw, 25px);
       line-height: 1.42;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Individual slide style: Q&A */
@@ -1389,7 +1551,6 @@
                 <li>프로젝트 운영</li>
                 <li>프로젝트 문서 관리</li>
                 <li>코드 형상 관리</li>
-                <li>프로젝트 회고</li>
                 <li>담당 업무</li>
               </ul>
             </div>
@@ -1407,42 +1568,111 @@
         </div>
       </section>
 
-      <section class="slide planning-reason-slide" data-kicker="Planning">
+      <section class="slide planning-reason-slide planning-card-grid-slide" data-kicker="Planning">
         <div class="header">
           <p class="section-mark">01 / 기획</p>
           <h2>주제 선정 이유</h2>
         </div>
         <div class="content">
           <div class="stack">
-            <div class="card">
-              <h3>왜 이동형 로봇 케이터링 서비스인가?</h3>
-              <ul class="planning-list">
-                <li>행사장, 팝업스토어, 테마 공간마다 필요한 매장 형태가 다름</li>
-                <li>기존 방식은 인력 운영과 인프라 구축 비용 부담이 큼</li>
-                <li>로봇과 사람이 협업하면 최소 인력으로 운영 가능</li>
-                <li>메뉴와 공간 변화에 유연하게 대응하는 서비스가 필요함</li>
-              </ul>
+            <div class="reason-card-grid" aria-label="왜 이동형 로봇 케이터링 서비스인가?">
+              <div class="reason-card" style="--icon-accent: #d83f87; --icon-soft: #fdeaf4;">
+                <div class="reason-copy">
+                  <h3>공간 맞춤 운영</h3>
+                  <p>행사장, 팝업스토어, 테마 공간마다 다른 매장 형태에 대응합니다.</p>
+                </div>
+                <div class="reason-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <path d="M38 103h84l-11 23H49l-11-23Z" fill="white" stroke="var(--secondary)" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M48 70h64v34H48V70Z" fill="white" stroke="var(--icon-accent)" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M58 70l8-20h28l8 20" fill="none" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M58 84h17M88 84h14" stroke="var(--secondary)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M112 42c-12 0-22 9-22 22 0 17 22 39 22 39s22-22 22-39c0-13-10-22-22-22Z" fill="white" stroke="var(--icon-accent)" stroke-width="7" stroke-linejoin="round"/>
+                    <circle cx="112" cy="64" r="8" fill="var(--icon-accent)"/>
+                    <path d="M30 50h18M30 65h12M118 118h12" stroke="var(--icon-accent)" stroke-width="6" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="reason-card" style="--icon-accent: #1b9e5a; --icon-soft: #e8f7ef;">
+                <div class="reason-copy">
+                  <h3>초기 비용 절감</h3>
+                  <p>설치형 고정 매장보다 인프라 구축과 운영 부담을 줄입니다.</p>
+                </div>
+                <div class="reason-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <path d="M34 95c0 8 15 15 34 15s34-7 34-15" fill="none" stroke="var(--icon-accent)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M34 73c0 8 15 15 34 15s34-7 34-15" fill="none" stroke="var(--icon-accent)" stroke-width="7" stroke-linecap="round"/>
+                    <ellipse cx="68" cy="73" rx="34" ry="15" fill="white" stroke="var(--icon-accent)" stroke-width="7"/>
+                    <path d="M34 73v22c0 8 15 15 34 15s34-7 34-15V73" fill="none" stroke="var(--icon-accent)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M111 41v55" stroke="var(--secondary)" stroke-width="9" stroke-linecap="round"/>
+                    <path d="M91 80l20 20 20-20" fill="none" stroke="var(--secondary)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M46 44h44" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M56 124h24M105 120h18" stroke="var(--icon-accent)" stroke-width="6" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="reason-card" style="--icon-accent: #224087; --icon-soft: #edf2ff;">
+                <div class="reason-copy">
+                  <h3>최소 인력 서비스</h3>
+                  <p>점주와 로봇이 협업해 주문, 제조, 서빙을 효율적으로 수행합니다.</p>
+                </div>
+                <div class="reason-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <circle cx="49" cy="56" r="15" fill="white" stroke="var(--icon-accent)" stroke-width="7"/>
+                    <path d="M25 119c5-26 15-40 24-40s19 14 24 40" fill="white" stroke="var(--icon-accent)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="89" y="51" width="43" height="41" rx="11" fill="white" stroke="var(--secondary)" stroke-width="7"/>
+                    <circle cx="102" cy="72" r="4" fill="var(--secondary)"/>
+                    <circle cx="119" cy="72" r="4" fill="var(--secondary)"/>
+                    <path d="M104 84h14" stroke="var(--secondary)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M110 51V38" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M87 105h45" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M96 105l-10 22M123 105l10 22" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M68 103c12-10 24-10 36 0" fill="none" stroke="#d83f87" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="68" cy="103" r="5" fill="#d83f87"/>
+                    <circle cx="104" cy="103" r="5" fill="#d83f87"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="reason-card" style="--icon-accent: #e07020; --icon-soft: #fff2e6;">
+                <div class="reason-copy">
+                  <h3>변화 대응력</h3>
+                  <p>메뉴, 동선, 공간이 바뀌어도 서비스 흐름을 유연하게 조정합니다.</p>
+                </div>
+                <div class="reason-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <rect x="36" y="39" width="47" height="36" rx="9" fill="white" stroke="var(--secondary)" stroke-width="7"/>
+                    <path d="M47 54h25M47 64h15" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M40 112h36c20 0 24-53 52-53" fill="none" stroke="var(--secondary)" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M111 44l18 15-18 16" fill="none" stroke="var(--secondary)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M40 112h36c20 0 24 0 52 0" fill="none" stroke="var(--icon-accent)" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M112 96l18 16-18 16" fill="none" stroke="var(--icon-accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="40" cy="112" r="11" fill="white" stroke="#d83f87" stroke-width="7"/>
+                    <circle cx="77" cy="112" r="8" fill="white" stroke="#d83f87" stroke-width="6"/>
+                    <path d="M98 88h18" stroke="var(--icon-accent)" stroke-width="6" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide planning-reason-slide" data-kicker="Planning">
+      <section class="slide planning-reason-slide planning-overview-slide" data-kicker="Planning">
         <div class="header">
           <p class="section-mark">01 / 기획</p>
           <h2>주제 선정 이유</h2>
         </div>
         <div class="content">
           <div class="stack">
-            <div class="card">
-              <h3>프로젝트 개요</h3>
-              <p>MOCA는 <strong>점주 1명과 로봇이 협업</strong>하여 주문, 제조, 서빙, 모객까지 수행하는 이동형 로봇 케이터링 플랫폼이다.</p>
-              <ul class="planning-list">
-                <li><strong>제조 로봇 뚜비</strong>: 주문 메뉴 제조</li>
-                <li><strong>서빙 로봇 도비</strong>: 픽업, 테이블 서빙, 모객</li>
-                <li><strong>관리자 시스템</strong>: 주문·로봇·매장 상태 통합 관리</li>
-                <li><strong>맞춤형 매장 맵</strong>: 행사장 환경에 맞게 구성</li>
-              </ul>
+            <div class="overview-image-frame">
+              <img src="assets/overview/cover.png" alt="MOCA 이동형 로봇 케이터링 플랫폼 예시">
+            </div>
+            <div class="highlight">
+              점주 1명과 로봇이 협업하여 주문, 제조, 서빙, 모객 업무를 수행하는 이동형 로봇 케이터링 플랫폼입니다.
             </div>
           </div>
         </div>
@@ -1491,12 +1721,35 @@
         </div>
       </section>
 
-      <section class="slide" data-kicker="Design">
+      <section class="slide core-feature-slide" data-kicker="Design">
         <div class="header">
           <p class="section-mark">02 / 설계</p>
           <h2>핵심 기능</h2>
         </div>
-        <div class="content"></div>
+        <div class="content">
+          <div class="stack">
+            <div class="core-feature-grid">
+              <article class="core-feature-card primary">
+                <h3>식음료 제조 기능</h3>
+                <ul class="tech-list">
+                  <li>주문 정보를 기반으로 로봇팔이 음료와 간단한 식음료를 제조</li>
+                </ul>
+              </article>
+              <article class="core-feature-card">
+                <h3>테이블 서빙 기능</h3>
+                <ul class="tech-list">
+                  <li>완료된 주문을 서빙 로봇이 테이블까지 자율 주행으로 전달</li>
+                </ul>
+              </article>
+              <article class="core-feature-card">
+                <h3>모객 활동 기능</h3>
+                <ul class="tech-list">
+                  <li>유휴 서빙 로봇이 매장 밖 고객 후보에게 접근해 매장 방문 유도</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="slide architecture-slide" data-kicker="Design">
@@ -1611,7 +1864,7 @@
 
       <section class="slide section-divider" data-kicker="Functions">
         <div class="section-divider-inner">
-          <h2>주요 기능</h2>
+          <h2>기능</h2>
           <ul>
             <li>매장 준비</li>
             <li>주문</li>
@@ -1685,18 +1938,280 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조: 비전 기반 조작과 시뮬레이션 전이</h2>
+          <h2>제조: 주문 기반 핫도그·음료 제조</h2>
         </div>
         <div class="content">
-          <div class="stack">
+          <div class="stack" style="grid-template-columns: 1.05fr 1fr;">
             <div class="card">
-              <h3>제조 흐름</h3>
+              <h3>제조 실행 흐름</h3>
               <ul class="tech-list">
-                <li>주문 확인 후 레시피에 따라 핫도그와 음료 제조 태스크 수행</li>
-                <li>Depth 카메라로 물체 위치를 획득하고 PCA로 주축을 파악해 파지 진입 방향 결정</li>
-                <li>MoveIt Planning과 Cartesian Path를 조합해 케이스 집기, 빵·소시지 배치, 픽업존 배치 실행</li>
-                <li>Gazebo 월드 검증 후 실물 로봇과의 간극을 보정해 전이</li>
+                <li>웹 주문을 제조 태스크로 변환하고 레시피 순서에 따라 실행</li>
+                <li>핫도그는 케이스 지지, 빵·소시지 배치, 케첩 도포, 픽업존 배치로 구성</li>
+                <li>음료는 진열대에서 꺼낸 뒤 양팔 협응으로 픽업존에 배치</li>
+                <li>각 태스크는 MoveIt Planning과 Cartesian Path를 상황별로 조합</li>
               </ul>
+            </div>
+            <div class="summary-band" style="grid-template-columns: 1fr; gap: 12px;">
+              <div class="card">
+                <h3>입력</h3>
+                <p>주문 메뉴: hotdog, coke, coffee</p>
+              </div>
+              <div class="card">
+                <h3>출력</h3>
+                <p>제조 완료 상품을 픽업존에 배치</p>
+              </div>
+              <div class="card">
+                <h3>제어 단위</h3>
+                <p>stage·waypoint 기반 태스크 실행</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: Vision 기반 목표 pose 갱신</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+            <div class="media-frame">
+              <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 물체 인식 화면">
+            </div>
+            <div class="card">
+              <h3>보고 → 파악하고 → 행동한다</h3>
+              <ul class="tech-list">
+                <li>Depth 카메라 영상에서 식재료와 물품 후보 영역을 추출</li>
+                <li>YOLO 기반 객체 인식으로 클래스와 위치 후보를 추출</li>
+                <li>PCA로 주축을 계산하고 파지 진입 방향을 결정</li>
+                <li>인식 결과를 엔드 이펙터 goal pose 갱신에 사용</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: Blender 기반 월드 제작 및 편집</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1.2fr 0.8fr;">
+            <div class="media-frame">
+              <img src="assets/openarm/gazebo/모델링.png" alt="Blender 제조 월드 모델링">
+            </div>
+            <div class="card">
+              <h3>월드 제작 흐름</h3>
+              <ul class="tech-list">
+                <li>Blender에서 테이블, 트레이, 진열대, 픽업존을 배치</li>
+                <li>케이스, 빵, 소시지, 케첩, 음료 모델의 크기와 위치를 조정</li>
+                <li>제조 환경 layout을 Gazebo 모델과 planning scene으로 export</li>
+                <li>색상과 collision 형상을 조정해 Vision·MoveIt 검증에 활용</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: Gazebo 핫도그 제조 검증</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">① 케이스 집기</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/빵.gif" alt="빵 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">② 빵 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/소시지.gif" alt="소시지 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">③ 소시지 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/케첩.gif" alt="케첩 도포"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">④ 케첩 도포</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: 실물 로봇 동작 검증</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">빵 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">소시지 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">케첩 도포</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: 음료 제공 검증</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr 0.9fr;">
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/콜라.gif" alt="Gazebo 콜라 제공"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">Gazebo 콜라 제공 검증</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/커피.gif" alt="실물 커피 제공"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 커피 제공 검증</p>
+            </div>
+            <div class="card">
+              <h3>제어 포인트</h3>
+              <ul class="tech-list">
+                <li>왼팔이 음료를 꺼내고 오른팔이 인계받는 양팔 협응 구조</li>
+                <li>캔 높이와 중심을 기준으로 파지 위치 분리</li>
+                <li>인계 후 충돌을 피하도록 후퇴 waypoint를 구성</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - Gazebo 미지원</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/1.이슈:gazebo_미지원.png" alt="Gazebo 미지원 문제"></div>
+              <div class="card">
+                <p><strong>공식 패키지에 Gazebo 실행 환경이 없어 시뮬레이션 검증이 불가능</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>제조 월드용 Gazebo 모델, robot description, launch 구성 추가</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - MoveIt 실행 불안정</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/2.이슈:moveit2.gif" alt="MoveIt 실행 불안정 문제"></div>
+              <div class="card">
+                <p><strong>execute 시 팔이 순간적으로 떨어지거나 trajectory가 불안정하게 실행</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/2.해결:moveit_dynamics.gif" alt="MoveIt 실행 불안정 해결"></div>
+              <div class="card">
+                <p><strong>robot dynamics와 trajectory 실행 조건을 보정해 동작 안정화</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - 엔드 이펙터 불일치</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">문제 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>URDF 그리퍼와 실물 그리퍼 형상이 달라 파지 pose와 collision 기준이 어긋남</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="엔드 이펙터 불일치 해결"></div>
+              <div class="card">
+                <p><strong>TCP, gripper collision, 파지 기준 pose를 실물 형상에 맞게 보정</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - 액추에이터 단선</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/4.이슈:단선1.jpg" alt="액추에이터 단선 문제"></div>
+              <div class="card">
+                <p><strong>흰색 케이스와 전원선이 반복적으로 마찰되어 오른팔 액추에이터 전원선 단선 발생</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>오른팔 command를 비활성화하고 왼팔 단독·단계별 수동 진행 모드 구성</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: 제어 트러블 슈팅 - Goal pose IK 실패</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">문제 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>MoveIt이 지정한 goal pose에 대해 IK 해를 찾지 못해 planning이 중단</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>guide pose를 추가하고 MoveIt Planning과 Cartesian Path를 구간별로 분리</strong></p>
+              </div>
             </div>
           </div>
         </div>
@@ -1943,26 +2458,6 @@
                 <li>상품 메뉴와 제공 가능 여부를 운영 상황에 맞춰 관리</li>
                 <li>제조 로봇 뚜비와 서빙 로봇 도비의 작업 연결 상태를 추적</li>
                 <li>이상 주문이나 지연 발생 시 관리자 개입으로 운영 흐름을 보정</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>관리: 로봇 상태 모니터링</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="card">
-              <h3>운영 중 로봇 상태 추적</h3>
-              <ul class="tech-list">
-                <li>서빙 로봇 위치, 주행 모드, 작업 진행 상태를 실시간 확인</li>
-                <li>제조 로봇과 서빙 로봇의 태스크 상태를 관리자 화면에서 통합 모니터링</li>
-                <li>이벤트 로그와 개발용 필터링 로그로 로봇·기기·서버 상태 추적</li>
-                <li>운영 모드 제어와 이상 상황 개입으로 점주 1명의 운영 부담 축소</li>
               </ul>
             </div>
           </div>
@@ -2361,7 +2856,6 @@
             <li>프로젝트 운영</li>
             <li>프로젝트 문서 관리</li>
             <li>코드 형상 관리</li>
-            <li>프로젝트 회고</li>
             <li>담당 업무</li>
           </ul>
         </div>
@@ -2416,14 +2910,6 @@
             </ul>
           </div>
         </div>
-      </section>
-
-      <section class="slide" data-kicker="Conclusion">
-        <div class="header">
-          <p class="section-mark">05 / 결론</p>
-          <h2>프로젝트 회고</h2>
-        </div>
-        <div class="content"></div>
       </section>
 
       <section class="slide" data-kicker="Conclusion">
