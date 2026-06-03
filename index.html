@@ -1651,14 +1651,6 @@
         <div class="content"></div>
       </section>
 
-      <section class="slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">23 / 주요 기술</p>
-          <h2>ACT 기반 pick&place</h2>
-        </div>
-        <div class="content"></div>
-      </section>
-
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">23_1 / 주요 기술</p>
@@ -1711,6 +1703,122 @@
           <!-- 하단: 결론 한 줄 -->
           <div style="background: color-mix(in srgb, var(--secondary) 8%, white); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
             <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">후처리 필터 없이 <strong>데이터 다양성 확장 + 학습 스케일링</strong>만으로 End-to-End 모션 안정화 성공</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">23_2 / 주요 기술</p>
+          <h2>Human Interaction 기반 제어 최적화: Language에서 Vision Context로의 전환</h2>
+        </div>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 28px); min-height: 0; height: 100%;">
+
+            <!-- 좌: MediaPipe 이미지 + 입력 설명 -->
+            <div style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; justify-content: flex-start; min-height: 0;">
+              <div class="media-frame" style="min-height: 0; height: auto; flex-shrink: 0;">
+                <img src="assets/serving_act/palm_detection.png" alt="MediaPipe Hand Tracking">
+              </div>
+              <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 10px 16px; flex-shrink: 0;">
+                <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0 0 4px;">Input Context</p>
+                <p style="font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">MediaPipe Hand Tracking → 실시간 좌/우 목표 위치 인식 및 매핑</p>
+              </div>
+            </div>
+
+            <!-- 우: Before / After 2단 -->
+            <div style="display: grid; grid-template-rows: 1fr 1fr; gap: clamp(10px, 1.2vw, 16px); min-height: 0;">
+
+              <!-- 우 상단: Before (SmolVLA) -->
+              <div style="background: #fff8f0; border: 2px solid #e07020; border-radius: var(--radius-card); padding: 12px 18px; display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: hidden;">
+                <p style="font-size: var(--content-small-size); font-weight: 800; color: #e07020; margin: 0;">⚠️ 기존 시도 — Language Prompt (SmolVLA)</p>
+                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 5px;">
+                  <li style="font-size: var(--content-small-size); color: var(--muted-text);">방향 판단 → 텍스트 지시어로 세분화하여 SmolVLA 학습
+                    <div style="margin-top: 5px; padding: 7px 12px; background: #f3e8d8; border-radius: 6px; display: grid; gap: 2px;">
+                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 0, "task": "serve cup to the left"}</code>
+                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 1, "task": "serve cup to the right"}</code>
+                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 2, "task": "place plate at center"}</code>
+                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 3, "task": "return to home"}</code>
+                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 4, "task": "serve cup to the left and place plate at center"}</code>
+                      <code style="font-size: 0.78em; color: #7a4010; white-space: nowrap;">{"task_index": 5, "task": "serve cup to right &amp; plate center"}</code>
+                    </div>
+                  </li>
+                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">🔴 프롬프트 → Place 행동 연계 미흡</li>
+                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">🔴 무거운 추론 리소스 → 실시간 제어 병목</li>
+                </ul>
+              </div>
+
+              <!-- 우 하단: After (ACT) -->
+              <div style="background: #f0f9f4; border: 2px solid #1a7a45; border-radius: var(--radius-card); padding: 12px 18px; display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: hidden;">
+                <p style="font-size: var(--content-small-size); font-weight: 800; color: #1a7a45; margin: 0;">🚀 최종 해결 — Vision Context 주입 (ACT Policy)</p>
+                <ul style="margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 5px; flex: 1; min-height: 0;">
+                  <li style="font-size: var(--content-small-size); color: var(--muted-text); flex: 1; list-style: none; display: flex; flex-direction: column; min-height: 0;">
+                    <span style="white-space: nowrap; flex-shrink: 0;">• Language 배제 → <strong>Vision 정보에 목적지(좌/우) 직접 주입</strong>하여 추론 유도</span>
+                    <div style="display: flex; gap: 8px; margin-top: 6px; flex: 1; min-height: 0; align-items: stretch; justify-content: flex-start;">
+                      <div style="display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; min-height: 0;">
+                        <img src="assets/serving_act/place_left.png" alt="목표위치: 왼쪽" style="height: 100%; width: auto; flex: 1; min-height: 0; display: block; border-radius: 4px;">
+                        <span style="font-size: 0.82em; color: var(--muted-text); font-weight: 700; text-align: center; flex-shrink: 0;">좌</span>
+                      </div>
+                      <div style="display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; min-height: 0;">
+                        <img src="assets/serving_act/place_right.png" alt="우" style="height: 100%; width: auto; flex: 1; min-height: 0; display: block; border-radius: 4px;">
+                        <span style="font-size: 0.82em; color: var(--muted-text); font-weight: 700; text-align: center; flex-shrink: 0;">우</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700; flex-shrink: 0;">🟢 Vision → Place 행동 연계 성공</li>
+                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700; flex-shrink: 0;">🟢 VRAM 절감 + 제어 실시간성 보장</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">23_3 / 주요 기술</p>
+          <h2>예외 상황 극복을 위한 데이터셋 고도화 및 실환경 강건성(Robustness) 확보</h2>
+        </div>
+        <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 16px);">
+
+          <!-- 좌우 2분할 -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 28px); min-height: 0;">
+
+            <!-- 좌: 과제 1 -->
+            <div style="display: grid; grid-template-rows: 1fr auto; gap: 10px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/serving_act/unable_to_pickup.gif" alt="불균등 학습 실패 구동">
+              </div>
+              <div style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
+                <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 1 — 내비게이션 오차 &amp; 데이터 균등성</p>
+                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
+                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">⚠️ Navigation 도착 위치 오차 → 오브젝트 상대 위치 변동 → Pick 실패</li>
+                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700;">🟢 다양한 위치에서 / 균등한 횟수로 Pick 데이터셋 재구축 → 공간적 일반화 확보</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 우: 과제 2 -->
+            <div style="display: grid; grid-template-rows: 1fr auto; gap: 10px; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;">
+                <img src="assets/serving_act/flicker.png" alt="형광등 Flicker 노이즈">
+              </div>
+              <div style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
+                <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 2 — 실내 조명 Flicker 노이즈 대응</p>
+                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
+                  <li style="font-size: var(--content-small-size); color: #c0392b; font-weight: 700;">⚠️ 형광등 플리커 → Top-view 카메라 유입 → 플리커 환경에만 추론 적합</li>
+                  <li style="font-size: var(--content-small-size); color: #1a7a45; font-weight: 700;">🟢 Data Augmentation을 통해 플리커X 데이터셋 추가 → 조명 변화 강건성 확보</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 하단: 핵심 성과 -->
+          <div style="background: color-mix(in srgb, var(--secondary) 8%, white); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
+            <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">두 가지 실환경 제약 조건 극복 → <strong>최종 Pick 성공률 90% 이상 달성</strong></p>
           </div>
 
         </div>
