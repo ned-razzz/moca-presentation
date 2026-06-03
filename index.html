@@ -931,11 +931,60 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow-ui);
       backdrop-filter: blur(12px);
+      cursor: pointer;
+      user-select: none;
     }
 
-    .controls button {
-      width: 34px;
-      height: 34px;
+    .controls:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--primary) 40%, white);
+      outline-offset: 4px;
+    }
+
+    .agenda-panel {
+      position: fixed;
+      left: 50%;
+      bottom: 74px;
+      width: min(520px, calc(100vw - 36px));
+      max-height: min(72dvh, 680px);
+      transform: translate(-50%, 12px);
+      z-index: 30;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 14px;
+      padding: clamp(18px, 2vw, 24px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      box-shadow: var(--shadow-ui);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .agenda-panel.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+
+    .agenda-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .agenda-panel-title {
+      color: var(--dark);
+      font-size: clamp(18px, 1.5vw, 24px);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .agenda-panel-close {
+      width: 32px;
+      height: 32px;
       border: 0;
       border-radius: var(--radius-pill);
       color: white;
@@ -943,10 +992,69 @@
       cursor: pointer;
     }
 
-    .controls button:disabled {
-      color: color-mix(in srgb, var(--text) 42%, white);
-      background: color-mix(in srgb, var(--secondary) 10%, white);
-      cursor: default;
+    .agenda-list {
+      display: grid;
+      gap: 10px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .agenda-group {
+      display: grid;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+    }
+
+    .agenda-group:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .agenda-link {
+      width: 100%;
+      border: 0;
+      border-radius: var(--radius-card);
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      word-break: keep-all;
+    }
+
+    .agenda-link:hover,
+    .agenda-link:focus-visible,
+    .agenda-link.is-active {
+      background: var(--surface-tint);
+      outline: 0;
+    }
+
+    .agenda-link-main {
+      padding: 10px 12px;
+      color: var(--dark);
+      font-size: clamp(17px, 1.3vw, 22px);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .agenda-link-sub {
+      padding: 8px 12px 8px 28px;
+      color: var(--muted-text);
+      font-size: clamp(14px, 1vw, 17px);
+      line-height: 1.35;
+      position: relative;
+    }
+
+    .agenda-link-sub::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--primary);
+      transform: translateY(-50%);
     }
 
     .counter {
@@ -1016,6 +1124,7 @@
       }
 
       .controls,
+      .agenda-panel,
       .progress {
         display: none;
       }
@@ -1044,6 +1153,7 @@
       }
 
       .controls,
+      .agenda-panel,
       .progress {
         display: none;
       }
@@ -1509,8 +1619,8 @@
         <div class="section-divider-inner">
           <h2>결론</h2>
           <ul>
+            <li>프로젝트 관리</li>
             <li>프로젝트 회고</li>
-            <li>추후 계획</li>
             <li>담당 업무</li>
           </ul>
         </div>
@@ -1519,6 +1629,32 @@
       <section class="slide" data-kicker="Conclusion">
         <div class="header">
           <p class="section-mark">26 / 결론</p>
+          <h2>프로젝트 관리</h2>
+        </div>
+        <div class="content">
+          <div class="summary-band">
+            <div class="card">
+              <span class="num">01</span>
+              <h3>스프린트 기반 일정 관리</h3>
+              <p>기획, 설계, 기능 구현, 통합 검증 단계를 나누고 주차별 목표와 산출물을 기준으로 진행 상황을 관리했다.</p>
+            </div>
+            <div class="card">
+              <span class="num">02</span>
+              <h3>브랜치 전략</h3>
+              <p>feat, dev, main 브랜치를 분리해 기능별 구현과 통합 검증 흐름을 관리하고 충돌 범위를 줄였다.</p>
+            </div>
+            <div class="card">
+              <span class="num">03</span>
+              <h3>통합 이슈 관리</h3>
+              <p>주문, 제조, 서빙, 모객, 관리 기능의 연결 지점을 기준으로 장애 원인과 수정 우선순위를 정리했다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Conclusion">
+        <div class="header">
+          <p class="section-mark">27 / 결론</p>
           <h2>프로젝트 회고</h2>
         </div>
         <div class="content">
@@ -1535,28 +1671,8 @@
             </div>
             <div class="card">
               <span class="num">03</span>
-              <h3>협업 프로세스</h3>
-              <p>스프린트 기반 반복 개발과 feat, dev, main 브랜치 전략으로 기능별 구현과 통합을 관리했다.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" data-kicker="Conclusion">
-        <div class="header">
-          <p class="section-mark">27 / 결론</p>
-          <h2>추후 계획</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="card">
-              <h3>서비스 고도화 방향</h3>
-              <ul class="tech-list">
-                <li>행사장별 맵 템플릿과 초기 세팅 절차를 단축해 이동형 운영성을 강화</li>
-                <li>제조·서빙 데이터셋을 확장해 메뉴와 환경 변화에 대한 강건성 확보</li>
-                <li>모객 감정 인식과 고객 반응 분석을 실제 운영 로그 기반으로 보정</li>
-                <li>관리자 로그와 로봇 상태 추적을 운영자 의사결정 중심으로 개선</li>
-              </ul>
+              <h3>개선 방향</h3>
+              <p>운영 로그, 데이터셋, 현장별 맵 설정을 확장해 실제 서비스 환경에서의 안정성을 높여야 한다.</p>
             </div>
           </div>
         </div>
@@ -1572,14 +1688,14 @@
             <div class="card">
               <h3>기획·설계</h3>
               <ul class="tech-list">
-                <li>서비스 시나리오와 요구사항 정리</li>
-                <li>하드웨어·소프트웨어 아키텍처 통합 관점 정리</li>
+                <li>서비스 시나리오와 사용자 요구사항 정리</li>
+                <li>하드웨어·소프트웨어 아키텍처 통합 흐름 정리</li>
               </ul>
             </div>
             <div class="card">
               <h3>기능 구현</h3>
               <ul class="tech-list">
-                <li>주문, 제조, 서빙, 모객, 관리 기능별 인터페이스 정리</li>
+                <li>주문, 제조, 서빙, 모객, 관리 기능별 인터페이스 구성</li>
                 <li>로봇 동작과 관리자 시스템을 연결하는 운영 흐름 검증</li>
               </ul>
             </div>
@@ -1606,9 +1722,16 @@
       </section>
     </div>
 
-    <nav class="controls" aria-label="슬라이드 위치">
+    <nav class="controls" id="agendaToggle" aria-label="목차 열기" role="button" tabindex="0" aria-expanded="false" aria-controls="agendaPanel">
       <span class="counter" id="counter">1 / 3</span>
     </nav>
+    <aside class="agenda-panel" id="agendaPanel" aria-label="슬라이드 목차" aria-hidden="true">
+      <div class="agenda-panel-header">
+        <div class="agenda-panel-title">목차</div>
+        <button class="agenda-panel-close" id="agendaClose" type="button" aria-label="목차 닫기">×</button>
+      </div>
+      <div class="agenda-list" id="agendaList"></div>
+    </aside>
     <div class="progress" aria-hidden="true"><span id="progress"></span></div>
   </main>
 
@@ -1616,8 +1739,14 @@
     const root = document.documentElement;
     const slides = Array.from(document.querySelectorAll(".slide"));
     const counter = document.getElementById("counter");
+    const agendaToggle = document.getElementById("agendaToggle");
+    const agendaPanel = document.getElementById("agendaPanel");
+    const agendaClose = document.getElementById("agendaClose");
+    const agendaList = document.getElementById("agendaList");
     let index = 0;
     let wheelLocked = false;
+    let agendaOpen = false;
+    let agendaLinks = [];
 
     function setSlide(nextIndex) {
       index = Math.max(0, Math.min(slides.length - 1, nextIndex));
@@ -1625,11 +1754,103 @@
       root.style.setProperty("--progress", slides.length <= 1 ? 1 : index / (slides.length - 1));
       counter.textContent = `${index + 1} / ${slides.length}`;
       history.replaceState(null, "", `#${index + 1}`);
+      updateActiveAgendaLink();
     }
+
+    function setAgendaOpen(nextOpen) {
+      agendaOpen = nextOpen;
+      agendaPanel.classList.toggle("is-open", agendaOpen);
+      agendaPanel.setAttribute("aria-hidden", String(!agendaOpen));
+      agendaToggle.setAttribute("aria-expanded", String(agendaOpen));
+      if (agendaOpen) updateActiveAgendaLink();
+    }
+
+    function updateActiveAgendaLink() {
+      agendaLinks.forEach((link) => {
+        const active = Number(link.dataset.slideIndex) === index;
+        link.classList.toggle("is-active", active);
+        link.setAttribute("aria-current", active ? "true" : "false");
+      });
+    }
+
+    function getSlideTitle(slide) {
+      return slide.querySelector(".section-divider-inner h2, .header h2, h1, .qa-title")?.textContent.trim() || "슬라이드";
+    }
+
+    function createAgendaButton(label, slideIndex, level) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `agenda-link agenda-link-${level}`;
+      button.dataset.slideIndex = String(slideIndex);
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        setSlide(slideIndex);
+        setAgendaOpen(false);
+      });
+      return button;
+    }
+
+    function buildAgenda() {
+      let currentGroup = null;
+
+      slides.forEach((slide, slideIndex) => {
+        const isMain = slide.classList.contains("section-divider");
+        const isCover = slide.classList.contains("hero");
+        const isAgenda = slide.classList.contains("agenda-slide");
+        const isQna = slide.classList.contains("qa-slide");
+
+        if (isCover || isAgenda) return;
+
+        if (isMain || isQna || currentGroup === null) {
+          currentGroup = document.createElement("div");
+          currentGroup.className = "agenda-group";
+          agendaList.appendChild(currentGroup);
+          currentGroup.appendChild(createAgendaButton(getSlideTitle(slide), slideIndex, "main"));
+          return;
+        }
+
+        currentGroup.appendChild(createAgendaButton(getSlideTitle(slide), slideIndex, "sub"));
+      });
+
+      agendaLinks = Array.from(agendaList.querySelectorAll(".agenda-link"));
+      updateActiveAgendaLink();
+    }
+
+    agendaToggle.addEventListener("click", () => {
+      setAgendaOpen(!agendaOpen);
+    });
+
+    agendaToggle.addEventListener("keydown", (event) => {
+      if (["Enter", " "].includes(event.key)) {
+        event.preventDefault();
+        setAgendaOpen(!agendaOpen);
+      }
+    });
+
+    agendaPanel.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    agendaClose.addEventListener("click", () => {
+      setAgendaOpen(false);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!agendaOpen || agendaPanel.contains(event.target) || agendaToggle.contains(event.target)) return;
+      setAgendaOpen(false);
+    });
 
     window.addEventListener("wheel", (event) => {
       if (window.matchMedia("(max-width: 900px)").matches) return;
       event.preventDefault();
+      if (agendaOpen) {
+        agendaList.scrollBy({
+          top: event.deltaY,
+          left: event.deltaX,
+          behavior: "auto"
+        });
+        return;
+      }
       if (wheelLocked || Math.abs(event.deltaY) < 24 || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
 
       wheelLocked = true;
@@ -1640,6 +1861,11 @@
     }, { passive: false });
 
     window.addEventListener("keydown", (event) => {
+      if (event.ctrlKey && event.key.toLowerCase() === "m") {
+        event.preventDefault();
+        setAgendaOpen(!agendaOpen);
+        return;
+      }
       if (["ArrowDown", "ArrowRight", "PageDown", " "].includes(event.key)) {
         event.preventDefault();
         setSlide(index + 1);
@@ -1650,9 +1876,11 @@
       }
       if (event.key === "Home") setSlide(0);
       if (event.key === "End") setSlide(slides.length - 1);
+      if (event.key === "Escape") setAgendaOpen(false);
     });
 
     const fromHash = Number.parseInt(location.hash.replace("#", ""), 10);
+    buildAgenda();
     setSlide(Number.isFinite(fromHash) ? fromHash - 1 : 0);
   </script>
 </body>
