@@ -2326,6 +2326,50 @@
         </div>
       </section>
 
+      <section class="slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>비전 기반 매니퓰레이션</h2>
+        </div>
+        <div class="content" style="grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 16px); align-items: stretch;">
+          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+            <div class="media-frame" style="flex: 1; min-height: 0;">
+              <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 객체 인식과 주축 추정">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">Vision으로 class, 위치, 주축 방향 추정</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+            <div class="media-frame" style="flex: 1; min-height: 0;">
+              <img src="assets/openarm/gazebo/빵.gif" alt="Gazebo 매니퓰레이터 pick and place 제어">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">Gazebo에서 goal pose 기반 pick/place 검증</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+            <div class="media-frame" style="flex: 1; min-height: 0;">
+              <img src="assets/openarm/manufacturing/빵.gif" alt="실물 로봇 핫도그 제조 매니퓰레이션 검증">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">실물 로봇 핫도그 제조 동작 검증</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+            <div class="media-frame" style="flex: 1; min-height: 0;">
+              <img src="assets/openarm/manufacturing/커피.gif" alt="실물 로봇 음료 제공 매니퓰레이션 검증">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text); margin: 0;">실물 로봇 음료 제공 동작 검증</p>
+          </div>
+          <div class="card" style="grid-column: 1 / -1;">
+            <h3>Vision 결과를 매니퓰레이터 제어로 연결</h3>
+            <ul class="tech-list" style="grid-template-columns: repeat(3, minmax(0, 1fr)); display: grid; gap: 0.65em 1.1em;">
+              <li>YOLO class 후보와 색상·형상 단서로 식재료와 물품을 매칭</li>
+              <li>Depth 중심 위치와 PCA 주축으로 파지 진입 방향을 계산</li>
+              <li>인식 결과를 엔드 이펙터 goal pose에 반영</li>
+              <li>MoveIt Planning으로 충돌 회피 경로를 생성</li>
+              <li>직선 진입·배치 구간은 Cartesian Path로 수행</li>
+              <li>Gazebo 검증 후 실물 로봇 제조 동작으로 전이</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
