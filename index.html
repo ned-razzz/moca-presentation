@@ -1649,7 +1649,7 @@
           <h2>주문: 자연어 기반 주문·결제 흐름</h2>
         </div>
         <div class="content">
-          <div class="stack">
+          <div class="stack" style="grid-template-rows: auto 1fr;">
             <div class="card">
               <h3>대표 주문 방식</h3>
               <ul class="tech-list">
@@ -1657,6 +1657,26 @@
                 <li>QWEN3-ASR로 사용자 발화를 텍스트화하고 Audio LLM으로 주문 의도 파악</li>
                 <li>메뉴 확인 후 카드 결제와 앱 Pay 결제 흐름으로 연결</li>
               </ul>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; min-height: 0; align-items: stretch;">
+              <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+                <div class="media-frame" style="min-height: 0;">
+                  <img data-media="order/moca_kiosk.gif" alt="키오스크 주문 UI 순서">
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">키오스크 주문</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+                <div class="media-frame" style="min-height: 0;">
+                  <img data-media="order/moca_table.gif" alt="테이블 웹 주문 UI 순서">
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">테이블 웹 주문</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+                <div class="media-frame" style="min-height: 0;">
+                  <video data-media="order/주문_x2.mp4" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block; background: var(--surface);"></video>
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">음성 주문 시연</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1750,6 +1770,52 @@
                 </div>
                 <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">오른쪽으로 제공</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: start;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="min-height: 0;">
+                <img data-media="serving_driving/rvizhome-_t03ㄱ_2x.gif" alt="RViz 경로 시각화 home에서 t03">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">RViz · home → t03</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="min-height: 0;">
+                <img data-media="serving_driving/rvizt03-__home_2x.gif" alt="RViz 경로 시각화 t03에서 home">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">RViz · t03 → home</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: start;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="min-height: 0;">
+                <img data-media="serving_driving/home-_t03_2x.gif" alt="실물 로봇 주행 home에서 t03">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 로봇 · home → t03</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="min-height: 0;">
+                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home">
+              </div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 로봇 · t03 → home</p>
             </div>
           </div>
         </div>
@@ -1919,6 +1985,8 @@
             <li>비전 기반 머니풀레이션</li>
             <li>ACT 기반 pick&place</li>
             <li>감정 분석 모객</li>
+            <li>STT / TTS / LLM</li>
+            <li>SLAM / Navigation</li>
           </ul>
         </div>
       </section>
@@ -1998,7 +2066,7 @@
 
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">23_2 / 주요 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>Human Interaction 기반 제어 최적화: Language에서 Vision Context로의 전환</h2>
         </div>
         <div class="content">
@@ -2066,7 +2134,7 @@
 
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">23_3 / 주요 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>예외 상황 극복을 위한 데이터셋 고도화 및 실환경 강건성(Robustness) 확보</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 16px);">
@@ -2118,6 +2186,181 @@
           <h2>감정 분석 모객</h2>
         </div>
         <div class="content"></div>
+      </section>
+
+      <section class="slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>경량 ASR + 컨텍스트 바이어싱으로 인식 정확도 개선</h2>
+        </div>
+        <div class="content" style="grid-template-rows: auto auto 1fr; gap: clamp(12px, 1.6vw, 22px); align-items: stretch;">
+
+          <!-- 요약 라인 -->
+          <p style="margin: 0; font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">
+            모델 <strong style="color: var(--text);">Qwen3-ASR-0.6B</strong> (0.6B 경량) · 기법 도메인 자주 쓰는 단어를 <strong style="color: var(--text);">context 인자</strong>로 사전 주입 · 도메인 매장 음성 주문 (핫도그 · 콜라 · 커피)
+          </p>
+
+          <!-- 핵심 지표 3개 -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 22px);">
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 6px; align-content: start;">
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">단어 인식 정확도 (평균)</span>
+              <div style="font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; line-height: 1.05;">
+                <span style="color: var(--primary); text-decoration: line-through; font-weight: 700;">65%</span>
+                <span style="color: var(--muted-text);"> → </span>
+                <span style="color: #1b9e5a;">95%</span>
+              </div>
+              <span style="font-size: var(--content-small-size); color: #1b9e5a; font-weight: 700;">▲ 30%p</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 6px; align-content: start;">
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">문장 단위 WER (오류율)</span>
+              <div style="font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; line-height: 1.05;">
+                <span style="color: var(--primary); text-decoration: line-through; font-weight: 700;">30%</span>
+                <span style="color: var(--muted-text);"> → </span>
+                <span style="color: #1b9e5a;">5%</span>
+              </div>
+              <span style="font-size: var(--content-small-size); color: #1b9e5a; font-weight: 700;">상대 83% 감소</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 6px; align-content: start;">
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">추가 비용</span>
+              <div style="font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; line-height: 1.05; color: #1b9e5a;">0</div>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">모델 교체·재학습 없음 (텍스트 1줄)</span>
+            </div>
+          </div>
+
+          <!-- 문제 · 접근 · 메커니즘 -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 22px); align-items: stretch;">
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 8px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">① 문제</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">0.6B 경량 모델은 빠르지만, 짧은 메뉴·수량어를 자주 오인식. (예: 핫도그→핫독, 한 개→한게)</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 8px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 접근</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">모델을 키우는 대신, 매장에서 자주 틀릴 단어를 도메인 기준으로 추려 context로 미리 알려줌.</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(16px, 1.6vw, 22px); display: grid; gap: 8px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 메커니즘</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">ASR 디코딩이 컨텍스트 어휘 쪽으로 바이어싱 → 발음이 비슷한 후보 중 도메인 단어를 선택.</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>향후 개선 방향: 스트리밍 처리로 응답 지연 단축</h2>
+        </div>
+        <div class="content" style="grid-template-rows: auto 1fr auto; gap: clamp(14px, 1.8vw, 26px); align-items: stretch;">
+
+          <!-- 근거 -->
+          <div style="background: var(--surface-tint); border-left: 6px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(16px, 1.8vw, 24px);">
+            <p style="margin: 0; font-size: var(--content-body-size); color: var(--text); line-height: 1.45;">근거 · 사람의 대화는 말이 끝난 뒤 평균 <strong style="color: var(--secondary);">약 0.3초</strong> 만에 응답이 시작된다 (대화 turn-taking gap 연구)</p>
+          </div>
+
+          <!-- 현재 한계 vs 개선 방향 -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.8vw, 26px); align-items: stretch;">
+            <!-- 현재 -->
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(16px, 1.8vw, 24px); display: grid; gap: 14px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">현재 한계 · 비스트리밍</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">발화 종료</span>
+                <span style="color: var(--muted-text); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">STT</span>
+                <span style="color: var(--muted-text); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">LLM 추론</span>
+                <span style="color: var(--muted-text); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">TTS</span>
+              </div>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">Qwen3-ASR은 비스트리밍 → 발화가 완전히 끝난 뒤에야 인식·추론·합성이 순차로 진행되어 응답이 늦다</span>
+            </div>
+            <!-- 개선 -->
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(16px, 1.8vw, 24px); display: grid; gap: 14px; align-content: start;">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">개선 방향 · 스트리밍</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM 추론</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
+              </div>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.5;">스트리밍 방식 STT·TTS 모델을 도입해 발화 도중부터 LLM이 미리 추론하고 음성 출력을 앞당겨, 대화 사이 간격을 줄인다</span>
+            </div>
+          </div>
+
+          <!-- 목표 -->
+          <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 22px); display: flex; align-items: baseline; gap: clamp(12px, 1.4vw, 20px); flex-wrap: wrap;">
+            <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
+            <b style="font-size: clamp(28px, 3.4vw, 48px); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
+            <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준 (발화 종료 → 음성 응답 시작)</span>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>SLAM / Navigation 트러블슈팅: 주행 실패 사례</h2>
+        </div>
+        <div class="content" style="grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; align-items: stretch;">
+          <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
+            <div class="media-frame contain" style="flex: 1; min-height: 0;">
+              <img data-media="serving_driving/후미충돌.png" alt="후미 충돌 사례">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">후미 충돌</strong> · 주행 중 로봇 후미가 장애물과 충돌</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
+            <div class="media-frame contain" style="flex: 1; min-height: 0;">
+              <img data-media="serving_driving/골포즈 위치 실패.png" alt="골 포즈 도달 실패 사례">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">골 포즈 도달 실패</strong> · 목표 지점 정렬·정지 실패</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
+            <div class="media-frame contain" style="flex: 1; min-height: 0;">
+              <img data-media="serving_driving/좁은곳 통과 실패.png" alt="좁은 통로 통과 실패 사례">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">좁은 통로 통과 실패</strong> · 협소 구간 경로 생성 실패</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
+            <div class="media-frame contain" style="flex: 1; min-height: 0;">
+              <img data-media="serving_driving/외벽 충돌 판정.png" alt="외벽 충돌 판정 사례">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">외벽 충돌 판정</strong> · 코스트맵상 외벽과 충돌로 주행 중단</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>향후 개선 방향: 충돌 블랙박스 · Depth 카메라</h2>
+        </div>
+        <div class="content" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
+          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+            <div class="media-frame contain" style="flex: 1; min-height: 0;">
+              <img data-media="serving_driving/collision.png" alt="주행 중 장애물 충돌 상황 일러스트">
+            </div>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">주행 중 장애물 충돌 상황</p>
+          </div>
+          <div class="stack" style="grid-template-rows: 1fr 1fr; gap: 16px;">
+            <div class="card">
+              <h3>충돌 블랙박스</h3>
+              <ul class="tech-list">
+                <li>충돌·복구(recovery) 이벤트 발생 시점의 센서·주행 데이터를 자동 기록</li>
+                <li>사고 직전 구간을 다시 재생해 원인 분석과 재발 방지에 활용</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Depth 카메라 기반 장애물 인지</h3>
+              <ul class="tech-list">
+                <li>현재 한계 · 2D LiDAR가 특정 높이의 평면만 스캔 → 그 높이에 걸리지 않는 장애물을 감지하지 못해 충돌</li>
+                <li>개선 · Depth 카메라를 추가 장착해 거리(depth) 값을 받아옴</li>
+                <li>받아온 거리 정보를 주행에 반영해 다양한 높이의 장애물을 회피</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="slide section-divider" data-kicker="Conclusion">
@@ -2445,6 +2688,11 @@
       if (event.key === "Home") setSlide(0);
       if (event.key === "End") setSlide(slides.length - 1);
       if (event.key === "Escape") setAgendaOpen(false);
+    });
+
+    const ASSET_BASE = "assets/";
+    document.querySelectorAll("[data-media]").forEach((el) => {
+      el.src = ASSET_BASE + el.dataset.media;
     });
 
     const fromHash = Number.parseInt(location.hash.replace("#", ""), 10);
