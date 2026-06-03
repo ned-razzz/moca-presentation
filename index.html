@@ -1938,18 +1938,280 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조: 비전 기반 조작과 시뮬레이션 전이</h2>
+          <h2>제조: 주문 기반 핫도그·음료 제조</h2>
         </div>
         <div class="content">
-          <div class="stack">
+          <div class="stack" style="grid-template-columns: 1.05fr 1fr;">
             <div class="card">
-              <h3>제조 흐름</h3>
+              <h3>제조 실행 흐름</h3>
               <ul class="tech-list">
-                <li>주문 확인 후 레시피에 따라 핫도그와 음료 제조 태스크 수행</li>
-                <li>Depth 카메라로 물체 위치를 획득하고 PCA로 주축을 파악해 파지 진입 방향 결정</li>
-                <li>MoveIt Planning과 Cartesian Path를 조합해 케이스 집기, 빵·소시지 배치, 픽업존 배치 실행</li>
-                <li>Gazebo 월드 검증 후 실물 로봇과의 간극을 보정해 전이</li>
+                <li>웹 주문을 제조 태스크로 변환하고 레시피 순서에 따라 실행</li>
+                <li>핫도그는 케이스 지지, 빵·소시지 배치, 케첩 도포, 픽업존 배치로 구성</li>
+                <li>음료는 진열대에서 꺼낸 뒤 양팔 협응으로 픽업존에 배치</li>
+                <li>각 태스크는 MoveIt Planning과 Cartesian Path를 상황별로 조합</li>
               </ul>
+            </div>
+            <div class="summary-band" style="grid-template-columns: 1fr; gap: 12px;">
+              <div class="card">
+                <h3>입력</h3>
+                <p>주문 메뉴: hotdog, coke, coffee</p>
+              </div>
+              <div class="card">
+                <h3>출력</h3>
+                <p>제조 완료 상품을 픽업존에 배치</p>
+              </div>
+              <div class="card">
+                <h3>제어 단위</h3>
+                <p>stage·waypoint 기반 태스크 실행</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: Vision 기반 목표 pose 갱신</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+            <div class="media-frame">
+              <img src="assets/openarm/vision/vision.gif" alt="Vision 기반 물체 인식 화면">
+            </div>
+            <div class="card">
+              <h3>보고 → 파악하고 → 행동한다</h3>
+              <ul class="tech-list">
+                <li>Depth 카메라 영상에서 식재료와 물품 후보 영역을 추출</li>
+                <li>YOLO 기반 객체 인식으로 클래스와 위치 후보를 추출</li>
+                <li>PCA로 주축을 계산하고 파지 진입 방향을 결정</li>
+                <li>인식 결과를 엔드 이펙터 goal pose 갱신에 사용</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: Blender 기반 월드 제작 및 편집</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1.2fr 0.8fr;">
+            <div class="media-frame">
+              <img src="assets/openarm/gazebo/모델링.png" alt="Blender 제조 월드 모델링">
+            </div>
+            <div class="card">
+              <h3>월드 제작 흐름</h3>
+              <ul class="tech-list">
+                <li>Blender에서 테이블, 트레이, 진열대, 픽업존을 배치</li>
+                <li>케이스, 빵, 소시지, 케첩, 음료 모델의 크기와 위치를 조정</li>
+                <li>제조 환경 layout을 Gazebo 모델과 planning scene으로 export</li>
+                <li>색상과 collision 형상을 조정해 Vision·MoveIt 검증에 활용</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: Gazebo 핫도그 제조 검증</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">① 케이스 집기</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/빵.gif" alt="빵 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">② 빵 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/소시지.gif" alt="소시지 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">③ 소시지 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/케첩.gif" alt="케첩 도포"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">④ 케첩 도포</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: 실물 로봇 동작 검증</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">빵 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">소시지 배치</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">케첩 도포</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: 음료 제공 검증</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr 0.9fr;">
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/gazebo/콜라.gif" alt="Gazebo 콜라 제공"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">Gazebo 콜라 제공 검증</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+              <div class="media-frame"><img src="assets/openarm/manufacturing/커피.gif" alt="실물 커피 제공"></div>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 커피 제공 검증</p>
+            </div>
+            <div class="card">
+              <h3>제어 포인트</h3>
+              <ul class="tech-list">
+                <li>왼팔이 음료를 꺼내고 오른팔이 인계받는 양팔 협응 구조</li>
+                <li>캔 높이와 중심을 기준으로 파지 위치 분리</li>
+                <li>인계 후 충돌을 피하도록 후퇴 waypoint를 구성</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - Gazebo 미지원</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/1.이슈:gazebo_미지원.png" alt="Gazebo 미지원 문제"></div>
+              <div class="card">
+                <p><strong>공식 패키지에 Gazebo 실행 환경이 없어 시뮬레이션 검증이 불가능</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>제조 월드용 Gazebo 모델, robot description, launch 구성 추가</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - MoveIt 실행 불안정</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/2.이슈:moveit2.gif" alt="MoveIt 실행 불안정 문제"></div>
+              <div class="card">
+                <p><strong>execute 시 팔이 순간적으로 떨어지거나 trajectory가 불안정하게 실행</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/2.해결:moveit_dynamics.gif" alt="MoveIt 실행 불안정 해결"></div>
+              <div class="card">
+                <p><strong>robot dynamics와 trajectory 실행 조건을 보정해 동작 안정화</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - 엔드 이펙터 불일치</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">문제 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>URDF 그리퍼와 실물 그리퍼 형상이 달라 파지 pose와 collision 기준이 어긋남</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="엔드 이펙터 불일치 해결"></div>
+              <div class="card">
+                <p><strong>TCP, gripper collision, 파지 기준 pose를 실물 형상에 맞게 보정</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: OpenArm 트러블 슈팅 - 액추에이터 단선</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/4.이슈:단선1.jpg" alt="액추에이터 단선 문제"></div>
+              <div class="card">
+                <p><strong>흰색 케이스와 전원선이 반복적으로 마찰되어 오른팔 액추에이터 전원선 단선 발생</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>오른팔 command를 비활성화하고 왼팔 단독·단계별 수동 진행 모드 구성</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>제조: 제어 트러블 슈팅 - Goal pose IK 실패</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">문제 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>MoveIt이 지정한 goal pose에 대해 IK 해를 찾지 못해 planning이 중단</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
+              <div class="card">
+                <p><strong>guide pose를 추가하고 MoveIt Planning과 Cartesian Path를 구간별로 분리</strong></p>
+              </div>
             </div>
           </div>
         </div>
