@@ -1726,10 +1726,27 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>서빙: 픽업·운반</h2>
         </div>
-        <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr;">
-            <div class="media-frame">
-              <img src="assets/serving_act/pickup_edit.gif" alt="픽업 서빙 시연">
+        <div class="content" style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: clamp(40px, 5vw, 80px) 0 0;">
+            <h3 style="margin: 0;">제조 완료된 음료/음식 픽업</h3>
+            <h3 style="margin: 0;">픽업을 완료하고 table로 이송</h3>
+          </div>
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="flex: 1; min-height: 0;">
+                <img src="assets/serving_act/pickup_edit.gif" alt="픽업 서빙 시연">
+              </div>
+              <div style="display: flex; flex-direction: column; flex-shrink: 0; min-height: 56px; justify-content: center;">
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">픽업</p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="flex: 1; min-height: 0;">
+                <img data-media="serving_driving/home-_t03_2x.gif" alt="실물 로봇 주행 home에서 t03">
+              </div>
+              <div style="display: flex; flex-direction: column; flex-shrink: 0; min-height: 56px; justify-content: center;">
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 로봇 · home → t03</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1741,13 +1758,16 @@
           <h2>서빙: 제공</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
-          <h3 style="margin: clamp(8px, 1vw, 16px) 0 0;">주문자의 손 위치(좌/우)를 인식하여 주문자 앞에 음료 제공</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: center;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: clamp(40px, 5vw, 80px) 0 0;">
+            <h3 style="margin: 0;">주문자의 손 위치(좌/우)를 인식하여 주문자 앞에 음료 제공</h3>
+            <h3 style="margin: 0;">음료 제공하고 테이블에서 대기장소로 이동</h3>
+          </div>
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div class="media-frame" style="min-height: 0;">
-                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block;"></video>
+              <div class="media-frame" style="flex: 1; min-height: 0;">
+                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
               </div>
-              <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; min-height: 56px; justify-content: center;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <button onclick="toggleVideo('vid-left', this)" style="background: var(--secondary); color: white; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: var(--content-small-size);">▶</button>
                   <div style="flex: 1; height: 8px; background: var(--line); border-radius: 4px; cursor: pointer; position: relative;" onclick="seekVideo('vid-left', event, this)">
@@ -1758,17 +1778,11 @@
               </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div class="media-frame" style="min-height: 0;">
-                <video id="vid-right" src="assets/serving_act/serve_right_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block;"></video>
+              <div class="media-frame" style="flex: 1; min-height: 0;">
+                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home" style="object-fit: cover; padding: 0;">
               </div>
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <button onclick="toggleVideo('vid-right', this)" style="background: var(--secondary); color: white; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: var(--content-small-size);">▶</button>
-                  <div style="flex: 1; height: 8px; background: var(--line); border-radius: 4px; cursor: pointer; position: relative;" onclick="seekVideo('vid-right', event, this)">
-                    <div id="prog-right" style="height: 100%; width: 0%; background: var(--secondary); border-radius: 4px; pointer-events: none;"></div>
-                  </div>
-                </div>
-                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">오른쪽으로 제공</p>
+              <div style="display: flex; flex-direction: column; flex-shrink: 0; min-height: 56px; justify-content: center;">
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 로봇 · t03 → home</p>
               </div>
             </div>
           </div>
@@ -1793,29 +1807,6 @@
                 <img data-media="serving_driving/rvizt03-__home_2x.gif" alt="RViz 경로 시각화 t03에서 home">
               </div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">RViz · t03 → home</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
-        </div>
-        <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: start;">
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div class="media-frame" style="min-height: 0;">
-                <img data-media="serving_driving/home-_t03_2x.gif" alt="실물 로봇 주행 home에서 t03">
-              </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 로봇 · home → t03</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div class="media-frame" style="min-height: 0;">
-                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home">
-              </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">실물 로봇 · t03 → home</p>
             </div>
           </div>
         </div>
@@ -2344,16 +2335,16 @@
             <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">주행 중 장애물 충돌 상황</p>
           </div>
           <div class="stack" style="grid-template-rows: 1fr 1fr; gap: 16px;">
-            <div class="card">
+            <div class="card" style="align-content: start; gap: 1.3em; padding-top: 6em;">
               <h3>충돌 블랙박스</h3>
-              <ul class="tech-list">
+              <ul class="tech-list" style="gap: 0.5em;">
                 <li>충돌·복구(recovery) 이벤트 발생 시점의 센서·주행 데이터를 자동 기록</li>
                 <li>사고 직전 구간을 다시 재생해 원인 분석과 재발 방지에 활용</li>
               </ul>
             </div>
-            <div class="card">
+            <div class="card" style="align-content: start; gap: 1.3em;">
               <h3>Depth 카메라 기반 장애물 인지</h3>
-              <ul class="tech-list">
+              <ul class="tech-list" style="gap: 0.5em;">
                 <li>현재 한계 · 2D LiDAR가 특정 높이의 평면만 스캔 → 그 높이에 걸리지 않는 장애물을 감지하지 못해 충돌</li>
                 <li>개선 · Depth 카메라를 추가 장착해 거리(depth) 값을 받아옴</li>
                 <li>받아온 거리 정보를 주행에 반영해 다양한 높이의 장애물을 회피</li>
