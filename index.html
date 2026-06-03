@@ -1504,21 +1504,18 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">13 / 주요 기능</p>
-          <h2>매장 준비: 매장 맵 생성</h2>
+          <h2>매장 준비</h2>
         </div>
         <div class="content">
           <div class="stack">
             <div class="card">
-              <h3>서비스 공간 기준화</h3>
+              <h3>서비스 공간 지도 생성</h3>
               <ul class="tech-list">
                 <li>행사장 도면과 현장 배치를 기준으로 서비스 맵을 생성</li>
                 <li>테이블, 픽업존, 카운터, 로봇 대기 위치를 운영 지점으로 등록</li>
                 <li>각 지점의 좌표와 이름을 주문, 제조, 서빙 시스템이 공통으로 참조</li>
                 <li>현장별 구조 변화에 맞춰 맵과 동선을 빠르게 재구성</li>
               </ul>
-            </div>
-            <div class="highlight">
-              주문이 들어오기 전 매장 공간을 좌표화해야 로봇이 같은 목표 지점을 공유할 수 있다.
             </div>
           </div>
         </div>
@@ -1788,9 +1785,6 @@
                 <li>이벤트 로그와 개발용 필터링 로그로 로봇·기기·서버 상태 추적</li>
                 <li>운영 모드 제어와 이상 상황 개입으로 점주 1명의 운영 부담 축소</li>
               </ul>
-            </div>
-            <div class="highlight">
-              로봇 상태가 관리자에게 즉시 보여야 현장 운영자가 빠르게 판단하고 개입할 수 있다.
             </div>
           </div>
         </div>
@@ -2232,6 +2226,7 @@
 
     function buildAgenda() {
       let currentGroup = null;
+      const seenSubTitles = new Set();
 
       slides.forEach((slide, slideIndex) => {
         const isMain = slide.classList.contains("section-divider");
@@ -2249,7 +2244,10 @@
           return;
         }
 
-        currentGroup.appendChild(createAgendaButton(getSlideTitle(slide), slideIndex, "sub"));
+        const subTitle = getSlideTitle(slide);
+        if (seenSubTitles.has(subTitle)) return;
+        seenSubTitles.add(subTitle);
+        currentGroup.appendChild(createAgendaButton(subTitle, slideIndex, "sub"));
       });
 
       agendaLinks = Array.from(agendaList.querySelectorAll(".agenda-link"));
