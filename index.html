@@ -455,7 +455,6 @@
       display: grid;
       gap: var(--item-gap);
       margin: 0;
-      padding-left: 1.1em;
     }
 
     .requirements-grid {
@@ -491,7 +490,7 @@
     .service-flow {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--item-gap);
+      gap: var(--item-ga);
     }
 
     .service-flow .card {
@@ -617,7 +616,7 @@
     }
 
     .slide.planning-flow-slide .stack {
-      grid-template-rows: minmax(0, 1fr) auto;
+      grid-template-rows: auto minmax(0, 1fr) auto;
     }
 
     .slide.planning-flow-slide .service-flow {
@@ -626,7 +625,8 @@
     }
 
     .slide.planning-flow-slide .service-flow .card {
-      align-content: center;
+      align-content: start;
+      grid-template-rows: auto auto 1fr;
       min-height: 0;
     }
 
@@ -973,6 +973,69 @@
       border-radius: var(--radius-card);
     }
 
+    .slide.scenario-slide .stack {
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      height: 100%;
+    }
+
+    .slide.scenario-slide .service-flow {
+      display: flex;
+      gap: 0;
+      height: 100%;
+      align-items: stretch;
+    }
+
+    .scenario-card {
+      --scenario-notch: clamp(38px, 3.4vw, 56px);
+      --scenario-nose: clamp(42px, 3.8vw, 64px);
+      position: relative;
+      flex: 1 1 0;
+      min-height: 0;
+      padding: 1px;
+      background: color-mix(in srgb, var(--secondary) 24%, white);
+      clip-path: polygon(
+        0 0,
+        calc(100% - var(--scenario-nose)) 0,
+        100% 50%,
+        calc(100% - var(--scenario-nose)) 100%,
+        0 100%,
+        var(--scenario-notch) 50%
+      );
+    }
+
+    .scenario-card + .scenario-card {
+      margin-left: calc(var(--scenario-notch) * -.42);
+    }
+
+    .scenario-card-inner {
+      height: 100%;
+      min-height: 0;
+      padding: clamp(18px, 1.7vw, 24px) clamp(56px, 4vw, 72px);
+      display: grid;
+      gap: var(--item-gap);
+      place-content: center;
+      justify-items: center;
+      text-align: center;
+      background: var(--surface-soft);
+      clip-path: polygon(
+        0 0,
+        calc(100% - var(--scenario-nose)) 0,
+        100% 50%,
+        calc(100% - var(--scenario-nose)) 100%,
+        0 100%,
+        var(--scenario-notch) 50%
+      );
+    }
+
+    .slide.scenario-slide .scenario-card-inner h3 {
+      font-size: clamp(24px, 2vw, 32px);
+    }
+
+    .slide.scenario-slide .scenario-card-inner p {
+      font-size: clamp(20px, 1.55vw, 25px);
+      line-height: 1.42;
+    }
+
     /* Individual slide style: Q&A */
     .qa-slide .content {
       place-items: center;
@@ -1213,6 +1276,19 @@
       .progress {
         display: none;
       }
+
+      .scenario-card,
+      .scenario-card-inner {
+        clip-path: none;
+      }
+
+      .slide.scenario-slide .service-flow {
+        display: grid;
+      }
+
+      .scenario-card + .scenario-card {
+        margin-left: 0;
+      }
     }
 
     /* Print export */
@@ -1403,43 +1479,7 @@
           </div>
         </div>
       </section>
-
-      <section class="slide planning-flow-slide" data-kicker="Planning">
-        <div class="header">
-          <p class="section-mark">06 / 기획</p>
-          <h2>사용자 요구사항</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="service-flow">
-              <div class="card">
-                <span class="num">01</span>
-                <h3>초기 세팅</h3>
-                <p>매장 맵, 메뉴, 로봇 위치를 설정한다.</p>
-              </div>
-              <div class="card">
-                <span class="num">02</span>
-                <h3>주문·결제</h3>
-                <p>고객이 메뉴를 선택하고 결제를 완료한다.</p>
-              </div>
-              <div class="card">
-                <span class="num">03</span>
-                <h3>제조</h3>
-                <p>제조 로봇 뚜비가 주문 메뉴를 제조한다.</p>
-              </div>
-              <div class="card">
-                <span class="num">04</span>
-                <h3>서빙</h3>
-                <p>서빙 로봇 도비가 픽업 후 고객 테이블까지 전달한다.</p>
-              </div>
-            </div>
-            <div class="highlight">
-              주문이 들어오면 제조와 서빙이 자동으로 연결된다.
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       <section class="slide section-divider" data-kicker="Design">
         <div class="section-divider-inner">
           <h2>설계</h2>
@@ -1479,12 +1519,49 @@
         </div>
       </section>
 
-      <section class="slide" data-kicker="Design">
+      <section class="slide scenario-slide" data-kicker="Design">
         <div class="header">
           <p class="section-mark">11 / 설계</p>
           <h2>주요 시나리오</h2>
         </div>
-        <div class="content"></div>
+        <div class="content">
+          <div class="stack">
+            <h3>기본 서비스</h3>
+            <div class="service-flow">
+              <div class="scenario-card">
+                <div class="scenario-card-inner">
+                  <span class="num">01</span>
+                  <h3>초기 세팅</h3>
+                  <p>매장 맵, 메뉴, 로봇 위치를 설정한다.</p>
+                </div>
+              </div>
+              <div class="scenario-card">
+                <div class="scenario-card-inner">
+                  <span class="num">02</span>
+                  <h3>주문·결제</h3>
+                  <p>고객이 메뉴를 선택하고 결제를 완료한다.</p>
+                </div>
+              </div>
+              <div class="scenario-card">
+                <div class="scenario-card-inner">
+                  <span class="num">03</span>
+                  <h3>요리</h3>
+                  <p>요리 로봇이 주문 메뉴를 제조한다.</p>
+                </div>
+              </div>
+              <div class="scenario-card">
+                <div class="scenario-card-inner">
+                  <span class="num">04</span>
+                  <h3>서빙</h3>
+                  <p>서빙 로봇이 픽업 후 고객 테이블까지 전달한다.</p>
+                </div>
+              </div>
+            </div>
+            <div class="highlight">
+              주문이 들어오면 곧바로 로봇이 주문 상품을 제조하고 상품을 테이블로 서빙한다.
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="slide section-divider" data-kicker="Functions">
