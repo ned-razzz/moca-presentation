@@ -1578,6 +1578,58 @@
                 <li>ACT Policy를 채택해 하드웨어 리소스와 실시간 제어 안정성을 우선 확보</li>
                 <li>위치·각도 다변화 데이터와 밝기 변화 증강으로 실제 환경 변화 대응</li>
               </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">16_1 / 주요 기능</p>
+          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+            <div class="media-frame">
+              <img src="assets/serving_act/pickup_edit.gif" alt="픽업 서빙 시연">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">16_2 / 주요 기능</p>
+          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: start;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="min-height: 0;">
+                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block;"></video>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <button onclick="toggleVideo('vid-left', this)" style="background: var(--secondary); color: white; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: var(--content-small-size);">▶</button>
+                  <div style="flex: 1; height: 8px; background: var(--line); border-radius: 4px; cursor: pointer; position: relative;" onclick="seekVideo('vid-left', event, this)">
+                    <div id="prog-left" style="height: 100%; width: 0%; background: var(--secondary); border-radius: 4px; pointer-events: none;"></div>
+                  </div>
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">왼쪽으로 제공</p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="min-height: 0;">
+                <video id="vid-right" src="assets/serving_act/serve_right_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block;"></video>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <button onclick="toggleVideo('vid-right', this)" style="background: var(--secondary); color: white; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: var(--content-small-size);">▶</button>
+                  <div style="flex: 1; height: 8px; background: var(--line); border-radius: 4px; cursor: pointer; position: relative;" onclick="seekVideo('vid-right', event, this)">
+                    <div id="prog-right" style="height: 100%; width: 0%; background: var(--secondary); border-radius: 4px; pointer-events: none;"></div>
+                  </div>
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">오른쪽으로 제공</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1692,6 +1744,63 @@
           <h2>ACT 기반 pick&place</h2>
         </div>
         <div class="content"></div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">23_1 / 주요 기술</p>
+          <h2>ACT Policy 기반 태스크 확장 및 Jittering 현상 억제</h2>
+        </div>
+        <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 18px);">
+
+          <!-- 중앙: 좌우 GIF + 스펙 비교 (2×2 공통 그리드로 높이 자동 일치) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 10px clamp(14px, 2vw, 28px); min-height: 0;">
+
+            <!-- 스펙 A (빨강) -->
+            <div style="background: #fff0f4; border: 2px solid #d83f87; border-radius: var(--radius-card); padding: 10px 16px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; align-self: stretch;">
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: #d83f87;">실험 A</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">개선 전</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Task</span>
+              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">2가지</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Episodes</span>
+              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">100 ep</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Steps</span>
+              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">100,000</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">결과</span>
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: #d83f87;">Jittering 심함 ✗</span>
+            </div>
+
+            <!-- 스펙 B (파랑) -->
+            <div style="background: #f0f6ff; border: 2px solid #224087; border-radius: var(--radius-card); padding: 10px 16px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; align-self: stretch;">
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: #224087;">실험 B</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">개선 후</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Task</span>
+              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">5가지</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Episodes</span>
+              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">270 ep <span style="color:#224087;">↑2.7×</span></span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">Steps</span>
+              <span style="font-size: var(--content-small-size); font-weight: 700; color: var(--text);">400,000 <span style="color:#224087;">↑4×</span></span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text);">결과</span>
+              <span style="font-size: var(--content-small-size); font-weight: 800; color: #224087;">Jittering 감소 ✓</span>
+            </div>
+
+            <!-- GIF A -->
+            <div class="media-frame" style="min-height: 0;">
+              <img src="assets/serving_act/jittering_before.gif" alt="Jittering 발생 (실험 A)">
+            </div>
+
+            <!-- GIF B -->
+            <div class="media-frame" style="min-height: 0;">
+              <img src="assets/serving_act/jittering_after.gif" alt="Jittering 억제 (실험 B)">
+            </div>
+          </div>
+
+          <!-- 하단: 결론 한 줄 -->
+          <div style="background: color-mix(in srgb, var(--secondary) 8%, white); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
+            <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">후처리 필터 없이 <strong>데이터 다양성 확장 + 학습 스케일링</strong>만으로 End-to-End 모션 안정화 성공</p>
+          </div>
+
+        </div>
       </section>
 
       <section class="slide" data-kicker="Technology">
@@ -2036,6 +2145,33 @@
     const fromHash = Number.parseInt(location.hash.replace("#", ""), 10);
     buildAgenda();
     setSlide(Number.isFinite(fromHash) ? fromHash - 1 : 0);
+
+    function toggleVideo(id, btn) {
+      const vid = document.getElementById(id);
+      if (vid.paused) { vid.play(); btn.textContent = "⏸"; }
+      else { vid.pause(); btn.textContent = "▶"; }
+    }
+
+    function seekVideo(id, e, bar) {
+      const vid = document.getElementById(id);
+      const rect = bar.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      if (vid.duration) vid.currentTime = ratio * vid.duration;
+    }
+
+    ["right", "left"].forEach(side => {
+      const vid = document.getElementById("vid-" + side);
+      const prog = document.getElementById("prog-" + side);
+      if (!vid || !prog) return;
+      vid.addEventListener("timeupdate", () => {
+        if (vid.duration) prog.style.width = (vid.currentTime / vid.duration * 100) + "%";
+      });
+      vid.addEventListener("ended", () => {
+        prog.style.width = "100%";
+        const btn = vid.closest(".media-frame")?.nextElementSibling?.querySelector("button");
+        if (btn) btn.textContent = "▶";
+      });
+    });
   </script>
 </body>
 </html>
