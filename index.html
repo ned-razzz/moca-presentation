@@ -870,20 +870,18 @@
     }
 
     .core-feature-slide .core-feature-grid {
-      position: relative;
-      width: min(820px, 88%);
-      aspect-ratio: 1.5;
+      width: min(1100px, 92%);
       justify-self: center;
       align-self: center;
-      display: block;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(18px, 2vw, 28px);
       min-height: 0;
     }
 
     .core-feature-slide .core-feature-card {
-      position: absolute;
       z-index: 1;
-      width: clamp(230px, 21vw, 300px);
-      min-height: clamp(116px, 12vw, 148px);
+      min-height: clamp(170px, 15vw, 210px);
       display: grid;
       align-content: center;
       gap: clamp(8px, .8vw, 12px);
@@ -896,20 +894,10 @@
     }
 
     .core-feature-slide .core-feature-card.primary {
-      top: 4%;
-      left: 50%;
-      transform: translateX(-50%);
       border-top: 5px solid var(--primary);
     }
 
-    .core-feature-slide .core-feature-card:nth-of-type(2) {
-      left: 8%;
-      bottom: 6%;
-    }
-
     .core-feature-slide .core-feature-card:nth-of-type(3) {
-      right: 8%;
-      bottom: 6%;
       border-top-color: color-mix(in srgb, var(--primary) 58%, var(--secondary));
     }
 
@@ -1510,6 +1498,7 @@
               <span class="num">01</span>
               <h3>기획</h3>
               <ul>
+                <li>프로젝트 주제</li>    
                 <li>주제 선정 이유</li>
                 <li>사용자 요구사항</li>
               </ul>
@@ -1562,11 +1551,30 @@
         <div class="section-divider-inner">
           <h2>기획</h2>
           <ul>
+            <li>프로젝트 주제</li>
             <li>주제 선정 이유</li>
             <li>사용자 요구사항</li>
           </ul>
         </div>
       </section>
+
+      <section class="slide planning-reason-slide planning-overview-slide" data-kicker="Planning">
+        <div class="header">
+          <p class="section-mark">01 / 기획</p>
+          <h2>프로젝트 주제</h2>
+        </div>
+        <div class="content">
+          <div class="stack">
+            <div class="overview-image-frame">
+              <img src="assets/overview/cover.png" alt="MOCA 이동형 로봇 케이터링 플랫폼 예시">
+            </div>
+            <div class="highlight">
+              점주 1명과 로봇이 협업하여 주문, 제조, 서빙, 모객 업무를 수행하는 이동형 로봇 케이터링 플랫폼입니다.
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       <section class="slide planning-reason-slide planning-card-grid-slide" data-kicker="Planning">
         <div class="header">
@@ -1656,23 +1664,6 @@
                   </svg>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide planning-reason-slide planning-overview-slide" data-kicker="Planning">
-        <div class="header">
-          <p class="section-mark">01 / 기획</p>
-          <h2>주제 선정 이유</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <div class="overview-image-frame">
-              <img src="assets/overview/cover.png" alt="MOCA 이동형 로봇 케이터링 플랫폼 예시">
-            </div>
-            <div class="highlight">
-              점주 1명과 로봇이 협업하여 주문, 제조, 서빙, 모객 업무를 수행하는 이동형 로봇 케이터링 플랫폼입니다.
             </div>
           </div>
         </div>
@@ -1882,15 +1873,35 @@
           <h2>매장 준비</h2>
         </div>
         <div class="content">
-          <div class="stack">
+          <div class="stack" style="grid-template-rows: auto 1fr;">
             <div class="card">
               <h3>서비스 공간 지도 생성</h3>
               <ul class="tech-list">
-                <li>행사장 도면과 현장 배치를 기준으로 서비스 맵을 생성</li>
-                <li>테이블, 픽업존, 카운터, 로봇 대기 위치를 운영 지점으로 등록</li>
-                <li>각 지점의 좌표와 이름을 주문, 제조, 서빙 시스템이 공통으로 참조</li>
-                <li>현장별 구조 변화에 맞춰 맵과 동선을 빠르게 재구성</li>
+                <li>현장별 구조 변화에 맞춰 맵과 동선을 빠르게 구축</li>
               </ul>
+            </div>
+            <div class="media-frame" style="min-height: 0;">
+              <img src="assets/admin/create_map.gif" alt="서비스 공간 지도 생성 화면">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">03 / 주요 기능</p>
+          <h2>매장 준비</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-rows: auto 1fr;">
+            <div class="card">
+              <h3>서빙 로봇 이동 좌표 및 워크스페이스 배치</h3>
+              <ul class="tech-list">
+                <li>테이블, 픽업존, 카운터, 로봇 대기 위치를 운영 지점으로 등록</li>
+              </ul>
+            </div>
+            <div class="media-frame" style="min-height: 0;">
+              <img src="assets/admin/edit_map.gif" alt="서빙 로봇 이동 좌표 및 워크스페이스 배치 화면">
             </div>
           </div>
         </div>
