@@ -328,7 +328,7 @@
       min-height: 0;
       display: grid;
       gap: var(--content-gap);
-      align-items: center;
+      align-items: start;
       z-index: 2;
       overflow: hidden;
     }
@@ -825,6 +825,86 @@
       border-top: 5px solid var(--secondary);
     }
 
+    /* Individual slide style: role cards */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1fr);
+      gap: clamp(10px, 1vw, 16px);
+      width: 100%;
+      align-self: stretch;
+    }
+
+    .role-card {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: minmax(118px, 32%) minmax(0, 1fr);
+      overflow: hidden;
+      background: var(--surface-soft);
+      border: 1px solid color-mix(in srgb, var(--line) 76%, white);
+      border-radius: var(--radius-card);
+    }
+
+    .role-photo {
+      display: grid;
+      place-items: center;
+      min-height: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--secondary) 10%, white), color-mix(in srgb, var(--primary) 8%, white));
+      border-bottom: 1px dashed color-mix(in srgb, var(--secondary) 26%, white);
+    }
+
+    .role-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .role-photo:has(img)::before {
+      content: none;
+    }
+
+    .role-photo::before {
+      content: "촬영 이미지";
+      color: color-mix(in srgb, var(--text) 46%, white);
+      font-size: clamp(16px, 1.2vw, 20px);
+      font-weight: 800;
+    }
+
+    .role-body {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      align-content: start;
+      gap: 10px;
+      padding: clamp(12px, 1vw, 16px);
+    }
+
+    .role-body h4 {
+      margin: 0;
+      color: var(--dark);
+      font-size: clamp(18px, 1.2vw, 22px);
+      line-height: 1.15;
+    }
+
+    .role-body ul {
+      margin: 0;
+      padding-left: 1.05em;
+      display: grid;
+      align-content: start;
+      gap: 7px;
+      min-height: 0;
+    }
+
+    .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content .role-body li {
+      color: var(--muted-text);
+      font-size: clamp(15px, 1vw, 18px);
+      line-height: 1.32;
+      word-break: keep-all;
+    }
+
     /* Common content container for body slides */
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content {
       padding: var(--content-pad);
@@ -1114,6 +1194,7 @@
       .metrics,
       .diagram-row,
       .summary-band,
+      .role-grid,
       .requirements-grid,
       .service-flow {
         grid-template-columns: 1fr;
@@ -1121,6 +1202,10 @@
 
       .media-frame img {
         max-height: none;
+      }
+
+      .role-grid {
+        height: auto;
       }
 
       .controls,
@@ -1225,7 +1310,9 @@
               <span class="num">05</span>
               <h3>결론</h3>
               <ul>
-                <li>프로젝트 관리</li>
+                <li>프로젝트 운영</li>
+                <li>프로젝트 문서 관리</li>
+                <li>코드 형상 관리</li>
                 <li>프로젝트 회고</li>
                 <li>담당 업무</li>
               </ul>
@@ -1247,7 +1334,7 @@
       <section class="slide planning-reason-slide" data-kicker="Planning">
         <div class="header">
           <p class="section-mark">03 / 기획</p>
-          <h2>주제 선정 이유: 문제 배경</h2>
+          <h2>주제 선정 이유</h2>
         </div>
         <div class="content">
           <div class="stack">
@@ -1267,7 +1354,7 @@
       <section class="slide planning-reason-slide" data-kicker="Planning">
         <div class="header">
           <p class="section-mark">04 / 기획</p>
-          <h2>주제 선정 이유: 프로젝트 개요</h2>
+          <h2>주제 선정 이유</h2>
         </div>
         <div class="content">
           <div class="stack">
@@ -1288,7 +1375,7 @@
       <section class="slide planning-requirements-slide" data-kicker="Planning">
         <div class="header">
           <p class="section-mark">05 / 기획</p>
-          <h2>사용자 요구사항: 핵심 요구사항</h2>
+          <h2>사용자 요구사항</h2>
         </div>
         <div class="content">
           <div class="stack">
@@ -1320,7 +1407,7 @@
       <section class="slide planning-flow-slide" data-kicker="Planning">
         <div class="header">
           <p class="section-mark">06 / 기획</p>
-          <h2>사용자 요구사항: 서비스 흐름</h2>
+          <h2>사용자 요구사항</h2>
         </div>
         <div class="content">
           <div class="stack">
@@ -1836,7 +1923,9 @@
         <div class="section-divider-inner">
           <h2>결론</h2>
           <ul>
-            <li>프로젝트 관리</li>
+            <li>프로젝트 운영</li>
+            <li>프로젝트 문서 관리</li>
+            <li>코드 형상 관리</li>
             <li>프로젝트 회고</li>
             <li>담당 업무</li>
           </ul>
@@ -1849,22 +1938,13 @@
           <h2>프로젝트 관리</h2>
         </div>
         <div class="content">
-          <div class="summary-band">
-            <div class="card">
-              <span class="num">01</span>
-              <h3>스프린트 기반 일정 관리</h3>
-              <p>기획, 설계, 기능 구현, 통합 검증 단계를 나누고 주차별 목표와 산출물을 기준으로 진행 상황을 관리했다.</p>
-            </div>
-            <div class="card">
-              <span class="num">02</span>
-              <h3>브랜치 전략</h3>
-              <p>feat, dev, main 브랜치를 분리해 기능별 구현과 통합 검증 흐름을 관리하고 충돌 범위를 줄였다.</p>
-            </div>
-            <div class="card">
-              <span class="num">03</span>
-              <h3>통합 이슈 관리</h3>
-              <p>주문, 제조, 서빙, 모객, 관리 기능의 연결 지점을 기준으로 장애 원인과 수정 우선순위를 정리했다.</p>
-            </div>
+          <div class="stack">
+            <h3>프로젝트 운영</h3>
+            <ul>
+              <li>SCRUM 방식으로 주 단위 sprint를 계획하고 프로젝트 진행 상황을 관리</li>
+              <li>Jira를 활용해 sprint 목표, 담당 작업, 진행 상태를 추적</li>
+              <li>총 7번의 sprint를 기획, 설계, 전체 구현, 상세 구현, 통합 테스트 단계로 운영</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -1872,6 +1952,30 @@
       <section class="slide" data-kicker="Conclusion">
         <div class="header">
           <p class="section-mark">27 / 결론</p>
+          <h2>프로젝트 관리</h2>
+        </div>
+        <div class="content">
+          <div class="stack">
+            <h3>프로젝트 문서 관리</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Conclusion">
+        <div class="header">
+          <p class="section-mark">28 / 결론</p>
+          <h2>프로젝트 관리</h2>
+        </div>
+        <div class="content">
+          <div class="stack">
+            <h3>코드 형상 관리</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-kicker="Conclusion">
+        <div class="header">
+          <p class="section-mark">29 / 결론</p>
           <h2>프로젝트 회고</h2>
         </div>
         <div class="content">
@@ -1897,31 +2001,81 @@
 
       <section class="slide" data-kicker="Conclusion">
         <div class="header">
-          <p class="section-mark">28 / 결론</p>
+          <p class="section-mark">30 / 결론</p>
           <h2>담당 업무</h2>
         </div>
         <div class="content">
-          <div class="summary-band">
-            <div class="card">
-              <h3>기획·설계</h3>
-              <ul class="tech-list">
-                <li>서비스 시나리오와 사용자 요구사항 정리</li>
-                <li>하드웨어·소프트웨어 아키텍처 통합 흐름 정리</li>
-              </ul>
+          <div class="role-grid">
+            <div class="role-card">
+              <div class="role-photo" data-src="assets/assigned/mingyu.jpg">
+                <img src="assets/assigned/mingyu.jpg" alt="송민규 촬영 이미지">
+              </div>
+              <div class="role-body">
+                <h4>송민규</h4>
+                <ul>
+                  <li>프로젝트 총괄</li>
+                  <li>시스템 설계</li>
+                  <li>중앙 관제 구현</li>
+                  <li>로봇 작업 조율</li>
+                  <li>관리자 GUI 구현</li>
+                  <li>서빙 이송 모방학습</li>
+                </ul>
+              </div>
             </div>
-            <div class="card">
-              <h3>기능 구현</h3>
-              <ul class="tech-list">
-                <li>주문, 제조, 서빙, 모객, 관리 기능별 인터페이스 구성</li>
-                <li>로봇 동작과 관리자 시스템을 연결하는 운영 흐름 검증</li>
-              </ul>
+            <div class="role-card">
+              <div class="role-photo" data-src=""></div>
+              <div class="role-body">
+                <h4>김덕현</h4>
+                <ul>
+                  <li>서빙 로봇 제어</li>
+                  <li>ROS2 주행 연동</li>
+                  <li>시뮬레이션 검증</li>
+                </ul>
+              </div>
             </div>
-            <div class="card">
-              <h3>발표 구성</h3>
-              <ul class="tech-list">
-                <li>HTML 목차 기준으로 PPT 초안 내용을 압축 반영</li>
-                <li>서비스 흐름 중심의 발표 자료 구성</li>
-              </ul>
+            <div class="role-card">
+              <div class="role-photo" data-src=""></div>
+              <div class="role-body">
+                <h4>류재상</h4>
+                <ul>
+                  <li>제조 로봇 동작</li>
+                  <li>비전 기반 조작</li>
+                  <li>실물 동작 보정</li>
+                </ul>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-photo" data-src=""></div>
+              <div class="role-body">
+                <h4>김진우</h4>
+                <ul>
+                  <li>주문 서버 구현</li>
+                  <li>관리자 시스템 구현</li>
+                  <li>데이터 흐름 정리</li>
+                </ul>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-photo" data-src=""></div>
+              <div class="role-body">
+                <h4>안순혁</h4>
+                <ul>
+                  <li>모객 인터랙션</li>
+                  <li>감정 분석 기능</li>
+                  <li>고객 응대 흐름</li>
+                </ul>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-photo" data-src=""></div>
+              <div class="role-body">
+                <h4>공국진</h4>
+                <ul>
+                  <li>통합 테스트</li>
+                  <li>발표 자료 구성</li>
+                  <li>시연 흐름 점검</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -1929,7 +2083,7 @@
 
       <section class="slide qa-slide" data-kicker="Q&A">
         <div class="header">
-          <p class="section-mark">29 / Q&A</p>
+          <p class="section-mark">31 / Q&A</p>
         </div>
         <div class="content">
           <div>
