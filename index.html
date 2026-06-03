@@ -2200,20 +2200,21 @@
         </div>
       </section>
 
+      <!-- 슬라이드 A: 모객 BT 전체 흐름 개요 -->
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>모객: 잠재 고객 탐지·접근·추종 자율주행</h2>
+          <h2>모객: BT 기반 모객 funnel 전체 흐름</h2>
         </div>
         <div class="content">
           <div class="stack">
             <div class="card">
-              <h3>추종 동작 흐름</h3>
+              <h3>행동트리(cafe_funnel) 순차 흐름</h3>
               <ul class="tech-list">
-                <li>매장 인근 잠재 고객 무리를 탐지하고 인원이 가장 많은 그룹을 선정해 접근</li>
-                <li>접근 단계부터 추적이 계속 동작하며, 호객 성공 후 가장 가까운 대상을 추종</li>
-                <li>사람 감지(YOLOv8) → 그룹 클러스터링(DBSCAN) → 다중 추적(BoT-SORT) → 접근·추종 제어(PD·P+EMA)</li>
-                <li>시각 인식 결과를 cmd_vel로 변환, twist_mux로 주행 명령을 우선순위 통합</li>
+                <li>[1] IdleScan 그룹 탐지 → [2] Approach 그룹 접근 → [3] IceBreak 자기소개 → [4] Minigame 미니게임 → [5] Offer 메뉴 홍보</li>
+                <li>탐지·접근·추종은 시각 인식 기반 자율주행(YOLOv8 · DBSCAN · BoT-SORT · PD 제어)</li>
+                <li>자기소개·미니게임·메뉴 홍보는 TTS·아바타·게임으로 진행되는 모객 인터랙션</li>
+                <li>감정 분석(geva → rapport)은 전 구간 병렬 상시, 분노 감지 시 즉시 중단(abort→idle)</li>
               </ul>
             </div>
           </div>
@@ -2221,10 +2222,11 @@
         </div>
       </section>
 
+      <!-- 슬라이드 B: 탐지→접근→추종 자율주행 데모 (gif 3개) -->
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>모객: 탐지 → 접근 → 추종 시연</h2>
+          <h2>모객: 탐지 → 접근 → 추종 (자율주행)</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 1fr 1fr 1fr;">
@@ -2232,46 +2234,76 @@
               <div class="media-frame">
                 <img src="assets/attract_follow/group_detect.gif" alt="군중 탐지 그룹 클러스터링 시연">
               </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">① 군중 탐지·그룹 클러스터링 (YOLOv8 + DBSCAN)</p>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">[1] 군중 탐지·그룹 클러스터링 (YOLOv8+DBSCAN)</p>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame">
                 <img src="assets/attract_follow/group_approach.gif" alt="최대 인원 그룹 선정 접근 시연">
               </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">② 최대 인원 그룹 선정·접근 (PD 제어)</p>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">[2] 최대 인원 그룹 선정·접근 (PD 제어)</p>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame">
-                <img src="assets/attract_follow/follow_single.gif" alt="근접 대상 1인 추종 시연">
+                <img src="assets/attract_follow/follow_single.gif" alt="근접 대상 추종 시연">
               </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">③ 근접 대상 추종 (P 제어 + EMA)</p>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">모객 성공 후 근접 대상 1인 추종 (P+EMA)</p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- 슬라이드 C: 모객 인터랙션 데모 (2×2) -->
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>모객: 추종 안정화 트러블슈팅</h2>
+          <h2>모객: 자기소개 → 미니게임 → 메뉴 홍보 + 감정 분석</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 1fr 1fr;">
+            <!-- [3] IceBreak 자기소개 (mp4) -->
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="flex: 1; min-height: 0;">
+                <video id="vid-icebreak" src="assets/attract_follow/icebreak.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; min-height: 56px; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <button onclick="toggleVideo('vid-icebreak', this)" style="background: var(--secondary); color: white; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: var(--content-small-size);">▶</button>
+                  <div style="flex: 1; height: 8px; background: var(--line); border-radius: 4px; cursor: pointer; position: relative;" onclick="seekVideo('vid-icebreak', event, this)">
+                    <div id="prog-icebreak" style="height: 100%; width: 0%; background: var(--secondary); border-radius: 4px; pointer-events: none;"></div>
+                  </div>
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">[3] IceBreak 자기소개 (TTS+아바타)</p>
+              </div>
+            </div>
+            <!-- [4] Minigame (gif) -->
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame">
-                <img src="assets/attract_follow/zigzag_fail.gif" alt="지그재그 진동 Before">
+                <img src="assets/attract_follow/minigame.gif" alt="미니게임 cafe_ninja 시연">
               </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">Before — 지그재그 진동</p>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">[4] Minigame 미니게임 (cafe_ninja)</p>
             </div>
+            <!-- [5] Offer 메뉴 홍보 (mp4) -->
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="media-frame" style="flex: 1; min-height: 0;">
+                <video id="vid-offer" src="assets/attract_follow/offer.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; min-height: 56px; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <button onclick="toggleVideo('vid-offer', this)" style="background: var(--secondary); color: white; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: var(--content-small-size);">▶</button>
+                  <div style="flex: 1; height: 8px; background: var(--line); border-radius: 4px; cursor: pointer; position: relative;" onclick="seekVideo('vid-offer', event, this)">
+                    <div id="prog-offer" style="height: 100%; width: 0%; background: var(--secondary); border-radius: 4px; pointer-events: none;"></div>
+                  </div>
+                </div>
+                <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">[5] Offer 메뉴 홍보 (TTS)</p>
+              </div>
+            </div>
+            <!-- 병렬: 감정 분석 (gif) -->
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame">
-                <img src="assets/attract_follow/follow_single.gif" alt="안정적 추종 After">
+                <img src="assets/attract_follow/emotion_rapport.gif" alt="감정 분석 geva rapport 시연">
               </div>
-              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">After — 안정적 추종</p>
+              <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">병렬: 감정 분석 (geva→rapport, 분노 시 abort)</p>
             </div>
-          </div>
-          <div class="card" style="margin-top: 16px;">
-            <p>회전 게인이 높고 화면 속 대상 위치(bbox) 떨림이 그대로 전달돼 진동 발생 → 회전 게인 인하 + EMA 필터로 떨림 완화 + 회전 후 전진(align_gate)으로 동시 활성 구간 제거</p>
           </div>
         </div>
       </section>
@@ -2456,6 +2488,32 @@
               <div class="media-frame" style="height: clamp(220px, 42vh, 430px); display: grid; place-items: center; border: 2px dashed var(--line); color: var(--muted-text); font-size: var(--content-body-size);">해결 이미지 추가 예정</div>
               <div class="card">
                 <p><strong>guide pose를 추가하고 MoveIt Planning과 Cartesian Path를 구간별로 분리</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 슬라이드 D: 모객 추종 트러블슈팅 (제조 트러블슈팅과 동일 형식) -->
+      <section class="slide feature-slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: 추종 트러블 슈팅 - 지그재그 진동</h2>
+        </div>
+        <div class="content">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">문제</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/attract_follow/zigzag_fail.gif" alt="지그재그 진동 문제"></div>
+              <div class="card">
+                <p><strong>회전 게인이 높고 화면 속 대상 위치(bbox) 떨림이 그대로 cmd_vel에 전달돼 좌우 진동 발생</strong></p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <h3 style="margin: 0;">해결</h3>
+              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/attract_follow/follow_single.gif" alt="안정적 추종 해결"></div>
+              <div class="card">
+                <p><strong>회전 게인 인하 + EMA 필터로 떨림 완화 + 회전 후 전진(align_gate)으로 동시 활성 구간 제거 → 안정적 추종</strong></p>
               </div>
             </div>
           </div>
@@ -3161,7 +3219,7 @@
       if (vid.duration) vid.currentTime = ratio * vid.duration;
     }
 
-    ["right", "left"].forEach(side => {
+    ["right", "left", "icebreak", "offer"].forEach(side => {
       const vid = document.getElementById("vid-" + side);
       const prog = document.getElementById("prog-" + side);
       if (!vid || !prog) return;
