@@ -409,17 +409,21 @@
       background: color-mix(in srgb, var(--secondary) 10%, white);
     }
 
-    .media-frame img {
+    .media-frame img,
+    .media-frame video {
       width: 100%;
       height: 100%;
-      max-height: calc(100dvh - 230px);
-      object-fit: cover;
+      max-height: none;
+      object-fit: contain;
       display: block;
+      padding: 0;
+      background: transparent;
     }
 
-    .media-frame.contain img {
+    .media-frame.contain img,
+    .media-frame.contain video {
       object-fit: contain;
-      padding: 10px;
+      padding: 0;
     }
 
     .architecture-slide .content {
@@ -581,7 +585,7 @@
     .planning-overview-slide .overview-image-frame img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
@@ -841,7 +845,7 @@
       width: 100%;
       height: 100%;
       min-height: 0;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: var(--radius-card);
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--secondary) 10%, white);
@@ -849,7 +853,7 @@
 
     .image-grid.contain img {
       object-fit: contain;
-      padding: 8px;
+      padding: 0;
       background: var(--surface);
     }
 
@@ -866,7 +870,7 @@
       border-radius: var(--radius-card);
       background: var(--surface);
       border: 1px solid var(--line);
-      padding: 8px;
+      padding: 0;
     }
 
     /* Individual slide style: core feature cards */
@@ -947,9 +951,10 @@
       height: 100%;
     }
 
-    .feature-slide .media-frame img {
+    .feature-slide .media-frame img,
+    .feature-slide .media-frame video {
       object-fit: contain;
-      padding: 10px;
+      padding: 0;
       background: var(--surface);
     }
 
@@ -1013,7 +1018,7 @@
     .role-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       display: block;
     }
@@ -1208,8 +1213,9 @@
       width: 100%;
       height: 100%;
       max-height: none;
-      object-fit: contain;
-      padding: 2px;
+      object-fit: cover;
+      object-position: center bottom;
+      padding: 0;
     }
 
     .human-context-slide .context-caption {
@@ -2145,19 +2151,19 @@
           <h3>Gazebo 핫도그 제조 검증</h3>
           <div class="stack" style="grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; height: 100%;">
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">① 케이스 집기</p>
             </div>
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/빵.gif" alt="빵 배치" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/빵.gif" alt="빵 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">② 빵 배치</p>
             </div>
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/소시지.gif" alt="소시지 배치" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/소시지.gif" alt="소시지 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">③ 소시지 배치</p>
             </div>
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케첩.gif" alt="케첩 도포" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케첩.gif" alt="케첩 도포" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">④ 케첩 도포</p>
             </div>
           </div>
@@ -2173,15 +2179,15 @@
           <h3>실물 로봇 동작 검증</h3>
           <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; height: 100%;">
             <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">① 빵 배치</p>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">② 소시지 배치</p>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포" style="padding: 0; object-fit: contain;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">③ 케첩 도포</p>
             </div>
           </div>
@@ -2261,7 +2267,7 @@
           <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame" style="flex: 1; min-height: 0;">
-                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block;"></video>
               </div>
               <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; min-height: 56px; justify-content: center;">
                 <div style="display: flex; align-items: center; gap: 10px;">
@@ -2275,7 +2281,7 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame" style="flex: 1; min-height: 0;">
-                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home" style="object-fit: cover; padding: 0;">
+                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home" style="object-fit: contain; padding: 0;">
               </div>
               <div style="display: flex; flex-direction: column; flex-shrink: 0; min-height: 56px; justify-content: center;">
                 <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">제자리로 복귀</p>
@@ -2909,9 +2915,9 @@
               <li><strong>abort</strong><br>분노·불쾌 감지 시 권유 중단</li>
             </ul>
           </div>
-          <div class="media-frame contain" style="position:relative; min-height:0; background: white;">
-            <span style="position:absolute; left:14px; top:14px; z-index:3; padding:6px 12px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 88%, black); color:white; font-size: var(--type-caption); font-weight:800;">rapport 실시간 분석</span>
-            <video src="assets/moca_rapport.mp4" autoplay loop muted playsinline aria-label="미니게임 중 rapport 친밀도 분석 화면" style="width:100%; height:100%; object-fit:contain; display:block; background:white; padding:8px;"></video>
+          <div class="media-frame contain" style="display:grid; grid-template-rows:minmax(0, 1fr) auto; gap:8px; min-height:0; background: white;">
+            <video src="assets/moca_rapport.mp4" autoplay loop muted playsinline aria-label="미니게임 중 rapport 친밀도 분석 화면" style="width:100%; height:100%; min-height:0; object-fit:contain; display:block; background:white; padding:0;"></video>
+            <span style="color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">rapport 실시간 분석</span>
           </div>
         </div>
       </section>
@@ -2919,26 +2925,26 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>모객: 감정 파이프라인</h2>
+          <h2>모객: 감정 분석 파이프라인</h2>
         </div>
         <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
           <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
             <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">표정을 감정 좌표로 변환</p>
             <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
-              <li><strong>MediaPipe 468점 · blendshape 52</strong><br>얼굴 표정 특징 추출</li>
-              <li><strong>7감정 → V·A 2축</strong><br>긍정·부정, 차분·흥분으로 단순화</li>
+              <li><strong>MediaPipe</strong><br>얼굴 표정 특징 추출</li>
+              <li><strong>V·A 기반 감정 판단</strong><br>긍정·부정, 차분·흥분으로 단순화</li>
               <li><strong>EMA · Hysteresis</strong><br>순간 표정 변화를 부드럽게 보정</li>
-              <li><strong>V&lt;-0.5 · A&gt;+0.4</strong><br>불쾌 반응 시 모객 중단</li>
+              <li><strong>불쾌 반응 시 모객 중단</strong><br></li>
             </ul>
           </div>
           <div style="display:grid; grid-template-rows:1fr 1fr; gap:14px; height:100%; min-height:0;">
-            <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
-              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: var(--type-micro); font-weight:700;">표정에서 반응 읽기</span>
-              <video src="assets/moca_face_emotion.mp4" autoplay loop muted playsinline aria-label="얼굴 표정에서 감정을 분석하는 화면" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+            <div class="media-frame contain" style="display:grid; grid-template-rows:minmax(0, 1fr) auto; gap:6px; height:100%; min-height:0;">
+              <video src="assets/moca_face_emotion.mp4" autoplay loop muted playsinline aria-label="얼굴 표정에서 감정을 분석하는 화면" style="width: 100%; height: 100%; min-height:0; object-fit: contain; display: block; background: white; padding: 0;"></video>
+              <span style="color: var(--muted-text); font-size: var(--type-micro); font-weight:700; text-align:center;">표정에서 반응 읽기</span>
             </div>
-            <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
-              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: var(--type-micro); font-weight:700;">V·A 추이 EMA 보정</span>
-              <video src="assets/moca_va_ema.mp4" autoplay loop muted playsinline aria-label="Valence·Arousal 좌표와 EMA 추이 분석" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+            <div class="media-frame contain" style="display:grid; grid-template-rows:minmax(0, 1fr) auto; gap:6px; height:100%; min-height:0;">
+              <video src="assets/moca_va_ema.mp4" autoplay loop muted playsinline aria-label="Valence·Arousal 좌표와 EMA 추이 분석" style="width: 100%; height: 100%; min-height:0; object-fit: contain; display: block; background: white; padding: 0;"></video>
+              <span style="color: var(--muted-text); font-size: var(--type-micro); font-weight:700; text-align:center;">V·A 추이 EMA 보정</span>
             </div>
           </div>
         </div>
@@ -2947,11 +2953,11 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>모객: 안전·근거</h2>
+          <h2>모객: 안전 보장</h2>
         </div>
         <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
           <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
-            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">기계 안전과 감정 안전을 함께 확인</p>
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">기계 안전과 감정 안전</p>
             <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
               <li><strong>물리 · 배터리 / LiDAR</strong><br>장애물과 로봇 상태 확인</li>
               <li><strong>운영 · PauseGate</strong><br>위험 상황 즉시 일시정지</li>
@@ -2959,9 +2965,9 @@
               <li><strong>근거 · IEC 60204-1 / BT / 신호 융합</strong></li>
             </ul>
           </div>
-          <div class="media-frame contain" style="position:relative; min-height:0; background:white;">
-            <span style="position:absolute; left:14px; top:14px; z-index:3; padding:6px 12px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 88%, black); color:white; font-size: var(--type-caption); font-weight:800;">불쾌 반응 감지 → 중단</span>
-            <video src="assets/moca_abort.mp4" autoplay loop muted playsinline aria-label="고객의 화남을 감지해 모객을 중단하는 감정 모니터 대응" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+          <div class="media-frame contain" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-height:0; background:white;">
+            <video src="assets/moca_abort.mp4" autoplay loop muted playsinline aria-label="고객의 화남을 감지해 모객을 중단하는 감정 모니터 대응" style="width:auto; height:auto; max-width:100%; max-height:calc(100% - 30px); object-fit:contain; display:block; background:white; padding:0;"></video>
+            <span style="color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">불쾌 반응 감지 → 중단</span>
           </div>
         </div>
       </section>
@@ -2983,13 +2989,13 @@
             </ul>
           </div>
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; height:100%; min-height:0;">
-            <div style="display:grid; grid-template-rows:auto minmax(0,1fr); gap: 10px; min-height:0;">
-              <h3 style="margin: 0;">개선 전</h3>
-              <div class="media-frame" style="height: 100%; min-height:0;"><img src="assets/attract_follow/zigzag_fail.gif" alt="지그재그 진동 문제" style="object-fit: contain; padding: 8px;"></div>
+            <div style="display:grid; grid-template-rows:minmax(0,1fr) auto; gap: 10px; min-height:0;">
+              <div class="media-frame" style="height: 100%; min-height:0;"><img src="assets/attract_follow/zigzag_fail.gif" alt="지그재그 진동 문제" style="object-fit: contain; padding: 0;"></div>
+              <h3 style="margin: 0; color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">개선 전</h3>
             </div>
-            <div style="display:grid; grid-template-rows:auto minmax(0,1fr); gap: 10px; min-height:0;">
-              <h3 style="margin: 0;">개선 후</h3>
-              <div class="media-frame" style="height: 100%; min-height:0;"><img src="assets/attract_follow/follow_single.gif" alt="안정적 추종 해결" style="object-fit: contain; padding: 8px;"></div>
+            <div style="display:grid; grid-template-rows:minmax(0,1fr) auto; gap: 10px; min-height:0;">
+              <div class="media-frame" style="height: 100%; min-height:0;"><img src="assets/attract_follow/follow_single.gif" alt="안정적 추종 해결" style="object-fit: contain; padding: 0;"></div>
+              <h3 style="margin: 0; color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">개선 후</h3>
             </div>
           </div>
         </div>
