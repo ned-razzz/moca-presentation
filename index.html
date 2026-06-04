@@ -19,11 +19,21 @@
       --line: #d9e0ec;
       --muted-text: color-mix(in srgb, var(--text) 72%, white);
       --faint-text: color-mix(in srgb, var(--text) 34%, transparent);
-      --slide-title-size: clamp(24px, 3vw, 42px);
-      --content-title-size: clamp(24px, 2.3vw, 34px);
-      --content-body-size: clamp(20px, 1.75vw, 28px);
-      --content-small-size: clamp(18px, 1.45vw, 23px);
-      --content-highlight-size: clamp(22px, 2vw, 32px);
+      --type-hero: clamp(56px, 7.8vw, 116px);
+      --type-section-title: clamp(78px, 9vw, 190px);
+      --type-slide-title: clamp(38px, 3.7vw, 56px);
+      --type-content-title: clamp(28px, 2.35vw, 36px);
+      --type-highlight: clamp(30px, 2.75vw, 44px);
+      --type-body: clamp(22px, 1.85vw, 30px);
+      --type-small: clamp(19px, 1.45vw, 24px);
+      --type-caption: clamp(15px, 1.05vw, 18px);
+      --type-ui: clamp(14px, 1vw, 16px);
+      --type-micro: clamp(12px, .9vw, 14px);
+      --slide-title-size: var(--type-slide-title);
+      --content-title-size: var(--type-content-title);
+      --content-body-size: var(--type-body);
+      --content-small-size: var(--type-small);
+      --content-highlight-size: var(--type-highlight);
       --radius-card: 8px;
       --radius-pill: 999px;
       --shadow-card: 0 14px 32px rgba(23, 32, 51, 0.08);
@@ -93,7 +103,7 @@
       top: clamp(18px, 3vw, 42px);
       color: var(--faint-text);
       max-width: min(62vw, 780px);
-      font-size: clamp(12px, 1vw, 16px);
+      font-size: clamp(21px, 1.5vw, 24px);
       line-height: 1.45;
       text-align: right;
       word-break: keep-all;
@@ -123,7 +133,7 @@
     .slide.section-divider .section-divider-inner > h2 {
       margin: 0;
       color: white;
-      font-size: clamp(70px, 9vw, 190px);
+      font-size: var(--type-section-title);
       line-height: 1;
       text-align: center;
       font-weight: 900;
@@ -142,7 +152,7 @@
     .slide.section-divider .section-divider-inner > ul > li {
       padding: 10px 18px;
       color: rgba(255, 255, 255, 0.9);
-      font-size: clamp(22px, 2.2vw, 34px);
+      font-size: var(--type-content-title);
       font-weight: 800;
       line-height: 1.2;
       border: 1px solid rgba(255, 255, 255, 0.35);
@@ -158,7 +168,7 @@
       bottom: clamp(10px, 1.4vw, 20px);
       z-index: 20;
       color: var(--faint-text);
-      font-size: clamp(12px, 1vw, 16px);
+      font-size: clamp(21px, 1.5vw, 24px);
       line-height: 1.45;
       text-align: right;
       word-break: keep-all;
@@ -240,7 +250,7 @@
     .cover-photo .meta-row {
       margin: clamp(24px, 3vh, 34px) 0 0;
       gap: 2px;
-      font-size: clamp(13px, 1.1vw, 16px);
+      font-size: var(--type-ui);
       color: rgba(255, 255, 255, 0.82);
     }
 
@@ -255,7 +265,7 @@
 
     .eyebrow {
       color: var(--primary);
-      font-size: clamp(14px, 1.35vw, 20px);
+      font-size: var(--type-small);
       font-weight: 700;
       margin: 0 0 16px;
     }
@@ -270,7 +280,7 @@
     /* Shared typography */
     h1 {
       color: var(--dark);
-      font-size: clamp(46px, 7.6vw, 108px);
+      font-size: var(--type-hero);
       line-height: .92;
       letter-spacing: 0;
       max-width: 8ch;
@@ -294,7 +304,7 @@
     .lead {
       margin-top: 24px;
       color: var(--muted-text);
-      font-size: clamp(18px, 2.1vw, 30px);
+      font-size: var(--type-highlight);
       line-height: 1.48;
       max-width: 880px;
       word-break: keep-all;
@@ -306,7 +316,7 @@
       gap: 6px;
       margin: 0 clamp(32px, 7vw, 110px) clamp(76px, 8vw, 112px);
       color: var(--muted-text);
-      font-size: clamp(13px, 1.2vw, 17px);
+      font-size: var(--type-caption);
       line-height: 1.6;
     }
 
@@ -321,7 +331,7 @@
     .section-mark {
       color: var(--primary);
       font-weight: 800;
-      font-size: clamp(11px, .95vw, 14px);
+      font-size: clamp(18px, 1.35vw, 21px);
     }
 
     .content {
@@ -387,7 +397,7 @@
 
     ul {
       margin: 0;
-      padding-left: 1.45em;
+      padding-left: 1.65em;
     }
 
     .media-frame {
@@ -490,7 +500,7 @@
     .service-flow {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--item-ga);
+      gap: var(--item-gap);
     }
 
     .service-flow .card {
@@ -726,7 +736,7 @@
       border-radius: var(--radius-pill);
       color: var(--text);
       background: color-mix(in srgb, var(--primary) 10%, white);
-      font-size: clamp(12px, 1vw, 15px);
+      font-size: var(--type-caption);
       white-space: nowrap;
     }
 
@@ -756,7 +766,7 @@
     .num {
       color: var(--secondary);
       font-weight: 900;
-      font-size: 15px;
+      font-size: var(--type-caption);
     }
 
     .agenda-slide .flow {
@@ -775,23 +785,23 @@
     }
 
     .agenda-slide .timeline-step h3 {
-      font-size: clamp(24px, 2.7vw, 40px);
+      font-size: var(--type-content-title);
     }
 
     .agenda-slide .timeline-step p {
       color: var(--muted-text);
-      font-size: clamp(17px, 1.55vw, 24px);
+      font-size: var(--type-small);
       line-height: 1.5;
     }
 
     .agenda-slide .timeline-step ul {
       display: grid;
       gap: 8px;
-      padding-left: 1.05em;
+      padding-left: 1.35em;
     }
 
     .agenda-slide .timeline-step li {
-      font-size: clamp(16px, 1.35vw, 21px);
+      font-size: var(--type-caption);
       line-height: 1.45;
     }
 
@@ -808,7 +818,7 @@
     }
 
     .metric b {
-      font-size: clamp(26px, 3.2vw, 46px);
+      font-size: var(--type-highlight);
       line-height: 1;
       color: var(--secondary);
     }
@@ -903,7 +913,7 @@
 
     .core-feature-slide .core-feature-card h3 {
       color: var(--dark);
-      font-size: clamp(21px, 1.8vw, 28px);
+      font-size: var(--type-content-title);
       line-height: 1.15;
       text-align: center;
       word-break: keep-all;
@@ -913,12 +923,12 @@
       display: grid;
       gap: 6px;
       margin: 0;
-      padding-left: 1.05em;
+      padding-left: 1.35em;
     }
 
     .core-feature-slide .core-feature-card li {
       color: var(--muted-text);
-      font-size: clamp(17px, 1.25vw, 21px);
+      font-size: var(--type-small);
       line-height: 1.36;
       word-break: keep-all;
     }
@@ -947,7 +957,7 @@
       display: grid;
       gap: 10px;
       margin: 0;
-      padding-left: 1.1em;
+      padding-left: 1.45em;
     }
 
     .tech-list li {
@@ -1015,7 +1025,7 @@
     .role-photo::before {
       content: "촬영 이미지";
       color: color-mix(in srgb, var(--text) 46%, white);
-      font-size: clamp(16px, 1.2vw, 20px);
+      font-size: var(--type-caption);
       font-weight: 800;
     }
 
@@ -1030,13 +1040,13 @@
     .role-body h4 {
       margin: 0;
       color: var(--dark);
-      font-size: clamp(18px, 1.2vw, 22px);
+      font-size: var(--type-small);
       line-height: 1.15;
     }
 
     .role-body ul {
       margin: 0;
-      padding-left: 1.05em;
+      padding-left: 1.28em;
       display: grid;
       align-content: start;
       gap: 7px;
@@ -1045,7 +1055,7 @@
 
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content .role-body li {
       color: var(--muted-text);
-      font-size: clamp(15px, 1vw, 18px);
+      font-size: var(--type-caption);
       line-height: 1.32;
       word-break: keep-all;
     }
@@ -1119,7 +1129,7 @@
     }
 
     .human-context-slide .header h2 {
-      font-size: clamp(44px, 3.9vw, 62px);
+      font-size: var(--type-slide-title);
       line-height: 1.08;
     }
 
@@ -1155,7 +1165,7 @@
     .human-context-slide .content .panel-title {
       margin: 0;
       color: var(--text);
-      font-size: clamp(14px, .95vw, 17px);
+      font-size: var(--type-caption);
       font-weight: 800;
       line-height: 1.25;
     }
@@ -1168,11 +1178,11 @@
       display: grid;
       gap: 4px;
       margin: 0;
-      padding-left: 1.15em;
+      padding-left: 1.35em;
     }
 
     .human-context-slide .content .context-list li {
-      font-size: clamp(11px, .78vw, 14px);
+      font-size: var(--type-micro);
       line-height: 1.32;
       color: var(--muted-text);
     }
@@ -1211,7 +1221,7 @@
 
     .human-context-slide .content .context-caption p {
       margin: 0;
-      font-size: clamp(9px, .64vw, 11px);
+      font-size: var(--type-micro);
       line-height: 1.25;
       color: var(--muted-text);
     }
@@ -1280,11 +1290,11 @@
     }
 
     .slide.scenario-slide .scenario-card-inner h3 {
-      font-size: clamp(24px, 2vw, 32px);
+      font-size: var(--type-content-title);
     }
 
     .slide.scenario-slide .scenario-card-inner p {
-      font-size: clamp(20px, 1.55vw, 25px);
+      font-size: var(--type-small);
       line-height: 1.42;
       display: flex;
       align-items: center;
@@ -1308,7 +1318,7 @@
     .qa-subtitle {
       margin-top: clamp(18px, 2vw, 32px);
       color: color-mix(in srgb, var(--text) 70%, white);
-      font-size: clamp(20px, 2vw, 32px);
+      font-size: var(--type-highlight);
       line-height: 1.45;
       word-break: keep-all;
     }
@@ -1375,7 +1385,7 @@
 
     .agenda-panel-title {
       color: var(--dark);
-      font-size: clamp(18px, 1.5vw, 24px);
+      font-size: var(--type-small);
       font-weight: 900;
       line-height: 1.2;
     }
@@ -1430,7 +1440,7 @@
     .agenda-link-main {
       padding: 10px 12px;
       color: var(--dark);
-      font-size: clamp(17px, 1.3vw, 22px);
+      font-size: var(--type-small);
       font-weight: 900;
       line-height: 1.2;
     }
@@ -1438,7 +1448,7 @@
     .agenda-link-sub {
       padding: 8px 12px 8px 28px;
       color: var(--muted-text);
-      font-size: clamp(14px, 1vw, 17px);
+      font-size: var(--type-caption);
       line-height: 1.35;
       position: relative;
     }
@@ -1459,7 +1469,7 @@
       min-width: 68px;
       text-align: center;
       color: color-mix(in srgb, var(--text) 68%, white);
-      font-size: 14px;
+      font-size: var(--type-ui);
     }
 
     .progress {
@@ -2131,9 +2141,9 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>제조</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>Gazebo 핫도그 제조 검증</h3>
-          <div class="stack" style="grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px;">
+          <div class="stack" style="grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; height: 100%;">
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
               <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기" style="padding: 0; object-fit: cover;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">① 케이스 집기</p>
@@ -2159,19 +2169,19 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>제조</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>실물 로봇 동작 검증</h3>
-          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start;">
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치" style="padding: 0; object-fit: cover;"></div>
+          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; height: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치" style="padding: 0; object-fit: cover;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">① 빵 배치</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치" style="padding: 0; object-fit: cover;"></div>
+            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치" style="padding: 0; object-fit: cover;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">② 소시지 배치</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포" style="padding: 0; object-fit: cover;"></div>
+            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포" style="padding: 0; object-fit: cover;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">③ 케첩 도포</p>
             </div>
           </div>
@@ -2345,12 +2355,12 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>모객</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>탐지 → 접근 → 자기소개 → 미니게임</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; height: 100%;">
             <!-- [1] 군중 탐지 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/group_detect.gif" alt="군중 탐지 그룹화 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[1] 군중 탐지·그룹화</p>
@@ -2358,7 +2368,7 @@
             </div>
             <!-- [2] 그룹 접근 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/group_approach.gif" alt="최대 인원 그룹 접근 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[2] 그룹 접근</p>
@@ -2374,12 +2384,12 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>모객</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>탐지 → 접근 → 자기소개 → 미니게임</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; height: 100%;">
             <!-- [3] 자기소개 (mp4) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <video id="vid-icebreak" src="assets/attract_follow/icebreak.mp4" preload="metadata" style="width:100%; height:100%; object-fit:contain; display:block;"></video>
               </div>
               <div style="display:flex; align-items:center; gap:10px;">
@@ -2393,7 +2403,7 @@
             </div>
             <!-- [4] 미니게임 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/minigame.gif" alt="미니게임 cafe_ninja 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[4] 미니게임</p>
@@ -2409,12 +2419,12 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>모객</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>메뉴 홍보 → 1인 추종 (+ 병렬 감정 분석)</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr 1fr; height: 100%;">
             <!-- [5] 메뉴 홍보 (mp4) -->
-            <div style="display:grid; grid-template-rows: 1fr auto auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+            <div style="display:grid; grid-template-rows: 1fr auto auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <video id="vid-offer" src="assets/attract_follow/offer.mp4" preload="metadata" style="width:100%; height:100%; object-fit:contain; display:block;"></video>
               </div>
               <div style="display:flex; align-items:center; gap:10px;">
@@ -2427,16 +2437,16 @@
               <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">메뉴 소개·방문 유도</p>
             </div>
             <!-- 1인 추종 (gif) -->
-            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/follow_single.gif" alt="근접 대상 추종 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">1인 추종</p>
               <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">관심 대상 추종 · P+EMA</p>
             </div>
             <!-- 병렬: 감정 분석 (gif) -->
-            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/emotion_rapport.gif" alt="감정 분석 gefa rapport 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">병렬: 감정 분석</p>
@@ -2571,7 +2581,7 @@
           <h2>제조: OpenArm - 그리퍼 불일치</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr auto 0.9fr auto 1fr; gap: 14px; align-items: center;">
+          <div class="stack" style="grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: center;">
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">수정 전</h3>
               <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/그리퍼_수정전.png" alt="그리퍼 수정 전"></div>
@@ -2581,8 +2591,8 @@
             </div>
             <div style="font-size: clamp(34px, 3.4vw, 58px); font-weight: 800; color: var(--secondary); align-self: center;">→</div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">모델링·description 수정</h3>
-              <div class="media-frame" style="height: clamp(180px, 34vh, 340px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="Blender 그리퍼 모델링"></div>
+              <h3 style="margin: 0;">모델링 수정</h3>
+              <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="Blender 그리퍼 모델링"></div>
               <div class="card">
                 <p><strong>실물 그리퍼 모델링·URDF 반영</strong></p>
               </div>
@@ -2788,7 +2798,7 @@
               </div>
               <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
                 <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 1 - 내비 오차</p>
-                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
+                <ul style="margin: 0; padding-left: 1.4em; display: grid; gap: 4px;">
                   <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">도착 오차 → 상대 위치 변동 → Pick 실패</li>
                   <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">위치 균등 데이터셋 → 일반화</li>
                 </ul>
@@ -2802,7 +2812,7 @@
               </div>
               <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
                 <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 2 - 조명 Flicker</p>
-                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
+                <ul style="margin: 0; padding-left: 1.4em; display: grid; gap: 4px;">
                   <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">플리커 노이즈 → 추론 편향</li>
                   <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">Augmentation → 조명 강건성</li>
                 </ul>
@@ -2819,9 +2829,9 @@
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-6 / 기능 및 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>모객 기술 ①: 3모듈 구조</h2>
         </div>
         <div class="content two-col">
@@ -2837,7 +2847,7 @@
             <div class="card">
               <h3>omx_reactor · 손</h3>
               <p>감정·제스처 표현. OpenManipulator-X 5축, <strong>18종 모션</strong>.</p>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ FSM · BehaviorTree · PTZ · OpenManipulator-X</p>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: var(--type-caption); line-height:1.45; word-break:keep-all;">※ FSM · BehaviorTree · PTZ · OpenManipulator-X</p>
             </div>
           </div>
           <div class="media-frame contain" style="padding:6px; background:white;">
@@ -2877,9 +2887,9 @@
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-8 / 기능 및 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>모객 기술 ②: FSM + BT</h2>
         </div>
         <div class="content">
@@ -2896,7 +2906,7 @@
               <div class="card">
                 <h3>왜 이원화인가</h3>
                 <p>FSM은 선점, BT는 순차·안전 감시</p>
-                <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ preempt: 우선 작업 선점 · kill/spawn: 프로세스 재기동</p>
+                <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: var(--type-caption); line-height:1.45; word-break:keep-all;">※ preempt: 우선 작업 선점 · kill/spawn: 프로세스 재기동</p>
               </div>
             </div>
             <div class="highlight">
@@ -2906,9 +2916,9 @@
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-9 / 기능 및 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>모객 기술 ③: rapport 퍼널</h2>
         </div>
         <div class="content two-col">
@@ -2921,7 +2931,7 @@
                 <li>응답보다 즐거움 측정</li>
                 <li>분노·불쾌 시 즉시 중단</li>
               </ul>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ funnel: 단계별 전환 흐름 · EmotionMonitor: 감정 감시</p>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: var(--type-caption); line-height:1.45; word-break:keep-all;">※ funnel: 단계별 전환 흐름 · EmotionMonitor: 감정 감시</p>
             </div>
             <div class="highlight">
               친밀도 기반 권유
@@ -2933,9 +2943,9 @@
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-10 / 기능 및 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>모객 기술 ④: 감정 파이프라인</h2>
         </div>
         <div class="content two-col">
@@ -2948,7 +2958,7 @@
                 <li>EMA + Hysteresis</li>
                 <li>abort: V&lt;-0.5, A&gt;+0.4</li>
               </ul>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ blendshape · EMA · Hysteresis</p>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: var(--type-caption); line-height:1.45; word-break:keep-all;">※ blendshape · EMA · Hysteresis</p>
             </div>
             <div class="highlight">
               공통 감정 인지
@@ -2956,20 +2966,20 @@
           </div>
           <div style="display:grid; grid-template-rows:1fr 1fr; gap:14px; height:100%; min-height:0;">
             <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
-              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: clamp(11px,.92vw,14px); font-weight:700;">표정 → 감정 분석</span>
+              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: var(--type-micro); font-weight:700;">표정 → 감정 분석</span>
               <video src="assets/moca_face_emotion.mp4" autoplay loop muted playsinline aria-label="얼굴 표정에서 감정을 분석하는 화면" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
             </div>
             <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
-              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: clamp(11px,.92vw,14px); font-weight:700;">V·A 추이 평활</span>
+              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: var(--type-micro); font-weight:700;">V·A 추이 평활</span>
               <video src="assets/moca_va_ema.mp4" autoplay loop muted playsinline aria-label="Valence·Arousal 좌표와 EMA 추이 분석" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-11 / 기능 및 기술</p>
+          <p class="section-mark">04 / 주요 기술</p>
           <h2>모객 기술 ⑤: 안전·근거</h2>
         </div>
         <div class="content two-col">
@@ -2981,7 +2991,7 @@
                 <li><strong>② 운영</strong>: PauseGate·감시 정지</li>
                 <li><strong>③ 사회</strong>: 불쾌 감지·사과·후퇴</li>
               </ul>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ LiDAR · IEC 60204-1 · V·A</p>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: var(--type-caption); line-height:1.45; word-break:keep-all;">※ LiDAR · IEC 60204-1 · V·A</p>
             </div>
             <div class="card">
               <h3>학술 근거</h3>
@@ -3014,8 +3024,8 @@
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 10px; align-content: start; min-height: 0;">
               <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 해결 · ASR Context</span>
               <div style="background: #1e1e2e; border: 1px solid #2c2c3d; border-radius: 10px; padding: clamp(16px, 1.6vw, 24px); overflow: hidden;">
-                <div style="font-size: clamp(15px, 1.25vw, 20px); font-weight: 700; color: #aab6ff; margin-bottom: 12px;">주입 컨텍스트</div>
-                <pre style="margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(13px, 1.2vw, 18px); line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: #d4d4d4;"><span style="color: #6a9a6a;">// 메뉴·수량어 bias</span>
+                <div style="font-size: var(--type-caption); font-weight: 700; color: #aab6ff; margin-bottom: 12px;">주입 컨텍스트</div>
+                <pre style="margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: var(--type-micro); line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: #d4d4d4;"><span style="color: #6a9a6a;">// 메뉴·수량어 bias</span>
 <span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">ASR_CONTEXT</span> = <span style="color: #ce9178;">'매장 주문. 핫도그, 콜라, 커피. '</span>
   + <span style="color: #ce9178;">'자주 쓰는 말: 하나, 한 개, 한 잔, 둘, 두 개, 두 잔, 개, 잔.'</span>;
 
@@ -3023,7 +3033,7 @@
 <span style="color: #9cdcfe;">fd</span>.<span style="color: #dcdcaa;">append</span>(<span style="color: #ce9178;">'context'</span>, <span style="color: #9cdcfe;">ASR_CONTEXT</span>);   <span style="color: #6a9a6a;">// → POST /asr/transcribe</span></pre>
               </div>
               <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
-                <span style="font-size: clamp(22px, 2.4vw, 34px); font-weight: 800; line-height: 1;"><span style="color: var(--primary); text-decoration: line-through;">65%</span> <span style="color: var(--muted-text);">→</span> <span style="color: #1b9e5a;">95%</span></span>
+                <span style="font-size: var(--type-highlight); font-weight: 800; line-height: 1;"><span style="color: var(--primary); text-decoration: line-through;">65%</span> <span style="color: var(--muted-text);">→</span> <span style="color: #1b9e5a;">95%</span></span>
                 <span style="font-size: var(--content-small-size); color: var(--muted-text);">WER 30%→5%</span>
               </div>
             </div>
@@ -3043,7 +3053,7 @@
             <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45; align-self: start;">발화 중 추론·합성</span>
             <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: clamp(10px, 1.2vw, 16px);">
               <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
-              <b style="font-size: clamp(26px, 3.2vw, 44px); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
+              <b style="font-size: var(--type-highlight); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
               <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준</span>
             </div>
           </div>
@@ -3090,14 +3100,14 @@
           <h2>서빙: 자율주행 연동</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: start;">
-            <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch; height: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-height: 0;">
               <div class="media-frame" style="min-height: 0;">
                 <img data-media="serving_driving/rvizhome-_t03ㄱ_2x.gif" alt="RViz 경로 시각화 home에서 t03">
               </div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">RViz · home → t03</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-height: 0;">
               <div class="media-frame" style="min-height: 0;">
                 <img data-media="serving_driving/rvizt03-__home_2x.gif" alt="RViz 경로 시각화 t03에서 home">
               </div>
