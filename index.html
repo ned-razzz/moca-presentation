@@ -2184,7 +2184,7 @@
           <h2>모객: 감정 인식 기반 고객 인터랙션</h2>
         </div>
         <div class="content">
-          <div class="stack">
+          <div class="stack" style="grid-template-columns: 0.82fr 1.18fr; gap: clamp(18px, 2vw, 28px); align-items: stretch;">
             <div class="card">
               <h3>도비 모객 구조</h3>
               <ul class="tech-list">
@@ -2194,6 +2194,9 @@
                 <li>MediaPipe 얼굴 특징과 Valence·Arousal 좌표로 호응도와 중단 조건 판단</li>
                 <li>물리 안전, 운영 정지, 사회적 후퇴를 분리한 3계층 안전 구조 적용</li>
               </ul>
+            </div>
+            <div class="media-frame" style="min-height: 0;">
+              <img src="assets/attract_follow/rapport_minigame.gif" alt="감정 분석(rapport) 대시보드와 미니게임 진행 중인 도비 로봇" style="object-fit: contain; padding: 0;">
             </div>
           </div>
         </div>
@@ -2213,8 +2216,26 @@
                 <li>[1] IdleScan 그룹 탐지 → [2] Approach 그룹 접근 → [3] IceBreak 자기소개 → [4] Minigame 미니게임 → [5] Offer 메뉴 홍보</li>
                 <li>탐지·접근·추종은 시각 인식 기반 자율주행(YOLOv8 · DBSCAN · BoT-SORT · PD 제어)</li>
                 <li>자기소개·미니게임·메뉴 홍보는 TTS·아바타·게임으로 진행되는 모객 인터랙션</li>
-                <li>감정 분석(geva → rapport)은 전 구간 병렬 상시, 분노 감지 시 즉시 중단(abort→idle)</li>
+                <li>감정 분석(gefa → rapport)은 전 구간 병렬 상시, 분노 감지 시 즉시 중단(abort→idle)</li>
               </ul>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(14px, 1.6vw, 20px);">
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
+              <b style="color: var(--secondary); font-size: var(--content-small-size);">gefa</b>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">얼굴 표정에서 Valence·Arousal을 추정하는 감정 분석 모듈</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
+              <b style="color: var(--secondary); font-size: var(--content-small-size);">BoT-SORT</b>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">감지된 사람에 ID를 부여해 프레임 간 동일 인물을 추적하는 다중 객체 추적(MOT) 알고리즘</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
+              <b style="color: var(--secondary); font-size: var(--content-small-size);">rapport</b>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">감정값을 누적한 고객 호응도 지표로 모객 지속·중단을 판단</span>
+            </div>
+            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
+              <b style="color: var(--secondary); font-size: var(--content-small-size);">DBSCAN</b>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">가까이 모인 사람들을 한 무리로 묶는 밀도 기반 군집화 알고리즘</span>
             </div>
           </div>
           <p style="font-size: var(--content-small-size); color: var(--muted-text); margin-top: 12px;">※ 고객 영구식별(얼굴 ReID)·분노 재권유금지(blacklist)는 Phase 2 후속. 오인식 윤리·개인정보(생체) 정책상 의도적 분리. 현재는 분노 감지 시 세션 단위 중단(abort→idle)으로 안전 동작.</p>
@@ -2304,10 +2325,10 @@
             <!-- 병렬: 감정 분석 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
               <div class="media-frame" style="height:auto; min-height:0;">
-                <img src="assets/attract_follow/emotion_rapport.gif" alt="감정 분석 geva rapport 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
+                <img src="assets/attract_follow/emotion_rapport.gif" alt="감정 분석 gefa rapport 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">병렬: 감정 분석</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">전 과정에서 표정으로 감정을 살펴(geva→rapport) 불쾌 감지 시 즉시 멈춥니다(abort→idle)</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">전 과정에서 표정으로 감정을 살펴(gefa→rapport) 불쾌 감지 시 즉시 멈춥니다(abort→idle)</p>
             </div>
           </div>
         </div>
@@ -2685,12 +2706,179 @@
         </div>
       </section>
 
-      <section class="slide" data-kicker="Technology">
+      <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>감정 분석 모객</h2>
+          <p class="section-mark">11-6 / 기능 및 기술</p>
+          <h2>모객 기술 ①: 두뇌·눈·손 3모듈 구조</h2>
         </div>
-        <div class="content"></div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>doby_controller · 두뇌</h3>
+              <p>주행·전략·대화·표정 등 의사결정 전부를 담당한다. Vic Pinky 베이스에 BehaviorTree + 5-state FSM + Nav2 구성.</p>
+            </div>
+            <div class="card">
+              <h3>scout_reactor · 눈</h3>
+              <p>멀리서 손든 손님(호출)을 손·바운딩박스로 탐지하고, PTZ 카메라가 대상을 추적·고정(SEARCH→TRACK→LOCK)한다. PTZ 카메라 + 아두이노 서보 2축.</p>
+            </div>
+            <div class="card">
+              <h3>omx_reactor · 손</h3>
+              <p>감정·제스처에 맞춰 환영·응원·하이파이브를 표현한다. OpenManipulator-X(오픈HW) 5축 팔에 <strong>18종 표현 모션을 자체 구현</strong> — 감정(V·A) 4분면 + 인사 2 + 제스처 mimic 10 + 그리퍼 2. 새 모션은 motions·trajectories 한 줄만 추가하는 플러그인 구조.</p>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">FSM</b> 유한상태머신 · <b style="color: var(--secondary); font-weight:700;">BehaviorTree</b> 행동 트리 · <b style="color: var(--secondary); font-weight:700;">PTZ 카메라</b> 좌우·상하로 움직이는 카메라 · <b style="color: var(--secondary); font-weight:700;">OpenManipulator-X</b> 5축 로봇 팔</p>
+            </div>
+          </div>
+          <div class="media-frame contain" style="padding:6px; background:white;">
+            <svg style="width:100%; height:100%; display:block; font-family: 'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif;" viewBox="0 0 156 128" preserveAspectRatio="xMidYMid meet" role="img" aria-label="도비 실물 사진에 두뇌·눈·손 모듈을 외곽 라벨로 연결해 표시">
+              <image href="assets/moca_3module.jpg" x="45.65" y="2" width="64.7" height="115" preserveAspectRatio="xMidYMid meet"/>
+
+              <line x1="44" y1="15" x2="75" y2="11" stroke="#224087" stroke-width="0.5"/>
+              <line x1="44" y1="46" x2="75" y2="31" stroke="#d83f87" stroke-width="0.5"/>
+              <line x1="112" y1="46" x2="92" y2="40" stroke="#2e9e6b" stroke-width="0.5"/>
+              <circle cx="75" cy="11" r="1.4" fill="#224087"/>
+              <circle cx="75" cy="31" r="1.4" fill="#d83f87"/>
+              <circle cx="92" cy="40" r="1.4" fill="#2e9e6b"/>
+
+              <g>
+                <rect x="2" y="8" width="42" height="15" rx="2.2" fill="#f5f7fb" stroke="#d9e0ec" stroke-width="0.3"/>
+                <rect x="2" y="8" width="1.8" height="15" fill="#224087"/>
+                <text font-size="3" font-weight="800" fill="#1f2a44" x="7" y="14">눈 · scout_reactor</text>
+                <text font-size="2.3" fill="#5b6678" x="7" y="18.8">PTZ 카메라 + 서보 2축</text>
+              </g>
+              <g>
+                <rect x="2" y="39" width="42" height="15" rx="2.2" fill="#f5f7fb" stroke="#d9e0ec" stroke-width="0.3"/>
+                <rect x="2" y="39" width="1.8" height="15" fill="#d83f87"/>
+                <text font-size="3" font-weight="800" fill="#1f2a44" x="7" y="45">두뇌 · doby_controller</text>
+                <text font-size="2.3" fill="#5b6678" x="7" y="49.8">BehaviorTree · FSM · Nav2</text>
+              </g>
+              <g>
+                <rect x="112" y="39" width="42" height="15" rx="2.2" fill="#f5f7fb" stroke="#d9e0ec" stroke-width="0.3"/>
+                <rect x="112" y="39" width="1.8" height="15" fill="#2e9e6b"/>
+                <text font-size="3" font-weight="800" fill="#1f2a44" x="117" y="45">손 · omx_reactor</text>
+                <text font-size="2.3" fill="#5b6678" x="117" y="49.8">OpenManipulator-X 5축</text>
+              </g>
+
+              <rect x="30" y="119" width="96" height="8" rx="2" fill="#1d3570"/>
+              <text font-size="2.9" font-weight="700" fill="#ffffff" x="78" y="124.6" text-anchor="middle">세 모듈 = 하나의 유기체 · 공통 감정 인지 공유</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">11-8 / 기능 및 기술</p>
+          <h2>모객 기술 ②: 5-state + 6-stage 이원 구조</h2>
+        </div>
+        <div class="content">
+          <div class="stack">
+            <div class="summary-band">
+              <div class="card">
+                <h3>5-state · FSM</h3>
+                <p>로봇이 어떤 일을 하는가. idle · serving · patrol · guiding · engaging(모객). 더 급한 일이 오면 우선순위로 선점(serving=1 … idle=99).</p>
+              </div>
+              <div class="card">
+                <h3>6-stage · BT</h3>
+                <p>engaging 안에서만 도는 진행 순서. IDLE → APPROACH → ICEBREAK → MINIGAME → OFFER → LEAD-IN 을 한 단계씩 순차 진행.</p>
+              </div>
+              <div class="card">
+                <h3>왜 이원화인가</h3>
+                <p>바깥은 ROS 스택을 통째로 kill/spawn 하는 '프로세스 생사' 문제라 FSM, 안은 순차+반응형 안전감시라 BehaviorTree가 필연이다.</p>
+                <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">선점(preempt)</b> 더 급한 작업이 현재 작업을 가로채는 것 · <b style="color: var(--secondary); font-weight:700;">kill·spawn</b> 프로세스를 끄고 새로 띄우는 것</p>
+              </div>
+            </div>
+            <div class="highlight">
+              일의 종류(state, 선점)와 그 일 속 단계(stage, 순차)를 분리했다.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">11-9 / 기능 및 기술</p>
+          <h2>모객 기술 ③: rapport 게이팅 퍼널</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>단계적으로 친해지는 깔때기</h3>
+              <ul class="tech-list">
+                <li>깔때기처럼 단계마다 이탈은 정상 — 억지로 붙잡지 않음</li>
+                <li>APPROACH 1.5m(1.0m 중단) → ICEBREAK(rapport≥30) → MINIGAME → OFFER(≥60) → LEAD-IN(≥80)</li>
+                <li>rapport는 '응답 여부'가 아니라 '얼마나 즐거워했나'를 측정 (happy ×1.5 … 혐오 ×0)</li>
+                <li>EmotionMonitor 1Hz로 분노·불쾌 감지 시 단계 불문 즉시 중단</li>
+              </ul>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">퍼널(funnel)</b> 단계마다 이탈이 생기는 깔때기형 흐름 · <b style="color: var(--secondary); font-weight:700;">EmotionMonitor</b> 1초에 한 번 감정을 감시하는 모듈</p>
+            </div>
+            <div class="highlight">
+              RPG 퀘스트 NPC처럼 단계적으로 친밀도를 쌓아 권유로 수렴한다.
+            </div>
+          </div>
+          <div class="media-frame contain">
+            <video src="assets/moca_rapport.mp4" autoplay loop muted playsinline aria-label="미니게임 중 rapport 친밀도 분석 화면"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">11-10 / 기능 및 기술</p>
+          <h2>모객 기술 ④: 얼굴을 숫자로, 감정 파이프라인</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>픽셀에서 감정 좌표까지</h3>
+              <ul class="tech-list">
+                <li>MediaPipe로 얼굴점 468 + 표정근육 52(blendshape) 추출</li>
+                <li>규칙 가중합으로 7감정 점수화 → Russell V·A 2축 좌표로 압축</li>
+                <li>EMA 평활 + Hysteresis로 떨림을 없애고 추세만 읽음</li>
+                <li>abort 조건: valence &lt; -0.5 ∧ arousal &gt; +0.4 (분노·공포 영역)</li>
+              </ul>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">blendshape</b> 표정근육 강도값(0~1) · <b style="color: var(--secondary); font-weight:700;">EMA</b> 지수이동평균(값을 부드럽게) · <b style="color: var(--secondary); font-weight:700;">Hysteresis</b> 떨림 방지용 연속 프레임 조건</p>
+            </div>
+            <div class="highlight">
+              세 모듈이 공유하는 기술적 심장이다.
+            </div>
+          </div>
+          <div style="display:grid; grid-template-rows:1fr 1fr; gap:14px; height:100%; min-height:0;">
+            <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
+              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: clamp(11px,.92vw,14px); font-weight:700;">표정 → 감정 분석</span>
+              <video src="assets/moca_face_emotion.mp4" autoplay loop muted playsinline aria-label="얼굴 표정에서 감정을 분석하는 화면" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+            </div>
+            <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
+              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: clamp(11px,.92vw,14px); font-weight:700;">V·A 추이 평활</span>
+              <video src="assets/moca_va_ema.mp4" autoplay loop muted playsinline aria-label="Valence·Arousal 좌표와 EMA 추이 분석" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide feature-slide" data-kicker="Functions">
+        <div class="header">
+          <p class="section-mark">11-11 / 기능 및 기술</p>
+          <h2>모객 기술 ⑤: 3계층 안전과 학술 토대</h2>
+        </div>
+        <div class="content two-col">
+          <div class="stack">
+            <div class="card">
+              <h3>성격이 다른 3겹 안전</h3>
+              <ul class="tech-list">
+                <li><strong>① 물리</strong>: Hard SafetyCheck — 배터리 &lt;20%, LiDAR 0.25~1.0m 정지</li>
+                <li><strong>② 운영</strong>: PauseGate — IEC 60204-1 Cat2, 감시된 정지 후 자동 재개</li>
+                <li><strong>③ 사회</strong>: EmotionMonitor — V&lt;-0.5 ∧ A&gt;+0.4 시 모객 중단·사과·후퇴</li>
+              </ul>
+              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">LiDAR</b> 레이저로 거리를 재는 센서 · <b style="color: var(--secondary); font-weight:700;">IEC 60204-1</b> 기계 안전 정지 국제표준 · <b style="color: var(--secondary); font-weight:700;">V·A</b> 감정 좌표(Valence·Arousal)</p>
+            </div>
+            <div class="card">
+              <h3>학술 6-Layer</h3>
+              <p>Russell'80(V·A) · Isla'05(BT) · Salichs'14(신호 융합) · Castro-González'16(게임 친밀) · Marzinotto'14 · Iovino'22 — 45년 6편이 행동·감정 두 줄기로 수렴한다.</p>
+            </div>
+          </div>
+          <div class="media-frame contain">
+            <video src="assets/moca_abort.mp4" autoplay loop muted playsinline aria-label="고객의 화남을 감지해 모객을 중단하는 감정 모니터 대응" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+          </div>
+        </div>
       </section>
 
       <section class="slide" data-kicker="Technology">
