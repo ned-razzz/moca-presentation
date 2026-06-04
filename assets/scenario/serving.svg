@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Serving pictogram</title>
+  <g fill="none" stroke="#224087" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <rect x="48" y="90" width="74" height="84" rx="18"/>
+    <circle cx="66" cy="186" r="12"/>
+    <circle cx="104" cy="186" r="12"/>
+    <path d="M66 76h38"/>
+    <path d="M85 76V58"/>
+    <path d="M132 110h64"/>
+    <path d="M148 110c0-18 32-18 32 0"/>
+    <path d="M184 110v68"/>
+    <path d="M154 178h60"/>
+    <path d="M104 116h24"/>
+  </g>
+  <rect x="70" y="140" width="30" height="10" rx="5" fill="#d83f87"/>
+</svg>

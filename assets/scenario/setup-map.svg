@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Map setup pictogram</title>
+  <g fill="none" stroke="#224087" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <rect x="38" y="54" width="180" height="128" rx="12"/>
+    <path d="M84 182v22h88v-22"/>
+    <path d="M64 92h128M64 128h128M96 66v104M160 66v104"/>
+    <circle cx="128" cy="120" r="22" fill="#fff"/>
+    <path d="M116 118h24"/>
+    <path d="M114 132h28"/>
+  </g>
+  <g fill="#d83f87">
+    <circle cx="84" cy="92" r="9"/>
+    <circle cx="172" cy="94" r="9"/>
+    <circle cx="180" cy="150" r="9"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Emotion analysis pictogram</title>
+  <g fill="none" stroke="#224087" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <path d="M62 90V62h28M166 62h28v28M62 166v28h28M194 166v28h-28"/>
+    <circle cx="128" cy="128" r="48"/>
+    <path d="M106 118h1M150 118h1"/>
+    <path d="M108 144c14 14 26 14 40 0"/>
+  </g>
+  <g fill="#d83f87">
+    <circle cx="90" cy="128" r="8"/>
+    <circle cx="166" cy="128" r="8"/>
+    <circle cx="128" cy="84" r="7"/>
+    <circle cx="128" cy="172" r="7"/>
+  </g>
+</svg>

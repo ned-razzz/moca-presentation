@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Target search pictogram</title>
+  <g fill="none" stroke="#224087" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <rect x="38" y="124" width="58" height="66" rx="18"/>
+    <path d="M58 202h18M67 124v-18"/>
+    <path d="M104 124c20-22 46-22 66 0"/>
+    <path d="M112 152c18 16 40 16 58 0"/>
+    <circle cx="156" cy="84" r="20"/>
+    <circle cx="198" cy="94" r="18"/>
+    <circle cx="178" cy="134" r="18"/>
+  </g>
+  <path d="M104 88c28-22 70-22 98 0" fill="none" stroke="#d83f87" stroke-linecap="round" stroke-width="10"/>
+</svg>

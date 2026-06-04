@@ -706,7 +706,33 @@
 
     .slide.planning-requirements-slide .requirement {
       padding: clamp(14px, 1.35vw, 20px);
+      grid-template-columns: minmax(0, 1fr) clamp(118px, 9.5vw, 162px);
+      align-items: center;
       min-height: 0;
+    }
+
+    .slide.planning-requirements-slide .requirement-copy {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .slide.planning-requirements-slide .requirement-image {
+      width: 100%;
+      aspect-ratio: 1;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      align-self: center;
+      justify-self: end;
+    }
+
+    .slide.planning-requirements-slide .requirement-image svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+      filter: drop-shadow(0 12px 18px rgba(34, 64, 135, 0.1));
     }
 
     .slide.planning-flow-slide .stack {
@@ -788,8 +814,13 @@
       gap: 14px;
     }
 
+    .agenda-slide .header h2 {
+      font-size: clamp(70px, 7.2vw, 110px);
+      line-height: .95;
+    }
+
     .agenda-slide .timeline-step h3 {
-      font-size: var(--type-highlight);
+      font-size: clamp(34px, 3vw, 48px);
     }
 
     .agenda-slide .timeline-step p {
@@ -805,12 +836,12 @@
     }
 
     .agenda-slide .timeline-step li {
-      font-size: var(--type-small);
-      line-height: 1.45;
+      font-size: clamp(20px, 1.55vw, 26px);
+      line-height: 1.38;
     }
 
     .agenda-slide .num {
-      font-size: var(--type-small);
+      font-size: clamp(20px, 1.35vw, 24px);
     }
 
     .metrics {
@@ -1049,7 +1080,7 @@
     .role-body h4 {
       margin: 0;
       color: var(--dark);
-      font-size: var(--type-small);
+      font-size: clamp(30px, 2.175vw, 39px);
       line-height: 1.15;
     }
 
@@ -1064,8 +1095,8 @@
 
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content .role-body li {
       color: var(--muted-text);
-      font-size: var(--type-caption);
-      line-height: 1.32;
+      font-size: clamp(22.5px, 1.575vw, 27px);
+      line-height: 1.28;
       word-break: keep-all;
     }
 
@@ -1280,9 +1311,9 @@
     .scenario-card-inner {
       height: 100%;
       min-height: 0;
-      padding: clamp(78px, 6vw, 112px) clamp(56px, 4vw, 72px) clamp(18px, 1.7vw, 24px);
+      padding: clamp(52px, 4.2vw, 76px) clamp(46px, 3.4vw, 66px) clamp(16px, 1.5vw, 22px);
       display: grid;
-      grid-template-rows: auto auto minmax(2.9em, auto);
+      grid-template-rows: auto auto minmax(2.9em, auto) minmax(0, 1fr);
       gap: var(--item-gap);
       align-content: start;
       justify-content: center;
@@ -1304,11 +1335,20 @@
     }
 
     .slide.scenario-slide .scenario-card-inner p {
-      font-size: var(--type-small);
-      line-height: 1.42;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      max-width: 9.4em;
+      margin: 0;
+      font-size: clamp(20px, 1.45vw, 25px);
+      line-height: 1.28;
+      text-wrap: balance;
+    }
+
+    .scenario-pictogram {
+      width: min(58%, clamp(112px, 10vw, 164px));
+      aspect-ratio: 1;
+      object-fit: contain;
+      align-self: center;
+      display: block;
     }
 
     /* Individual slide style: Q&A */
@@ -1788,6 +1828,9 @@
                 </div>
               </div>
             </div>
+            <div class="highlight">
+              주문 → 제조 → 서빙 자동 연결
+            </div>
           </div>
         </div>
       </section>
@@ -1800,21 +1843,88 @@
         <div class="content">
           <div class="stack">
             <div class="requirements-grid">
-              <div class="requirement">
-                <b>맞춤형 매장 구성</b>
-                <span>맵·서비스 환경 구성</span>
+              <div class="requirement" style="--icon-accent: #d83f87; --icon-soft: #fdeaf4;">
+                <div class="requirement-copy">
+                  <b>맞춤형 매장 구성</b>
+                  <span>맵·서비스 환경 구성</span>
+                </div>
+                <div class="requirement-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <path d="M36 112h88" stroke="var(--secondary)" stroke-width="8" stroke-linecap="round"/>
+                    <rect x="36" y="46" width="38" height="38" rx="9" fill="white" stroke="var(--icon-accent)" stroke-width="7"/>
+                    <rect x="88" y="46" width="36" height="28" rx="8" fill="white" stroke="var(--secondary)" stroke-width="7"/>
+                    <path d="M48 65h14M98 60h16" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M55 112V84M106 112V74" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M44 112c12-21 36-28 62-18" fill="none" stroke="var(--icon-accent)" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M96 91l17 9-17 11" fill="none" stroke="var(--icon-accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="55" cy="112" r="10" fill="white" stroke="var(--icon-accent)" stroke-width="7"/>
+                    <circle cx="106" cy="94" r="8" fill="white" stroke="var(--secondary)" stroke-width="6"/>
+                  </svg>
+                </div>
               </div>
-              <div class="requirement">
-                <b>자동 제조·서빙</b>
-                <span>뚜비·도비 자동 작업</span>
+              <div class="requirement" style="--icon-accent: #1b9e5a; --icon-soft: #e8f7ef;">
+                <div class="requirement-copy">
+                  <b>자동 제조·서빙</b>
+                  <span>뚜비·도비 자동 작업</span>
+                </div>
+                <div class="requirement-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <path d="M38 89h33l10 26H28l10-26Z" fill="white" stroke="var(--icon-accent)" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M45 89V62c0-12 9-21 21-21h16" fill="none" stroke="var(--icon-accent)" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M82 41h25v23H82z" fill="white" stroke="var(--secondary)" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M94 64v15" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M86 80h17" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <rect x="92" y="83" width="40" height="31" rx="10" fill="white" stroke="var(--secondary)" stroke-width="7"/>
+                    <circle cx="104" cy="98" r="4" fill="var(--secondary)"/>
+                    <circle cx="121" cy="98" r="4" fill="var(--secondary)"/>
+                    <path d="M104 109h17" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M96 124h32" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M47 70h16M39 126h28" stroke="var(--icon-accent)" stroke-width="6" stroke-linecap="round"/>
+                  </svg>
+                </div>
               </div>
-              <div class="requirement">
-                <b>안전·인터랙션</b>
-                <span>안전한 접근과 친밀한 응대</span>
+              <div class="requirement" style="--icon-accent: #224087; --icon-soft: #edf2ff;">
+                <div class="requirement-copy">
+                  <b>안전·인터랙션</b>
+                  <span>안전한 접근과 친밀한 응대</span>
+                </div>
+                <div class="requirement-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <path d="M80 38c26 10 45 12 45 12v32c0 27-18 45-45 55-27-10-45-28-45-55V50s19-2 45-12Z" fill="white" stroke="var(--icon-accent)" stroke-width="7" stroke-linejoin="round"/>
+                    <rect x="58" y="66" width="44" height="36" rx="11" fill="white" stroke="var(--secondary)" stroke-width="7"/>
+                    <path d="M80 66V55" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <circle cx="69" cy="83" r="4" fill="var(--secondary)"/>
+                    <circle cx="91" cy="83" r="4" fill="var(--secondary)"/>
+                    <path d="M70 95c6 5 14 5 20 0" fill="none" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M45 82c-11 6-17 14-17 24M115 82c11 6 17 14 17 24" fill="none" stroke="#d83f87" stroke-width="7" stroke-linecap="round"/>
+                    <circle cx="40" cy="112" r="8" fill="white" stroke="#d83f87" stroke-width="6"/>
+                    <circle cx="120" cy="112" r="8" fill="white" stroke="#d83f87" stroke-width="6"/>
+                  </svg>
+                </div>
               </div>
-              <div class="requirement">
-                <b>통합 관리</b>
-                <span>주문·로봇·매장 통합 관리</span>
+              <div class="requirement" style="--icon-accent: #e07020; --icon-soft: #fff2e6;">
+                <div class="requirement-copy">
+                  <b>통합 관리</b>
+                  <span>주문·로봇·매장 통합 관리</span>
+                </div>
+                <div class="requirement-image" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" role="img">
+                    <rect x="14" y="18" width="132" height="124" rx="26" fill="var(--icon-soft)"/>
+                    <rect x="34" y="42" width="92" height="66" rx="13" fill="white" stroke="var(--secondary)" stroke-width="7"/>
+                    <path d="M47 61h23M47 77h15M90 62h20M90 79h16" stroke="var(--secondary)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M49 96h24M90 96h22" stroke="var(--icon-accent)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M80 108v19" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M57 127h46" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+                    <circle cx="47" cy="61" r="5" fill="var(--icon-accent)"/>
+                    <circle cx="90" cy="62" r="5" fill="var(--icon-accent)"/>
+                    <path d="M36 123c9-12 19-17 32-17M124 123c-9-12-19-17-32-17" fill="none" stroke="var(--icon-accent)" stroke-width="7" stroke-linecap="round"/>
+                    <circle cx="36" cy="123" r="7" fill="white" stroke="var(--icon-accent)" stroke-width="6"/>
+                    <circle cx="124" cy="123" r="7" fill="white" stroke="var(--icon-accent)" stroke-width="6"/>
+                  </svg>
+                </div>
               </div>
             </div>
             <div class="highlight">
@@ -1889,7 +1999,8 @@
                 <div class="scenario-card-inner">
                   <span class="num">01</span>
                   <h3>초기 세팅</h3>
-                  <p>맵·메뉴·로봇 위치 설정</p>
+                  <p>맵·위치 설정</p>
+                  <img class="scenario-pictogram" src="assets/scenario/setup-map.svg" alt="맵과 로봇 위치 설정 픽토그램">
                 </div>
               </div>
               <div class="scenario-card">
@@ -1897,6 +2008,7 @@
                   <span class="num">02</span>
                   <h3>주문·결제</h3>
                   <p>메뉴 선택·결제</p>
+                  <img class="scenario-pictogram" src="assets/scenario/order-payment.svg" alt="주문과 결제 픽토그램">
                 </div>
               </div>
               <div class="scenario-card">
@@ -1904,18 +2016,17 @@
                   <span class="num">03</span>
                   <h3>요리</h3>
                   <p>주문 메뉴 제조</p>
+                  <img class="scenario-pictogram" src="assets/scenario/manufacturing.svg" alt="로봇 팔 제조 픽토그램">
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">04</span>
                   <h3>서빙</h3>
-                  <p>픽업 후 테이블 전달</p>
+                  <p>테이블 전달</p>
+                  <img class="scenario-pictogram" src="assets/scenario/serving.svg" alt="테이블 서빙 픽토그램">
                 </div>
               </div>
-            </div>
-            <div class="highlight">
-              주문 → 제조 → 서빙 자동 연결
             </div>
           </div>
         </div>
@@ -1935,32 +2046,33 @@
                   <span class="num">01</span>
                   <h3>모객 전환</h3>
                   <p>유휴 시 모객 전환</p>
+                  <img class="scenario-pictogram" src="assets/scenario/promotion-mode.svg" alt="유휴 로봇의 모객 전환 픽토그램">
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">02</span>
                   <h3>대상 탐색</h3>
-                  <p>사람 무리 탐색·추종</p>
+                  <p>고객 후보 탐색</p>
+                  <img class="scenario-pictogram" src="assets/scenario/target-search.svg" alt="고객 후보 탐색 픽토그램">
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">03</span>
                   <h3>감정 분석</h3>
-                  <p>표정 기반 대상 선별</p>
+                  <p>표정 기반 선별</p>
+                  <img class="scenario-pictogram" src="assets/scenario/emotion-analysis.svg" alt="표정 기반 감정 분석 픽토그램">
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">04</span>
                   <h3>매장 안내</h3>
-                  <p>방문 유도·매장 안내</p>
+                  <p>방문 유도</p>
+                  <img class="scenario-pictogram" src="assets/scenario/store-guidance.svg" alt="매장 안내 픽토그램">
                 </div>
               </div>
-            </div>
-            <div class="highlight">
-              유휴 로봇 → 고객 후보 탐색 → 방문 유도
             </div>
           </div>
         </div>
@@ -3288,12 +3400,43 @@
     let agendaOpen = false;
     let agendaLinks = [];
 
+    function stopVideo(video) {
+      video.pause();
+      try {
+        video.currentTime = 0;
+      } catch (error) {
+        /* Some media sources may not be seekable until metadata is ready. */
+      }
+
+      if (video.id) {
+        const button = video.closest(".media-frame")?.nextElementSibling?.querySelector("button");
+        const progress = document.getElementById(video.id.replace("vid-", "prog-"));
+        if (button) button.textContent = "▶";
+        if (progress) progress.style.width = "0%";
+      }
+    }
+
+    function syncSlideVideos(activeSlide) {
+      document.querySelectorAll("video").forEach((video) => {
+        if (!activeSlide.contains(video)) {
+          stopVideo(video);
+          return;
+        }
+
+        if (video.autoplay) {
+          video.play().catch(() => {});
+        }
+      });
+    }
+
     function setSlide(nextIndex) {
-      index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+      const clampedIndex = Math.max(0, Math.min(slides.length - 1, nextIndex));
+      index = clampedIndex;
       root.style.setProperty("--index", index);
       root.style.setProperty("--progress", slides.length <= 1 ? 1 : index / (slides.length - 1));
       counter.textContent = `${index + 1} / ${slides.length}`;
       history.replaceState(null, "", `#${index + 1}`);
+      syncSlideVideos(slides[index]);
       updateActiveAgendaLink();
     }
 

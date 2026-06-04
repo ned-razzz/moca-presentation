@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Store guidance pictogram</title>
+  <g fill="none" stroke="#224087" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <path d="M116 88h102"/>
+    <path d="M130 88l10-36h54l10 36"/>
+    <path d="M128 88v92h78V88"/>
+    <path d="M154 180v-54h26v54"/>
+    <rect x="38" y="122" width="58" height="62" rx="18"/>
+    <path d="M56 196h20M67 122v-18"/>
+    <path d="M92 146l30-18"/>
+    <path d="M108 124l14 4-4 14"/>
+  </g>
+  <path d="M142 52h50l12 36h-74z" fill="#d83f87" opacity=".95"/>
+</svg>
