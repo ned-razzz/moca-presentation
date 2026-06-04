@@ -789,12 +789,12 @@
     }
 
     .agenda-slide .timeline-step h3 {
-      font-size: var(--type-content-title);
+      font-size: var(--type-highlight);
     }
 
     .agenda-slide .timeline-step p {
       color: var(--muted-text);
-      font-size: var(--type-small);
+      font-size: var(--type-body);
       line-height: 1.5;
     }
 
@@ -805,8 +805,12 @@
     }
 
     .agenda-slide .timeline-step li {
-      font-size: var(--type-caption);
+      font-size: var(--type-small);
       line-height: 1.45;
+    }
+
+    .agenda-slide .num {
+      font-size: var(--type-small);
     }
 
     .metrics {
@@ -2053,41 +2057,7 @@
           </div>
         </div>
       </section>
-
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>제조</h2>
-        </div>
-        <div class="content">
-          <div class="stack" style="grid-template-columns: 1.05fr 1fr;">
-            <div class="card">
-              <h3>주문 기반 제조</h3>
-              <ul class="tech-list">
-                <li>웹 주문 → 제조 태스크</li>
-                <li>핫도그: 케이스·빵·소시지·케첩</li>
-                <li>음료: 양팔 협응 픽업</li>
-                <li>MoveIt Planning + Cartesian Path</li>
-              </ul>
-            </div>
-            <div class="summary-band" style="grid-template-columns: 1fr; gap: 12px;">
-              <div class="card">
-                <h3>입력</h3>
-                <p>hotdog · coke · coffee</p>
-              </div>
-              <div class="card">
-                <h3>출력</h3>
-                <p>픽업존 배치</p>
-              </div>
-              <div class="card">
-                <h3>제어 단위</h3>
-                <p>stage · waypoint</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
@@ -2311,46 +2281,6 @@
               <img src="assets/attract_follow/rapport_minigame.gif" alt="감정 분석(rapport) 대시보드와 미니게임 진행 중인 도비 로봇" style="object-fit: contain; padding: 0;">
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- 슬라이드 A: 모객 BT 전체 흐름 개요 -->
-      <section class="slide feature-slide" data-kicker="Functions">
-        <div class="header">
-          <p class="section-mark">03 / 주요 기능</p>
-          <h2>모객</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <h3>감정 인식 기반 고객 인터랙션</h3>
-            <div class="card">
-              <ul class="tech-list">
-                <li>IdleScan → Approach → IceBreak → Minigame → Offer</li>
-                <li>YOLOv8 · DBSCAN · BoT-SORT · PD 제어</li>
-                <li>TTS · 아바타 · 미니게임</li>
-                <li>gefa → rapport, 분노 시 abort</li>
-              </ul>
-            </div>
-          </div>
-          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(14px, 1.6vw, 20px);">
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
-              <b style="color: var(--secondary); font-size: var(--content-small-size);">gefa</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">표정 → V·A 추정</span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
-              <b style="color: var(--secondary); font-size: var(--content-small-size);">BoT-SORT</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">동일 인물 추적</span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
-              <b style="color: var(--secondary); font-size: var(--content-small-size);">rapport</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">호응도·중단 판단</span>
-            </div>
-            <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
-              <b style="color: var(--secondary); font-size: var(--content-small-size);">DBSCAN</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">가까운 사람 군집화</span>
-            </div>
-          </div>
-          <p style="font-size: var(--content-small-size); color: var(--muted-text); margin-top: 12px;">※ Phase 2: 얼굴 ReID·blacklist / 현재: 세션 단위 abort</p>
         </div>
       </section>
 
@@ -3178,8 +3108,6 @@
       </section>
 
 
-
-
       <section class="slide section-divider" data-kicker="Conclusion">
         <div class="section-divider-inner">
           <h2>결론</h2>
@@ -3227,23 +3155,6 @@
           </div>
           <div class="media-frame contain" style="min-height: 0; height: 100%; background: var(--surface);">
             <img src="assets/project/confluence.png" alt="프로젝트 문서 구조와 소프트웨어 아키텍처 문서 화면" style="max-height: none; object-fit: contain; padding: 0;">
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" data-kicker="Conclusion">
-        <div class="header">
-          <p class="section-mark">05 / 결론</p>
-          <h2>프로젝트 관리</h2>
-        </div>
-        <div class="content">
-          <div class="stack">
-            <h3>코드 형상 관리</h3>
-            <ul>
-              <li>GitHub를 활용해 코드 형상 관리</li>
-              <li>release 용도의 main 브랜치와 실제 개발 작업용 dev 브랜치를 분리</li>
-              <li>dev 브랜치에서 개인별 작업 브랜치를 생성해 병렬적으로 개발하고 코드 관리</li>
-            </ul>
           </div>
         </div>
       </section>
