@@ -19,11 +19,21 @@
       --line: #d9e0ec;
       --muted-text: color-mix(in srgb, var(--text) 72%, white);
       --faint-text: color-mix(in srgb, var(--text) 34%, transparent);
-      --slide-title-size: clamp(24px, 3vw, 42px);
-      --content-title-size: clamp(24px, 2.3vw, 34px);
-      --content-body-size: clamp(20px, 1.75vw, 28px);
-      --content-small-size: clamp(18px, 1.45vw, 23px);
-      --content-highlight-size: clamp(22px, 2vw, 32px);
+      --type-hero: clamp(56px, 7.8vw, 116px);
+      --type-section-title: clamp(78px, 9vw, 190px);
+      --type-slide-title: clamp(38px, 3.7vw, 56px);
+      --type-content-title: clamp(28px, 2.35vw, 36px);
+      --type-highlight: clamp(30px, 2.75vw, 44px);
+      --type-body: clamp(22px, 1.85vw, 30px);
+      --type-small: clamp(19px, 1.45vw, 24px);
+      --type-caption: clamp(15px, 1.05vw, 18px);
+      --type-ui: clamp(14px, 1vw, 16px);
+      --type-micro: clamp(12px, .9vw, 14px);
+      --slide-title-size: var(--type-slide-title);
+      --content-title-size: var(--type-content-title);
+      --content-body-size: var(--type-body);
+      --content-small-size: var(--type-small);
+      --content-highlight-size: var(--type-highlight);
       --radius-card: 8px;
       --radius-pill: 999px;
       --shadow-card: 0 14px 32px rgba(23, 32, 51, 0.08);
@@ -93,7 +103,7 @@
       top: clamp(18px, 3vw, 42px);
       color: var(--faint-text);
       max-width: min(62vw, 780px);
-      font-size: clamp(12px, 1vw, 16px);
+      font-size: clamp(21px, 1.5vw, 24px);
       line-height: 1.45;
       text-align: right;
       word-break: keep-all;
@@ -123,7 +133,7 @@
     .slide.section-divider .section-divider-inner > h2 {
       margin: 0;
       color: white;
-      font-size: clamp(70px, 9vw, 190px);
+      font-size: var(--type-section-title);
       line-height: 1;
       text-align: center;
       font-weight: 900;
@@ -142,7 +152,7 @@
     .slide.section-divider .section-divider-inner > ul > li {
       padding: 10px 18px;
       color: rgba(255, 255, 255, 0.9);
-      font-size: clamp(22px, 2.2vw, 34px);
+      font-size: var(--type-content-title);
       font-weight: 800;
       line-height: 1.2;
       border: 1px solid rgba(255, 255, 255, 0.35);
@@ -158,7 +168,7 @@
       bottom: clamp(10px, 1.4vw, 20px);
       z-index: 20;
       color: var(--faint-text);
-      font-size: clamp(12px, 1vw, 16px);
+      font-size: clamp(21px, 1.5vw, 24px);
       line-height: 1.45;
       text-align: right;
       word-break: keep-all;
@@ -240,7 +250,7 @@
     .cover-photo .meta-row {
       margin: clamp(24px, 3vh, 34px) 0 0;
       gap: 2px;
-      font-size: clamp(13px, 1.1vw, 16px);
+      font-size: var(--type-ui);
       color: rgba(255, 255, 255, 0.82);
     }
 
@@ -255,7 +265,7 @@
 
     .eyebrow {
       color: var(--primary);
-      font-size: clamp(14px, 1.35vw, 20px);
+      font-size: var(--type-small);
       font-weight: 700;
       margin: 0 0 16px;
     }
@@ -270,7 +280,7 @@
     /* Shared typography */
     h1 {
       color: var(--dark);
-      font-size: clamp(46px, 7.6vw, 108px);
+      font-size: var(--type-hero);
       line-height: .92;
       letter-spacing: 0;
       max-width: 8ch;
@@ -294,7 +304,7 @@
     .lead {
       margin-top: 24px;
       color: var(--muted-text);
-      font-size: clamp(18px, 2.1vw, 30px);
+      font-size: var(--type-highlight);
       line-height: 1.48;
       max-width: 880px;
       word-break: keep-all;
@@ -306,7 +316,7 @@
       gap: 6px;
       margin: 0 clamp(32px, 7vw, 110px) clamp(76px, 8vw, 112px);
       color: var(--muted-text);
-      font-size: clamp(13px, 1.2vw, 17px);
+      font-size: var(--type-caption);
       line-height: 1.6;
     }
 
@@ -321,7 +331,7 @@
     .section-mark {
       color: var(--primary);
       font-weight: 800;
-      font-size: clamp(11px, .95vw, 14px);
+      font-size: clamp(18px, 1.35vw, 21px);
     }
 
     .content {
@@ -387,7 +397,7 @@
 
     ul {
       margin: 0;
-      padding-left: 1.45em;
+      padding-left: 1.65em;
     }
 
     .media-frame {
@@ -399,17 +409,21 @@
       background: color-mix(in srgb, var(--secondary) 10%, white);
     }
 
-    .media-frame img {
+    .media-frame img,
+    .media-frame video {
       width: 100%;
       height: 100%;
-      max-height: calc(100dvh - 230px);
-      object-fit: cover;
+      max-height: none;
+      object-fit: contain;
       display: block;
+      padding: 0;
+      background: transparent;
     }
 
-    .media-frame.contain img {
+    .media-frame.contain img,
+    .media-frame.contain video {
       object-fit: contain;
-      padding: 10px;
+      padding: 0;
     }
 
     .architecture-slide .content {
@@ -490,7 +504,7 @@
     .service-flow {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--item-ga);
+      gap: var(--item-gap);
     }
 
     .service-flow .card {
@@ -571,7 +585,7 @@
     .planning-overview-slide .overview-image-frame img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
@@ -726,7 +740,7 @@
       border-radius: var(--radius-pill);
       color: var(--text);
       background: color-mix(in srgb, var(--primary) 10%, white);
-      font-size: clamp(12px, 1vw, 15px);
+      font-size: var(--type-caption);
       white-space: nowrap;
     }
 
@@ -756,7 +770,7 @@
     .num {
       color: var(--secondary);
       font-weight: 900;
-      font-size: 15px;
+      font-size: var(--type-caption);
     }
 
     .agenda-slide .flow {
@@ -775,23 +789,23 @@
     }
 
     .agenda-slide .timeline-step h3 {
-      font-size: clamp(24px, 2.7vw, 40px);
+      font-size: var(--type-content-title);
     }
 
     .agenda-slide .timeline-step p {
       color: var(--muted-text);
-      font-size: clamp(17px, 1.55vw, 24px);
+      font-size: var(--type-small);
       line-height: 1.5;
     }
 
     .agenda-slide .timeline-step ul {
       display: grid;
       gap: 8px;
-      padding-left: 1.05em;
+      padding-left: 1.35em;
     }
 
     .agenda-slide .timeline-step li {
-      font-size: clamp(16px, 1.35vw, 21px);
+      font-size: var(--type-caption);
       line-height: 1.45;
     }
 
@@ -808,7 +822,7 @@
     }
 
     .metric b {
-      font-size: clamp(26px, 3.2vw, 46px);
+      font-size: var(--type-highlight);
       line-height: 1;
       color: var(--secondary);
     }
@@ -831,7 +845,7 @@
       width: 100%;
       height: 100%;
       min-height: 0;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: var(--radius-card);
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--secondary) 10%, white);
@@ -839,7 +853,7 @@
 
     .image-grid.contain img {
       object-fit: contain;
-      padding: 8px;
+      padding: 0;
       background: var(--surface);
     }
 
@@ -856,7 +870,7 @@
       border-radius: var(--radius-card);
       background: var(--surface);
       border: 1px solid var(--line);
-      padding: 8px;
+      padding: 0;
     }
 
     /* Individual slide style: core feature cards */
@@ -903,7 +917,7 @@
 
     .core-feature-slide .core-feature-card h3 {
       color: var(--dark);
-      font-size: clamp(21px, 1.8vw, 28px);
+      font-size: var(--type-content-title);
       line-height: 1.15;
       text-align: center;
       word-break: keep-all;
@@ -913,12 +927,12 @@
       display: grid;
       gap: 6px;
       margin: 0;
-      padding-left: 1.05em;
+      padding-left: 1.35em;
     }
 
     .core-feature-slide .core-feature-card li {
       color: var(--muted-text);
-      font-size: clamp(17px, 1.25vw, 21px);
+      font-size: var(--type-small);
       line-height: 1.36;
       word-break: keep-all;
     }
@@ -937,9 +951,10 @@
       height: 100%;
     }
 
-    .feature-slide .media-frame img {
+    .feature-slide .media-frame img,
+    .feature-slide .media-frame video {
       object-fit: contain;
-      padding: 10px;
+      padding: 0;
       background: var(--surface);
     }
 
@@ -947,7 +962,7 @@
       display: grid;
       gap: 10px;
       margin: 0;
-      padding-left: 1.1em;
+      padding-left: 1.45em;
     }
 
     .tech-list li {
@@ -1003,7 +1018,7 @@
     .role-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       display: block;
     }
@@ -1015,7 +1030,7 @@
     .role-photo::before {
       content: "촬영 이미지";
       color: color-mix(in srgb, var(--text) 46%, white);
-      font-size: clamp(16px, 1.2vw, 20px);
+      font-size: var(--type-caption);
       font-weight: 800;
     }
 
@@ -1030,13 +1045,13 @@
     .role-body h4 {
       margin: 0;
       color: var(--dark);
-      font-size: clamp(18px, 1.2vw, 22px);
+      font-size: var(--type-small);
       line-height: 1.15;
     }
 
     .role-body ul {
       margin: 0;
-      padding-left: 1.05em;
+      padding-left: 1.28em;
       display: grid;
       align-content: start;
       gap: 7px;
@@ -1045,7 +1060,7 @@
 
     .slide:not(.hero):not(.agenda-slide):not(.qa-slide):not(.section-divider) .content .role-body li {
       color: var(--muted-text);
-      font-size: clamp(15px, 1vw, 18px);
+      font-size: var(--type-caption);
       line-height: 1.32;
       word-break: keep-all;
     }
@@ -1119,7 +1134,7 @@
     }
 
     .human-context-slide .header h2 {
-      font-size: clamp(44px, 3.9vw, 62px);
+      font-size: var(--type-slide-title);
       line-height: 1.08;
     }
 
@@ -1144,7 +1159,6 @@
       display: grid;
       grid-template-rows: auto auto minmax(0, 1fr) auto;
       gap: clamp(6px, .85vw, 10px);
-      border-left: 4px solid var(--secondary);
     }
 
     .human-context-slide .context-panel.before {
@@ -1156,7 +1170,7 @@
     .human-context-slide .content .panel-title {
       margin: 0;
       color: var(--text);
-      font-size: clamp(14px, .95vw, 17px);
+      font-size: var(--type-caption);
       font-weight: 800;
       line-height: 1.25;
     }
@@ -1169,11 +1183,11 @@
       display: grid;
       gap: 4px;
       margin: 0;
-      padding-left: 1.15em;
+      padding-left: 1.35em;
     }
 
     .human-context-slide .content .context-list li {
-      font-size: clamp(11px, .78vw, 14px);
+      font-size: var(--type-micro);
       line-height: 1.32;
       color: var(--muted-text);
     }
@@ -1199,8 +1213,9 @@
       width: 100%;
       height: 100%;
       max-height: none;
-      object-fit: contain;
-      padding: 2px;
+      object-fit: cover;
+      object-position: center bottom;
+      padding: 0;
     }
 
     .human-context-slide .context-caption {
@@ -1212,7 +1227,7 @@
 
     .human-context-slide .content .context-caption p {
       margin: 0;
-      font-size: clamp(9px, .64vw, 11px);
+      font-size: var(--type-micro);
       line-height: 1.25;
       color: var(--muted-text);
     }
@@ -1281,11 +1296,11 @@
     }
 
     .slide.scenario-slide .scenario-card-inner h3 {
-      font-size: clamp(24px, 2vw, 32px);
+      font-size: var(--type-content-title);
     }
 
     .slide.scenario-slide .scenario-card-inner p {
-      font-size: clamp(20px, 1.55vw, 25px);
+      font-size: var(--type-small);
       line-height: 1.42;
       display: flex;
       align-items: center;
@@ -1309,7 +1324,7 @@
     .qa-subtitle {
       margin-top: clamp(18px, 2vw, 32px);
       color: color-mix(in srgb, var(--text) 70%, white);
-      font-size: clamp(20px, 2vw, 32px);
+      font-size: var(--type-highlight);
       line-height: 1.45;
       word-break: keep-all;
     }
@@ -1376,7 +1391,7 @@
 
     .agenda-panel-title {
       color: var(--dark);
-      font-size: clamp(18px, 1.5vw, 24px);
+      font-size: var(--type-small);
       font-weight: 900;
       line-height: 1.2;
     }
@@ -1431,7 +1446,7 @@
     .agenda-link-main {
       padding: 10px 12px;
       color: var(--dark);
-      font-size: clamp(17px, 1.3vw, 22px);
+      font-size: var(--type-small);
       font-weight: 900;
       line-height: 1.2;
     }
@@ -1439,7 +1454,7 @@
     .agenda-link-sub {
       padding: 8px 12px 8px 28px;
       color: var(--muted-text);
-      font-size: clamp(14px, 1vw, 17px);
+      font-size: var(--type-caption);
       line-height: 1.35;
       position: relative;
     }
@@ -1460,7 +1475,7 @@
       min-width: 68px;
       text-align: center;
       color: color-mix(in srgb, var(--text) 68%, white);
-      font-size: 14px;
+      font-size: var(--type-ui);
     }
 
     .progress {
@@ -1582,7 +1597,7 @@
     <div class="slides" id="slides">
       <section class="slide hero cover-photo" data-kicker="Cover">
         <div class="hero-content">
-          <p class="eyebrow">Physical AI 기반 로봇 시스템 구현</p>
+          <p class="eyebrow">Physical AI 로봇 시스템</p>
           <h1>MOCA</h1>
           <p class="lead">Dynamic Robotics</p>
           <div class="meta-row">
@@ -1633,9 +1648,9 @@
               <span class="num">04</span>
               <h3>주요 기술</h3>
               <ul>
-                <li>비전 기반 매니퓰레이션</li>
-                <li>ACT 기반 pick&place</li>
-                <li>감정 분석 모객</li>
+                <li>비전 매니퓰레이션</li>
+                <li>ACT pick&place</li>
+                <li>감정 모객</li>
               </ul>
             </div>
             <div class="timeline-step">
@@ -1643,8 +1658,7 @@
               <h3>결론</h3>
               <ul>
                 <li>프로젝트 운영</li>
-                <li>프로젝트 문서 관리</li>
-                <li>코드 형상 관리</li>
+                <li>문서 관리</li>
                 <li>담당 업무</li>
               </ul>
             </div>
@@ -1674,7 +1688,7 @@
               <img src="assets/overview/cover.png" alt="MOCA 이동형 로봇 케이터링 플랫폼 예시">
             </div>
             <div class="highlight">
-              점주 1명과 로봇이 협업하여 주문, 제조, 서빙, 모객 업무를 수행하는 이동형 로봇 케이터링 플랫폼입니다.
+              점주 1명 + 로봇이 주문·제조·서빙·모객을 수행하는 이동형 케이터링 플랫폼
             </div>
           </div>
         </div>
@@ -1692,7 +1706,7 @@
               <div class="reason-card" style="--icon-accent: #d83f87; --icon-soft: #fdeaf4;">
                 <div class="reason-copy">
                   <h3>공간 맞춤 운영</h3>
-                  <p>행사장, 팝업스토어, 테마 공간마다 다른 매장 형태에 대응합니다.</p>
+                  <p>공간·동선 변화 대응</p>
                 </div>
                 <div class="reason-image" aria-hidden="true">
                   <svg viewBox="0 0 160 160" role="img">
@@ -1710,7 +1724,7 @@
               <div class="reason-card" style="--icon-accent: #1b9e5a; --icon-soft: #e8f7ef;">
                 <div class="reason-copy">
                   <h3>초기 비용 절감</h3>
-                  <p>설치형 고정 매장보다 인프라 구축과 운영 부담을 줄입니다.</p>
+                  <p>초기 구축·운영 부담 완화</p>
                 </div>
                 <div class="reason-image" aria-hidden="true">
                   <svg viewBox="0 0 160 160" role="img">
@@ -1729,7 +1743,7 @@
               <div class="reason-card" style="--icon-accent: #224087; --icon-soft: #edf2ff;">
                 <div class="reason-copy">
                   <h3>최소 인력 서비스</h3>
-                  <p>점주와 로봇이 협업해 주문, 제조, 서빙을 효율적으로 수행합니다.</p>
+                  <p>점주 1명 + 로봇 협업</p>
                 </div>
                 <div class="reason-image" aria-hidden="true">
                   <svg viewBox="0 0 160 160" role="img">
@@ -1752,7 +1766,7 @@
               <div class="reason-card" style="--icon-accent: #e07020; --icon-soft: #fff2e6;">
                 <div class="reason-copy">
                   <h3>변화 대응력</h3>
-                  <p>메뉴, 동선, 공간이 바뀌어도 서비스 흐름을 유연하게 조정합니다.</p>
+                  <p>메뉴·동선·공간 변경 대응</p>
                 </div>
                 <div class="reason-image" aria-hidden="true">
                   <svg viewBox="0 0 160 160" role="img">
@@ -1784,23 +1798,23 @@
             <div class="requirements-grid">
               <div class="requirement">
                 <b>맞춤형 매장 구성</b>
-                <span>다양한 행사장에 맞게 맵과 서비스 환경을 구성</span>
+                <span>맵·서비스 환경 구성</span>
               </div>
               <div class="requirement">
                 <b>자동 제조·서빙</b>
-                <span>주문 후 뚜비와 도비가 유기적으로 작업 수행</span>
+                <span>뚜비·도비 자동 작업</span>
               </div>
               <div class="requirement">
                 <b>안전·인터랙션</b>
-                <span>사람과 함께 움직이는 로봇의 안전성과 친밀감 확보</span>
+                <span>안전한 접근과 친밀한 응대</span>
               </div>
               <div class="requirement">
                 <b>통합 관리</b>
-                <span>점주 1명이 전체 주문, 로봇, 매장 상태를 관리</span>
+                <span>주문·로봇·매장 통합 관리</span>
               </div>
             </div>
             <div class="highlight">
-              이동성, 자동화, 안전성, 관리성을 모두 만족해야 한다.
+              이동성 · 자동화 · 안전 · 관리
             </div>
           </div>
         </div>
@@ -1828,33 +1842,23 @@
               <article class="core-feature-card primary">
                 <h3>식음료 제조 기능</h3>
                 <ul class="tech-list">
-                  <li>주문 정보를 기반으로 로봇팔이 음료와 간단한 식음료를 제조</li>
+                  <li>주문 기반 음료·간식 제조</li>
                 </ul>
               </article>
               <article class="core-feature-card">
                 <h3>테이블 서빙 기능</h3>
                 <ul class="tech-list">
-                  <li>완료된 주문을 서빙 로봇이 테이블까지 자율 주행으로 전달</li>
+                  <li>완료 주문 테이블 자율 배송</li>
                 </ul>
               </article>
               <article class="core-feature-card">
                 <h3>모객 활동 기능</h3>
                 <ul class="tech-list">
-                  <li>유휴 서빙 로봇이 매장 밖 고객 후보에게 접근해 매장 방문 유도</li>
+                  <li>유휴 로봇의 고객 접근·방문 유도</li>
                 </ul>
               </article>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="slide architecture-slide" data-kicker="Design">
-        <div class="header">
-          <p class="section-mark">02 / 설계</p>
-          <h2>시스템 구성</h2>
-        </div>
-        <div class="content">
-          <img class="architecture-image" src="assets/design/sha.png" alt="MOCA 시스템 구성 개요">
         </div>
       </section>
 
@@ -1881,33 +1885,33 @@
                 <div class="scenario-card-inner">
                   <span class="num">01</span>
                   <h3>초기 세팅</h3>
-                  <p>매장 맵, 메뉴, 로봇 위치를 설정한다.</p>
+                  <p>맵·메뉴·로봇 위치 설정</p>
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">02</span>
                   <h3>주문·결제</h3>
-                  <p>고객이 메뉴를 선택하고 결제를 완료한다.</p>
+                  <p>메뉴 선택·결제</p>
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">03</span>
                   <h3>요리</h3>
-                  <p>요리 로봇이 주문 메뉴를 제조한다.</p>
+                  <p>주문 메뉴 제조</p>
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">04</span>
                   <h3>서빙</h3>
-                  <p>서빙 로봇이 픽업 후 고객 테이블까지 전달한다.</p>
+                  <p>픽업 후 테이블 전달</p>
                 </div>
               </div>
             </div>
             <div class="highlight">
-              주문이 들어오면 곧바로 로봇이 주문 상품을 제조하고 상품을 테이블로 서빙한다.
+              주문 → 제조 → 서빙 자동 연결
             </div>
           </div>
         </div>
@@ -1926,33 +1930,33 @@
                 <div class="scenario-card-inner">
                   <span class="num">01</span>
                   <h3>모객 전환</h3>
-                  <p>서빙 작업이 없으면 모객 모드로 전환한다.</p>
+                  <p>유휴 시 모객 전환</p>
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">02</span>
                   <h3>대상 탐색</h3>
-                  <p>매장 밖에서 사람 무리를 찾고 추종한다.</p>
+                  <p>사람 무리 탐색·추종</p>
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">03</span>
                   <h3>감정 분석</h3>
-                  <p>표정을 분석해 모객 가능성이 높은 한 명에게 접근한다.</p>
+                  <p>표정 기반 대상 선별</p>
                 </div>
               </div>
               <div class="scenario-card">
                 <div class="scenario-card-inner">
                   <span class="num">04</span>
                   <h3>매장 안내</h3>
-                  <p>방문을 유도하고 매장까지 안내한다.</p>
+                  <p>방문 유도·매장 안내</p>
                 </div>
               </div>
             </div>
             <div class="highlight">
-              유휴 상태의 서빙 로봇이 매장 밖에서 고객 후보를 찾고 매장 방문까지 연결한다.
+              유휴 로봇 → 고객 후보 탐색 → 방문 유도
             </div>
           </div>
         </div>
@@ -1980,9 +1984,9 @@
         <div class="content">
           <div class="stack" style="grid-template-rows: auto 1fr;">
             <div class="card">
-              <h3>서비스 공간 지도 생성</h3>
+              <h3>공간 지도 생성</h3>
               <ul class="tech-list">
-                <li>현장별 구조 변화에 맞춰 맵과 동선을 빠르게 구축</li>
+                <li>현장별 맵·동선 구축</li>
               </ul>
             </div>
             <div class="media-frame" style="min-height: 0;">
@@ -2000,9 +2004,9 @@
         <div class="content">
           <div class="stack" style="grid-template-rows: auto 1fr;">
             <div class="card">
-              <h3>서빙 로봇 이동 좌표 및 워크스페이스 배치</h3>
+              <h3>운영 지점 배치</h3>
               <ul class="tech-list">
-                <li>테이블, 픽업존, 카운터, 로봇 대기 위치를 운영 지점으로 등록</li>
+                <li>테이블·픽업존·대기 위치 등록</li>
               </ul>
             </div>
             <div class="media-frame" style="min-height: 0;">
@@ -2020,10 +2024,10 @@
         <div class="content">
           <div class="stack" style="grid-template-rows: auto 1fr;">
             <div class="card">
-              <h3> 자연어 기반 주문·결제</h3>
+              <h3>자연어 주문·결제</h3>
               <ul class="tech-list">
-                <li>메뉴 선택 GUI와 자연어 음성 입력을 함께 제공</li>
-                <li>QWEN3-ASR로 사용자 발화를 텍스트화하고 Audio LLM으로 주문 의도 파악</li>
+                <li>GUI 주문 + 음성 입력</li>
+                <li>QWEN3-ASR → Audio LLM 의도 파악</li>
               </ul>
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; min-height: 0; align-items: stretch;">
@@ -2058,26 +2062,26 @@
         <div class="content">
           <div class="stack" style="grid-template-columns: 1.05fr 1fr;">
             <div class="card">
-              <h3>주문 기반 핫도그·음료 제조</h3>
+              <h3>주문 기반 제조</h3>
               <ul class="tech-list">
-                <li>웹 주문을 제조 태스크로 변환하고 레시피 순서에 따라 실행</li>
-                <li>핫도그는 케이스 지지, 빵·소시지 배치, 케첩 도포, 픽업존 배치로 구성</li>
-                <li>음료는 진열대에서 꺼낸 뒤 양팔 협응으로 픽업존에 배치</li>
-                <li>각 태스크는 MoveIt Planning과 Cartesian Path를 상황별로 조합</li>
+                <li>웹 주문 → 제조 태스크</li>
+                <li>핫도그: 케이스·빵·소시지·케첩</li>
+                <li>음료: 양팔 협응 픽업</li>
+                <li>MoveIt Planning + Cartesian Path</li>
               </ul>
             </div>
             <div class="summary-band" style="grid-template-columns: 1fr; gap: 12px;">
               <div class="card">
                 <h3>입력</h3>
-                <p>주문 메뉴: hotdog, coke, coffee</p>
+                <p>hotdog · coke · coffee</p>
               </div>
               <div class="card">
                 <h3>출력</h3>
-                <p>제조 완료 상품을 픽업존에 배치</p>
+                <p>픽업존 배치</p>
               </div>
               <div class="card">
                 <h3>제어 단위</h3>
-                <p>stage·waypoint 기반 태스크 실행</p>
+                <p>stage · waypoint</p>
               </div>
             </div>
           </div>
@@ -2092,13 +2096,13 @@
         <div class="content">
           <div class="stack" style="grid-template-columns: 0.4fr 0.6fr; gap: clamp(18px, 2vw, 28px); align-items: stretch;">
             <div class="card" style="display: grid; grid-template-rows: auto auto auto; gap: 14px; align-content: start;">
-              <h3>Vision 기반 목표 pose 갱신</h3>
-              <p style="margin: 0; font-size: var(--content-body-size); line-height: 1.45; color: var(--muted-text);">보고 → 파악하고 → 행동한다</p>
+              <h3>Vision 기반 pose 갱신</h3>
+              <p style="margin: 0; font-size: var(--content-body-size); line-height: 1.45; color: var(--muted-text);">인식 → pose → 실행</p>
               <ul class="tech-list">
-                <li>Depth 카메라 영상에서 식재료와 물품 후보 영역을 추출</li>
-                <li>YOLO 기반 객체 인식으로 클래스와 위치 후보를 추출</li>
-                <li>PCA로 주축을 계산하고 파지 진입 방향을 결정</li>
-                <li>인식 결과를 엔드 이펙터 goal pose 갱신에 사용</li>
+                <li>Depth 후보 영역 추출</li>
+                <li>YOLO 객체·위치 인식</li>
+                <li>PCA 주축·파지 방향</li>
+                <li>goal pose 갱신</li>
               </ul>
             </div>
             <div class="media-frame">
@@ -2116,13 +2120,13 @@
         <div class="content">
           <div class="stack" style="grid-template-columns: 0.4fr 0.6fr; gap: clamp(14px, 1.6vw, 24px);">
             <div class="card">
-              <h3>Blender 기반 월드 제작 및 편집</h3>
+              <h3>Blender 월드 제작</h3>
               <ul class="tech-list">
-                <li>Blender에서 테이블, 트레이, 진열대, 픽업존을 배치</li>
-                <li>케이스, 빵, 소시지, 케첩, 음료 모델의 크기와 위치를 조정</li>
-                <li>Python 기반 Blender exporter를 작성해 제조 환경 layout을 Gazebo 모델과 planning scene으로 export</li>
-                <li>export 결과가 충돌 회피를 위한 MoveIt planning scene에 자동 반영</li>
-                <li>색상과 collision 형상을 조정해 Vision·MoveIt 검증에 활용</li>
+                <li>테이블·트레이·진열대·픽업존 배치</li>
+                <li>식재료 모델 크기·위치 보정</li>
+                <li>Gazebo · planning scene export</li>
+                <li>MoveIt 충돌 회피 반영</li>
+                <li>Vision·MoveIt 검증 환경</li>
               </ul>
             </div>
             <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 10px; min-height: 0;">
@@ -2142,23 +2146,23 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>제조</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>Gazebo 핫도그 제조 검증</h3>
-          <div class="stack" style="grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px;">
+          <div class="stack" style="grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; height: 100%;">
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케이스.gif" alt="케이스 집기" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">① 케이스 집기</p>
             </div>
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/빵.gif" alt="빵 배치" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/빵.gif" alt="빵 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">② 빵 배치</p>
             </div>
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/소시지.gif" alt="소시지 배치" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/소시지.gif" alt="소시지 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">③ 소시지 배치</p>
             </div>
             <div class="card" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding: 12px;">
-              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케첩.gif" alt="케첩 도포" style="padding: 0; object-fit: cover;"></div>
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/gazebo/케첩.gif" alt="케첩 도포" style="padding: 0; object-fit: contain;"></div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">④ 케첩 도포</p>
             </div>
           </div>
@@ -2170,19 +2174,19 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>제조</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>실물 로봇 동작 검증</h3>
-          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start;">
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치" style="padding: 0; object-fit: cover;"></div>
+          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; height: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">① 빵 배치</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치" style="padding: 0; object-fit: cover;"></div>
+            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치" style="padding: 0; object-fit: contain;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">② 소시지 배치</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0;">
-              <div class="media-frame"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포" style="padding: 0; object-fit: cover;"></div>
+            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+              <div class="media-frame" style="min-height: 0;"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포" style="padding: 0; object-fit: contain;"></div>
               <p style="margin: 6px 0 0; text-align: center; font-size: var(--content-small-size); line-height: 1.2; color: var(--muted-text);">③ 케첩 도포</p>
             </div>
           </div>
@@ -2199,9 +2203,9 @@
             <div class="card">
               <h3>음료 제공</h3>
               <ul class="tech-list">
-                <li>왼팔이 음료를 꺼내고 오른팔이 인계받는 양팔 협응 구조</li>
-                <li>캔 높이와 중심을 기준으로 파지 위치 분리</li>
-                <li>인계 후 충돌을 피하도록 후퇴 waypoint를 구성</li>
+                <li>왼팔 픽업 → 오른팔 인계</li>
+                <li>캔 높이·중심 기준 파지</li>
+                <li>후퇴 waypoint로 충돌 회피</li>
               </ul>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2vw, 28px); min-height: 0;">
@@ -2225,8 +2229,8 @@
         </div>
         <div class="content" style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0;">
-            <h3 style="margin: 0;">제조 완료된 음료/음식 픽업</h3>
-            <h3 style="margin: 0;">픽업을 완료하고 table로 이송</h3>
+            <h3 style="margin: 0;">음식 픽업</h3>
+            <h3 style="margin: 0;">테이블 이송</h3>
           </div>
           <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
             <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -2256,13 +2260,13 @@
         </div>
         <div class="content" style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0;">
-            <h3 style="margin: 0;">주문자의 손 위치(좌/우)를 인식하여 주문자 앞에 음료 제공</h3>
-            <h3 style="margin: 0;">음료 제공하고 테이블에서 대기장소로 이동</h3>
+            <h3 style="margin: 0;">손 위치 인식 → 좌/우 제공</h3>
+            <h3 style="margin: 0;">제공 후 대기장소 복귀</h3>
           </div>
           <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame" style="flex: 1; min-height: 0;">
-                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                <video id="vid-left" src="assets/serving_act/serve_left_edit.mp4" preload="metadata" style="width: 100%; height: 100%; object-fit: contain; display: block;"></video>
               </div>
               <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; min-height: 56px; justify-content: center;">
                 <div style="display: flex; align-items: center; gap: 10px;">
@@ -2276,7 +2280,7 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="media-frame" style="flex: 1; min-height: 0;">
-                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home" style="object-fit: cover; padding: 0;">
+                <img data-media="serving_driving/t03-_home_2x.gif" alt="실물 로봇 주행 t03에서 home" style="object-fit: contain; padding: 0;">
               </div>
               <div style="display: flex; flex-direction: column; flex-shrink: 0; min-height: 56px; justify-content: center;">
                 <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">제자리로 복귀</p>
@@ -2289,18 +2293,18 @@
       <section class="slide feature-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
-          <h2>모객: 감정 인식 기반 고객 인터랙션</h2>
+          <h2>모객: 감정 기반 인터랙션</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 0.82fr 1.18fr; gap: clamp(18px, 2vw, 28px); align-items: stretch;">
             <div class="card">
               <h3>도비 모객 구조</h3>
               <ul class="tech-list">
-                <li>점주가 모드 제어 웹 인터페이스로 모객 모드를 수동 실행</li>
-                <li>사람 탐지 후 접근, 아이스브레이크, 미니게임, 메뉴 제안, 카운터 안내 순서로 진행</li>
-                <li>doby_controller, scout_reactor, omx_reactor가 두뇌·눈·손 역할을 분담</li>
-                <li>MediaPipe 얼굴 특징과 Valence·Arousal 좌표로 호응도와 중단 조건 판단</li>
-                <li>물리 안전, 운영 정지, 사회적 후퇴를 분리한 3계층 안전 구조 적용</li>
+                <li>웹에서 모객 모드 실행</li>
+                <li>탐지 → 접근 → 게임 → 제안 → 안내</li>
+                <li>두뇌·눈·손 3모듈 분담</li>
+                <li>V·A 기반 호응도·중단 판단</li>
+                <li>물리·운영·사회 안전</li>
               </ul>
             </div>
             <div class="media-frame" style="min-height: 0;">
@@ -2321,32 +2325,32 @@
             <h3>감정 인식 기반 고객 인터랙션</h3>
             <div class="card">
               <ul class="tech-list">
-                <li>[1] IdleScan 그룹 탐지 → [2] Approach 그룹 접근 → [3] IceBreak 자기소개 → [4] Minigame 미니게임 → [5] Offer 메뉴 홍보</li>
-                <li>탐지·접근·추종은 시각 인식 기반 자율주행(YOLOv8 · DBSCAN · BoT-SORT · PD 제어)</li>
-                <li>자기소개·미니게임·메뉴 홍보는 TTS·아바타·게임으로 진행되는 모객 인터랙션</li>
-                <li>감정 분석(gefa → rapport)은 전 구간 병렬 상시, 분노 감지 시 즉시 중단(abort→idle)</li>
+                <li>IdleScan → Approach → IceBreak → Minigame → Offer</li>
+                <li>YOLOv8 · DBSCAN · BoT-SORT · PD 제어</li>
+                <li>TTS · 아바타 · 미니게임</li>
+                <li>gefa → rapport, 분노 시 abort</li>
               </ul>
             </div>
           </div>
           <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(14px, 1.6vw, 20px);">
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
               <b style="color: var(--secondary); font-size: var(--content-small-size);">gefa</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">얼굴 표정에서 Valence·Arousal을 추정하는 감정 분석 모듈</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">표정 → V·A 추정</span>
             </div>
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
               <b style="color: var(--secondary); font-size: var(--content-small-size);">BoT-SORT</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">감지된 사람에 ID를 부여해 프레임 간 동일 인물을 추적하는 다중 객체 추적(MOT) 알고리즘</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">동일 인물 추적</span>
             </div>
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
               <b style="color: var(--secondary); font-size: var(--content-small-size);">rapport</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">감정값을 누적한 고객 호응도 지표로 모객 지속·중단을 판단</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">호응도·중단 판단</span>
             </div>
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(12px, 1.3vw, 18px); display: grid; gap: 6px; align-content: start;">
               <b style="color: var(--secondary); font-size: var(--content-small-size);">DBSCAN</b>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">가까이 모인 사람들을 한 무리로 묶는 밀도 기반 군집화 알고리즘</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.4;">가까운 사람 군집화</span>
             </div>
           </div>
-          <p style="font-size: var(--content-small-size); color: var(--muted-text); margin-top: 12px;">※ 고객 영구식별(얼굴 ReID)·분노 재권유금지(blacklist)는 Phase 2 후속. 오인식 윤리·개인정보(생체) 정책상 의도적 분리. 현재는 분노 감지 시 세션 단위 중단(abort→idle)으로 안전 동작.</p>
+          <p style="font-size: var(--content-small-size); color: var(--muted-text); margin-top: 12px;">※ Phase 2: 얼굴 ReID·blacklist / 현재: 세션 단위 abort</p>
         </div>
       </section>
 
@@ -2356,24 +2360,24 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>모객</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>탐지 → 접근 → 자기소개 → 미니게임</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; height: 100%;">
             <!-- [1] 군중 탐지 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/group_detect.gif" alt="군중 탐지 그룹화 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[1] 군중 탐지·그룹화</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">사람을 감지하고(YOLOv8) 가까이 모인 무리를 한 그룹으로 묶습니다(DBSCAN)</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">YOLOv8 탐지 · DBSCAN 그룹화</p>
             </div>
             <!-- [2] 그룹 접근 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/group_approach.gif" alt="최대 인원 그룹 접근 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[2] 그룹 접근</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">인원이 가장 많은 무리를 골라 다가갑니다 (PD 제어)</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">최대 인원 그룹 접근 · PD 제어</p>
             </div>
           </div>
         </div>
@@ -2385,12 +2389,12 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>모객</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>탐지 → 접근 → 자기소개 → 미니게임</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; height: 100%;">
             <!-- [3] 자기소개 (mp4) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <video id="vid-icebreak" src="assets/attract_follow/icebreak.mp4" preload="metadata" style="width:100%; height:100%; object-fit:contain; display:block;"></video>
               </div>
               <div style="display:flex; align-items:center; gap:10px;">
@@ -2400,15 +2404,15 @@
                 </div>
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[3] 자기소개</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">무리에 도착해 아바타가 표정·음성으로 인사합니다</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">아바타 표정·음성 인사</p>
             </div>
             <!-- [4] 미니게임 (gif) -->
             <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/minigame.gif" alt="미니게임 cafe_ninja 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[4] 미니게임</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">간단한 미니게임(cafe_ninja)으로 흥미를 끕니다</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">cafe_ninja 미니게임</p>
             </div>
           </div>
         </div>
@@ -2420,12 +2424,12 @@
           <p class="section-mark">03 / 주요 기능</p>
           <h2>모객</h2>
         </div>
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;">
           <h3>메뉴 홍보 → 1인 추종 (+ 병렬 감정 분석)</h3>
-          <div class="stack" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr 1fr; height: 100%;">
             <!-- [5] 메뉴 홍보 (mp4) -->
-            <div style="display:grid; grid-template-rows: 1fr auto auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+            <div style="display:grid; grid-template-rows: 1fr auto auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <video id="vid-offer" src="assets/attract_follow/offer.mp4" preload="metadata" style="width:100%; height:100%; object-fit:contain; display:block;"></video>
               </div>
               <div style="display:flex; align-items:center; gap:10px;">
@@ -2435,23 +2439,23 @@
                 </div>
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">[5] 메뉴 홍보</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">메뉴를 음성으로 소개하며 방문을 유도합니다</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">메뉴 소개·방문 유도</p>
             </div>
             <!-- 1인 추종 (gif) -->
-            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/follow_single.gif" alt="근접 대상 추종 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">1인 추종</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">관심 보인 근접 대상을 따라가며 응대합니다 (P+EMA, 근접 대상 추종)</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">관심 대상 추종 · P+EMA</p>
             </div>
             <!-- 병렬: 감정 분석 (gif) -->
-            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%; min-height:0; height:100%;">
-              <div class="media-frame" style="height:auto; min-height:0;">
+            <div style="display:grid; grid-template-rows: 1fr auto auto; gap:8px; min-width:0; min-height:0; height:100%;">
+              <div class="media-frame" style="height:100%; min-height:0;">
                 <img src="assets/attract_follow/emotion_rapport.gif" alt="감정 분석 gefa rapport 시연" style="width:100%; height:100%; object-fit:contain; display:block;">
               </div>
               <p style="text-align:center; font-weight:600; margin:0; font-size: var(--content-small-size);">병렬: 감정 분석</p>
-              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">전 과정에서 표정으로 감정을 살펴(gefa→rapport) 불쾌 감지 시 즉시 멈춥니다(abort→idle)</p>
+              <p style="text-align:center; margin:0; font-size: var(--content-small-size); color: var(--muted-text); line-height:1.4;">전 과정 감정 분석 · 불쾌 시 abort</p>
             </div>
           </div>
         </div>
@@ -2461,9 +2465,9 @@
         <div class="section-divider-inner">
           <h2>주요 기술</h2>
           <ul>
-            <li>비전 기반 매니퓰레이션</li>
-            <li>ACT 기반 pick&place</li>
-            <li>감정 분석 모객</li>
+            <li>비전 매니퓰레이션</li>
+            <li>ACT pick&place</li>
+            <li>감정 모객</li>
             <li>STT / TTS / LLM</li>
             <li>SLAM / Navigation</li>
           </ul>
@@ -2473,10 +2477,10 @@
       <section class="slide scenario-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>제조: 비전 기반 매니퓰레이션</h2>
+          <h2>제조: 비전 매니퓰레이션</h2>
         </div>
         <div class="content" style="grid-template-rows: auto clamp(118px, 16vh, 170px) minmax(0, 1fr); gap: clamp(26px, 3vw, 46px);">
-          <h3 style="margin: 0;">Vision 결과를 매니퓰레이터 제어로 연결</h3>
+          <h3 style="margin: 0;">Vision → Pose → Motion</h3>
           <div class="service-flow" style="height: 100%;">
             <div class="scenario-card">
               <div class="scenario-card-inner" style="padding: clamp(28px, 2.6vw, 42px) clamp(42px, 3.4vw, 62px) clamp(16px, 1.4vw, 24px); grid-template-rows: auto auto; align-content: center;">
@@ -2529,7 +2533,7 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>제조: OpenArm 트러블 슈팅 - Gazebo 미지원</h2>
+          <h2>제조: OpenArm - Gazebo 미지원</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
@@ -2537,14 +2541,14 @@
               <h3 style="margin: 0;">문제</h3>
               <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/1.이슈:gazebo_미지원.png" alt="Gazebo 미지원 문제"></div>
               <div class="card">
-                <p><strong>공식 패키지에 Gazebo 실행 환경이 없어 시뮬레이션 검증이 불가능</strong></p>
+                <p><strong>Gazebo 환경 부재</strong></p>
               </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">해결</h3>
               <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/가제보.png" alt="Gazebo 실행 환경 구성"></div>
               <div class="card">
-                <p><strong>URDF를 수정하고 robot description, Gazebo launch 구성을 추가</strong></p>
+                <p><strong>URDF·description·launch 구성</strong></p>
               </div>
             </div>
           </div>
@@ -2554,7 +2558,7 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>제조: OpenArm 트러블 슈팅 - MoveIt 실행 불안정</h2>
+          <h2>제조: OpenArm - MoveIt 불안정</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
@@ -2562,14 +2566,14 @@
               <h3 style="margin: 0;">문제</h3>
               <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/2.이슈:moveit2.gif" alt="MoveIt 실행 불안정 문제"></div>
               <div class="card">
-                <p><strong>execute 시 팔이 순간적으로 떨어지거나 trajectory가 불안정하게 실행</strong></p>
+                <p><strong>팔 낙하·trajectory 불안정</strong></p>
               </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">해결</h3>
               <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/troble_shooting/1.openarm/2.해결:moveit_dynamics.gif" alt="MoveIt 실행 불안정 해결"></div>
               <div class="card">
-                <p><strong>robot dynamics와 trajectory 실행 조건을 보정해 동작 안정화</strong></p>
+                <p><strong>dynamics·trajectory 조건 보정</strong></p>
               </div>
             </div>
           </div>
@@ -2579,23 +2583,23 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>제조: OpenArm 트러블 슈팅 - 엔드 이펙터 불일치</h2>
+          <h2>제조: OpenArm - 그리퍼 불일치</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr auto 0.9fr auto 1fr; gap: 14px; align-items: center;">
+          <div class="stack" style="grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: center;">
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">수정 전</h3>
               <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/그리퍼_수정전.png" alt="그리퍼 수정 전"></div>
               <div class="card">
-                <p><strong>URDF 그리퍼와 실물 그리퍼 형상이 달라 파지 pose와 collision 기준이 어긋남</strong></p>
+                <p><strong>URDF·실물 형상 불일치</strong></p>
               </div>
             </div>
             <div style="font-size: clamp(34px, 3.4vw, 58px); font-weight: 800; color: var(--secondary); align-self: center;">→</div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">모델링 및 description 수정</h3>
-              <div class="media-frame" style="height: clamp(180px, 34vh, 340px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="Blender 그리퍼 모델링"></div>
+              <h3 style="margin: 0;">모델링 수정</h3>
+              <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/3.해결:gripper_정면.png" alt="Blender 그리퍼 모델링"></div>
               <div class="card">
-                <p><strong>Blender에서 실물 그리퍼를 모델링하고 URDF와 robot description을 수정</strong></p>
+                <p><strong>실물 그리퍼 모델링·URDF 반영</strong></p>
               </div>
             </div>
             <div style="font-size: clamp(34px, 3.4vw, 58px); font-weight: 800; color: var(--secondary); align-self: center;">→</div>
@@ -2603,7 +2607,7 @@
               <h3 style="margin: 0;">반영 후</h3>
               <div class="media-frame" style="height: clamp(220px, 38vh, 390px);"><img src="assets/openarm/troble_shooting/1.openarm/그리퍼_수정후.png" alt="그리퍼 수정 후"></div>
               <div class="card">
-                <p><strong>실물 형상에 맞춘 gripper collision과 TCP 기준으로 파지 동작을 보정</strong></p>
+                <p><strong>collision·TCP 기준 보정</strong></p>
               </div>
             </div>
           </div>
@@ -2613,7 +2617,7 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>제조: OpenArm 트러블 슈팅 - 액추에이터 단선</h2>
+          <h2>제조: OpenArm - 액추에이터 단선</h2>
         </div>
         <div class="content">
           <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
@@ -2624,40 +2628,14 @@
                 <div class="media-frame" style="height: 100%;"><img src="assets/openarm/troble_shooting/1.openarm/4.이슈:단선4.jpg" alt="전원선 마찰 위치"></div>
               </div>
               <div class="card">
-                <p><strong>흰색 케이스와 전원선이 반복적으로 마찰되어 오른팔 액추에이터 전원선 단선 발생</strong></p>
+                <p><strong>케이스·전원선 마찰로 단선</strong></p>
               </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
               <h3 style="margin: 0;">해결</h3>
               <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/openarm/manufacturing/케첩.gif" alt="왼팔 단독 단계별 제조 진행"></div>
               <div class="card">
-                <p><strong>오른팔 command를 비활성화하고 왼팔 단독·단계별 수동 진행 모드 구성</strong></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 슬라이드 D: 모객 추종 트러블슈팅 (제조 트러블슈팅과 동일 형식) -->
-      <section class="slide feature-slide" data-kicker="Technology">
-        <div class="header">
-          <p class="section-mark">04 / 주요 기술</p>
-          <h2>모객: 추종 트러블 슈팅 - 지그재그 진동</h2>
-        </div>
-        <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr; gap: 18px;">
-            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">문제</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/attract_follow/zigzag_fail.gif" alt="지그재그 진동 문제"></div>
-              <div class="card">
-                <p><strong>회전 게인이 높고 화면 속 대상 위치(bbox) 떨림이 그대로 cmd_vel에 전달돼 좌우 진동 발생</strong></p>
-              </div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
-              <h3 style="margin: 0;">해결</h3>
-              <div class="media-frame" style="height: clamp(220px, 42vh, 430px);"><img src="assets/attract_follow/follow_single.gif" alt="안정적 추종 해결"></div>
-              <div class="card">
-                <p><strong>회전 게인 인하 + EMA 필터로 떨림 완화 + 회전 후 전진(align_gate)으로 동시 활성 구간 제거 → 안정적 추종</strong></p>
+                <p><strong>오른팔 비활성화·왼팔 단독 진행</strong></p>
               </div>
             </div>
           </div>
@@ -2667,11 +2645,11 @@
       <section class="slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>향후 개선 방향: 제조 협동 로봇으로서의 발전</h2>
+          <h2>향후 개선: 제조 협동 로봇</h2>
         </div>
         <div class="content" style="grid-template-rows: auto 1fr auto; gap: clamp(18px, 2vw, 30px);">
           <div class="card" style="text-align: center;">
-            <h3 style="margin: 0;">단계 기반 제조 자동화에서 사람과 함께 일하는 제조 협동 로봇으로 확장</h3>
+            <h3 style="margin: 0;">제조 자동화 → 협동 제조</h3>
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: clamp(12px, 1.4vw, 20px); align-items: stretch; min-height: 0;">
@@ -2695,7 +2673,7 @@
           </div>
 
           <div class="highlight" style="margin: 0; text-align: center;">
-            점주는 보충과 예외 판단, 로봇은 반복 제조와 상태 기반 재개를 담당
+            점주: 보충·예외 판단 / 로봇: 반복 제조·재개
           </div>
         </div>
       </section>
@@ -2703,7 +2681,7 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>서빙: ACT Policy 기반 Jittering 현상 억제</h2>
+          <h2>서빙: ACT Jittering 억제</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: clamp(12px, 1.5vw, 22px);">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 28px); min-height: 0;">
@@ -2743,7 +2721,7 @@
             </div>
           </div>
           <div style="background: var(--surface); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
-            <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">후처리 필터 없이 <strong>데이터 다양성 확장 + 학습 스케일링</strong>만으로 End-to-End 모션 안정화 성공</p>
+            <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">데이터 다양성 + 학습 스케일링으로 모션 안정화</p>
           </div>
         </div>
       </section>
@@ -2751,14 +2729,14 @@
       <section class="slide feature-slide human-context-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>Language에서 Vision Context로의 전환</h2>
+          <h2>Language → Vision Context</h2>
         </div>
         <div class="content">
           <div class="content-grid">
 
             <!-- 좌: 기존 시도 -->
             <div class="context-panel before">
-              <p class="panel-title">기존 시도: Language Prompt (SmolVLA)</p>
+              <p class="panel-title">기존: Language Prompt</p>
               <ul class="context-list">
                 <li>좌/우 방향 판단을 텍스트 지시어로 세분화하여 학습
                   <div style="margin-top: 5px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; font-family: monospace; font-size: clamp(8px, 0.56vw, 10px); color: var(--muted-text); display: grid; gap: 2px; line-height: 1.45;">
@@ -2780,7 +2758,7 @@
 
             <!-- 우: 최종 해결 -->
             <div class="context-panel final">
-              <p class="panel-title">최종 해결: Vision Context 주입 (ACT Policy)</p>
+              <p class="panel-title">최종: Vision Context</p>
               <ul class="context-list">
                 <li>Language를 배제하고 Vision 정보에 목적지(좌/우)를 직접 주입</li>
                 <li class="is-strong">Vision → 행동 연계 성공</li>
@@ -2802,7 +2780,7 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>데이터셋 고도화 및 실환경 강건성(Robustness) 확보</h2>
+          <h2>데이터셋 고도화와 실환경 강건성</h2>
         </div>
         <div class="content" style="display: grid; grid-template-rows: 1fr auto; gap: clamp(10px, 1.2vw, 16px);">
 
@@ -2815,10 +2793,10 @@
                 <img src="assets/serving_act/unable_to_pickup.gif" alt="불균등 학습 실패 구동">
               </div>
               <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
-                <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 1 — 내비게이션 오차 &amp; 데이터 균등성</p>
-                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
-                  <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">Navigation 도착 위치 오차 → 오브젝트 상대 위치 변동 → Pick 실패</li>
-                  <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">다양한 위치에서 / 균등한 횟수로 Pick 데이터셋 재구축 → 공간적 일반화 확보</li>
+                <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 1 - 내비 오차</p>
+                <ul style="margin: 0; padding-left: 1.4em; display: grid; gap: 4px;">
+                  <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">도착 오차 → 상대 위치 변동 → Pick 실패</li>
+                  <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">위치 균등 데이터셋 → 일반화</li>
                 </ul>
               </div>
             </div>
@@ -2829,10 +2807,10 @@
                 <img src="assets/serving_act/flicker.png" alt="형광등 Flicker 노이즈">
               </div>
               <div style="background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 16px; display: flex; flex-direction: column; gap: 7px;">
-                <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 2 — 실내 조명 Flicker 노이즈 대응</p>
-                <ul style="margin: 0; padding-left: 1.2em; display: grid; gap: 4px;">
-                  <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">형광등 플리커 → Top-view 카메라 유입 → 플리커 환경에만 추론 적합</li>
-                  <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">Data Augmentation을 통해 플리커X 데이터셋 추가 → 조명 변화 강건성 확보</li>
+                <p style="font-size: var(--content-small-size); font-weight: 800; color: var(--secondary); margin: 0;">과제 2 - 조명 Flicker</p>
+                <ul style="margin: 0; padding-left: 1.4em; display: grid; gap: 4px;">
+                  <li style="font-size: var(--content-small-size); color: var(--primary); font-weight: 700;">플리커 노이즈 → 추론 편향</li>
+                  <li style="font-size: var(--content-small-size); color: var(--secondary); font-weight: 700;">Augmentation → 조명 강건성</li>
                 </ul>
               </div>
             </div>
@@ -2841,34 +2819,27 @@
 
           <!-- 하단: 핵심 성과 -->
           <div style="background: color-mix(in srgb, var(--secondary) 8%, white); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: 10px 18px;">
-            <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">두 가지 실환경 제약 조건 극복 → <strong>최종 Pick 성공률 90% 이상 달성</strong></p>
+            <p style="font-size: var(--content-small-size); font-weight: 700; color: var(--secondary); margin: 0;">최종 Pick 성공률 90%+</p>
           </div>
 
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-6 / 기능 및 기술</p>
-          <h2>모객 기술 ①: 두뇌·눈·손 3모듈 구조</h2>
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: 3모듈 구조</h2>
         </div>
-        <div class="content two-col">
-          <div class="stack">
-            <div class="card">
-              <h3>doby_controller · 두뇌</h3>
-              <p>주행·전략·대화·표정 등 의사결정 전부를 담당한다. Vic Pinky 베이스에 BehaviorTree + 5-state FSM + Nav2 구성.</p>
-            </div>
-            <div class="card">
-              <h3>scout_reactor · 눈</h3>
-              <p>멀리서 손든 손님(호출)을 손·바운딩박스로 탐지하고, PTZ 카메라가 대상을 추적·고정(SEARCH→TRACK→LOCK)한다. PTZ 카메라 + 아두이노 서보 2축.</p>
-            </div>
-            <div class="card">
-              <h3>omx_reactor · 손</h3>
-              <p>감정·제스처에 맞춰 환영·응원·하이파이브를 표현한다. OpenManipulator-X(오픈HW) 5축 팔에 <strong>18종 표현 모션을 자체 구현</strong> — 감정(V·A) 4분면 + 인사 2 + 제스처 mimic 10 + 그리퍼 2. 새 모션은 motions·trajectories 한 줄만 추가하는 플러그인 구조.</p>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">FSM</b> 유한상태머신 · <b style="color: var(--secondary); font-weight:700;">BehaviorTree</b> 행동 트리 · <b style="color: var(--secondary); font-weight:700;">PTZ 카메라</b> 좌우·상하로 움직이는 카메라 · <b style="color: var(--secondary); font-weight:700;">OpenManipulator-X</b> 5축 로봇 팔</p>
-            </div>
+        <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
+          <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">보고 판단하고 표현하는 역할을 분리</p>
+            <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
+              <li><strong>두뇌 · doby_controller</strong><br>FSM·BT·Nav2로 대화, 표정, 이동 의사결정</li>
+              <li><strong>눈 · scout_reactor</strong><br>bbox·PTZ로 사람과 손짓 추적</li>
+              <li><strong>손 · omx_reactor</strong><br>OpenManipulator-X로 18종 감정 모션 표현</li>
+            </ul>
           </div>
-          <div class="media-frame contain" style="padding:6px; background:white;">
+          <div class="media-frame contain" style="padding:6px; background:white; min-height:0;">
             <svg style="width:100%; height:100%; display:block; font-family: 'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif;" viewBox="0 0 156 128" preserveAspectRatio="xMidYMid meet" role="img" aria-label="도비 실물 사진에 두뇌·눈·손 모듈을 외곽 라벨로 연결해 표시">
               <image href="assets/moca_3module.jpg" x="45.65" y="2" width="64.7" height="115" preserveAspectRatio="xMidYMid meet"/>
 
@@ -2883,141 +2854,165 @@
                 <rect x="2" y="8" width="42" height="15" rx="2.2" fill="#f5f7fb" stroke="#d9e0ec" stroke-width="0.3"/>
                 <rect x="2" y="8" width="1.8" height="15" fill="#224087"/>
                 <text font-size="3" font-weight="800" fill="#1f2a44" x="7" y="14">눈 · scout_reactor</text>
-                <text font-size="2.3" fill="#5b6678" x="7" y="18.8">PTZ 카메라 + 서보 2축</text>
+                <text font-size="2.3" fill="#5b6678" x="7" y="18.8">사람과 손짓을 찾음</text>
               </g>
               <g>
                 <rect x="2" y="39" width="42" height="15" rx="2.2" fill="#f5f7fb" stroke="#d9e0ec" stroke-width="0.3"/>
                 <rect x="2" y="39" width="1.8" height="15" fill="#d83f87"/>
                 <text font-size="3" font-weight="800" fill="#1f2a44" x="7" y="45">두뇌 · doby_controller</text>
-                <text font-size="2.3" fill="#5b6678" x="7" y="49.8">BehaviorTree · FSM · Nav2</text>
+                <text font-size="2.3" fill="#5b6678" x="7" y="49.8">다음 행동을 결정</text>
               </g>
               <g>
                 <rect x="112" y="39" width="42" height="15" rx="2.2" fill="#f5f7fb" stroke="#d9e0ec" stroke-width="0.3"/>
                 <rect x="112" y="39" width="1.8" height="15" fill="#2e9e6b"/>
                 <text font-size="3" font-weight="800" fill="#1f2a44" x="117" y="45">손 · omx_reactor</text>
-                <text font-size="2.3" fill="#5b6678" x="117" y="49.8">OpenManipulator-X 5축</text>
+                <text font-size="2.3" fill="#5b6678" x="117" y="49.8">팔 동작으로 표현</text>
               </g>
 
               <rect x="30" y="119" width="96" height="8" rx="2" fill="#1d3570"/>
-              <text font-size="2.9" font-weight="700" fill="#ffffff" x="78" y="124.6" text-anchor="middle">세 모듈 = 하나의 유기체 · 공통 감정 인지 공유</text>
+	              <text font-size="2.9" font-weight="700" fill="#ffffff" x="78" y="124.6" text-anchor="middle">보고 판단하고 표현하는 역할 분담</text>
             </svg>
           </div>
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-8 / 기능 및 기술</p>
-          <h2>모객 기술 ②: 5-state + 6-stage 이원 구조</h2>
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: FSM + BT</h2>
         </div>
-        <div class="content">
-          <div class="stack">
-            <div class="summary-band">
-              <div class="card">
-                <h3>5-state · FSM</h3>
-                <p>로봇이 어떤 일을 하는가. idle · serving · patrol · guiding · engaging(모객). 더 급한 일이 오면 우선순위로 선점(serving=1 … idle=99).</p>
-              </div>
-              <div class="card">
-                <h3>6-stage · BT</h3>
-                <p>engaging 안에서만 도는 진행 순서. IDLE → APPROACH → ICEBREAK → MINIGAME → OFFER → LEAD-IN 을 한 단계씩 순차 진행.</p>
-              </div>
-              <div class="card">
-                <h3>왜 이원화인가</h3>
-                <p>바깥은 ROS 스택을 통째로 kill/spawn 하는 '프로세스 생사' 문제라 FSM, 안은 순차+반응형 안전감시라 BehaviorTree가 필연이다.</p>
-                <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">선점(preempt)</b> 더 급한 작업이 현재 작업을 가로채는 것 · <b style="color: var(--secondary); font-weight:700;">kill·spawn</b> 프로세스를 끄고 새로 띄우는 것</p>
-              </div>
-            </div>
-            <div class="highlight">
-              일의 종류(state, 선점)와 그 일 속 단계(stage, 순차)를 분리했다.
-            </div>
+        <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
+          <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">역할 전환과 행동 순서를 분리</p>
+            <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
+              <li><strong>FSM · mode</strong><br>idle / serving / patrol / guiding / engaging</li>
+              <li><strong>BT · stage</strong><br>APPROACH → ICEBREAK → MINIGAME → OFFER</li>
+              <li><strong>preempt</strong><br>긴급 작업은 현재 행동을 멈추고 우선 전환</li>
+            </ul>
+          </div>
+          <div class="media-frame contain" style="padding: 22px; background: var(--surface-soft); min-height:0;">
+            <svg style="width:100%; height:100%; display:block; font-family:'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif;" viewBox="0 0 720 360" role="img" aria-label="FSM과 BT의 역할 분리 도식">
+              <rect x="14" y="24" width="260" height="312" rx="16" fill="#f7f9fd" stroke="#d9e0ec" stroke-width="2"/>
+              <text x="144" y="65" text-anchor="middle" font-size="28" font-weight="900" fill="#1f2a44">FSM</text>
+              <text x="144" y="94" text-anchor="middle" font-size="16" font-weight="700" fill="#5b6678">큰 역할 전환</text>
+              <g font-size="19" font-weight="800" fill="#1f2a44">
+                <rect x="58" y="126" width="172" height="40" rx="20" fill="#ffffff" stroke="#224087" stroke-width="2"/><text x="144" y="153" text-anchor="middle">idle</text>
+                <rect x="58" y="181" width="172" height="40" rx="20" fill="#ffffff" stroke="#224087" stroke-width="2"/><text x="144" y="208" text-anchor="middle">serving</text>
+                <rect x="58" y="236" width="172" height="40" rx="20" fill="#ffffff" stroke="#d83f87" stroke-width="2"/><text x="144" y="263" text-anchor="middle">engaging</text>
+              </g>
+              <path d="M282 180 H390" stroke="#5b6678" stroke-width="5" stroke-linecap="round"/>
+              <path d="M374 164 L394 180 L374 196" fill="none" stroke="#5b6678" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="338" y="150" text-anchor="middle" font-size="18" font-weight="800" fill="#d83f87">preempt</text>
+              <rect x="410" y="24" width="296" height="312" rx="16" fill="#fff8fb" stroke="#efd0df" stroke-width="2"/>
+              <text x="558" y="65" text-anchor="middle" font-size="28" font-weight="900" fill="#1f2a44">BT</text>
+              <text x="558" y="94" text-anchor="middle" font-size="16" font-weight="700" fill="#5b6678">세부 행동 순서</text>
+              <g font-size="18" font-weight="800" fill="#1f2a44">
+                <rect x="460" y="120" width="196" height="38" rx="19" fill="#ffffff" stroke="#d83f87" stroke-width="2"/><text x="558" y="146" text-anchor="middle">APPROACH</text>
+                <rect x="460" y="170" width="196" height="38" rx="19" fill="#ffffff" stroke="#d83f87" stroke-width="2"/><text x="558" y="196" text-anchor="middle">ICEBREAK</text>
+                <rect x="460" y="220" width="196" height="38" rx="19" fill="#ffffff" stroke="#d83f87" stroke-width="2"/><text x="558" y="246" text-anchor="middle">MINIGAME</text>
+                <rect x="460" y="270" width="196" height="38" rx="19" fill="#ffffff" stroke="#d83f87" stroke-width="2"/><text x="558" y="296" text-anchor="middle">OFFER</text>
+              </g>
+            </svg>
           </div>
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-9 / 기능 및 기술</p>
-          <h2>모객 기술 ③: rapport 게이팅 퍼널</h2>
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: rapport 퍼널</h2>
         </div>
-        <div class="content two-col">
-          <div class="stack">
-            <div class="card">
-              <h3>단계적으로 친해지는 깔때기</h3>
-              <ul class="tech-list">
-                <li>깔때기처럼 단계마다 이탈은 정상 — 억지로 붙잡지 않음</li>
-                <li>APPROACH 1.5m(1.0m 중단) → ICEBREAK(rapport≥30) → MINIGAME → OFFER(≥60) → LEAD-IN(≥80)</li>
-                <li>rapport는 '응답 여부'가 아니라 '얼마나 즐거워했나'를 측정 (happy ×1.5 … 혐오 ×0)</li>
-                <li>EmotionMonitor 1Hz로 분노·불쾌 감지 시 단계 불문 즉시 중단</li>
-              </ul>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">퍼널(funnel)</b> 단계마다 이탈이 생기는 깔때기형 흐름 · <b style="color: var(--secondary); font-weight:700;">EmotionMonitor</b> 1초에 한 번 감정을 감시하는 모듈</p>
-            </div>
-            <div class="highlight">
-              RPG 퀘스트 NPC처럼 단계적으로 친밀도를 쌓아 권유로 수렴한다.
-            </div>
+        <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
+          <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">반응이 좋을 때만 다음 권유</p>
+            <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
+              <li><strong>1.5m 접근</strong><br>대화 시작 거리 확보</li>
+              <li><strong>rapport gate 30 / 60 / 80</strong><br>친밀도 기준으로 단계 전환</li>
+              <li><strong>abort</strong><br>분노·불쾌 감지 시 권유 중단</li>
+            </ul>
           </div>
-          <div class="media-frame contain">
-            <video src="assets/moca_rapport.mp4" autoplay loop muted playsinline aria-label="미니게임 중 rapport 친밀도 분석 화면"></video>
+          <div class="media-frame contain" style="display:grid; grid-template-rows:minmax(0, 1fr) auto; gap:8px; min-height:0; background: white;">
+            <video src="assets/moca_rapport.mp4" autoplay loop muted playsinline aria-label="미니게임 중 rapport 친밀도 분석 화면" style="width:100%; height:100%; min-height:0; object-fit:contain; display:block; background:white; padding:0;"></video>
+            <span style="color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">rapport 실시간 분석</span>
           </div>
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-10 / 기능 및 기술</p>
-          <h2>모객 기술 ④: 얼굴을 숫자로, 감정 파이프라인</h2>
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: 감정 분석 파이프라인</h2>
         </div>
-        <div class="content two-col">
-          <div class="stack">
-            <div class="card">
-              <h3>픽셀에서 감정 좌표까지</h3>
-              <ul class="tech-list">
-                <li>MediaPipe로 얼굴점 468 + 표정근육 52(blendshape) 추출</li>
-                <li>규칙 가중합으로 7감정 점수화 → Russell V·A 2축 좌표로 압축</li>
-                <li>EMA 평활 + Hysteresis로 떨림을 없애고 추세만 읽음</li>
-                <li>abort 조건: valence &lt; -0.5 ∧ arousal &gt; +0.4 (분노·공포 영역)</li>
-              </ul>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">blendshape</b> 표정근육 강도값(0~1) · <b style="color: var(--secondary); font-weight:700;">EMA</b> 지수이동평균(값을 부드럽게) · <b style="color: var(--secondary); font-weight:700;">Hysteresis</b> 떨림 방지용 연속 프레임 조건</p>
-            </div>
-            <div class="highlight">
-              세 모듈이 공유하는 기술적 심장이다.
-            </div>
+        <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
+          <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">표정을 감정 좌표로 변환</p>
+            <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
+              <li><strong>MediaPipe</strong><br>얼굴 표정 특징 추출</li>
+              <li><strong>V·A 기반 감정 판단</strong><br>긍정·부정, 차분·흥분으로 단순화</li>
+              <li><strong>EMA · Hysteresis</strong><br>순간 표정 변화를 부드럽게 보정</li>
+              <li><strong>불쾌 반응 시 모객 중단</strong><br></li>
+            </ul>
           </div>
           <div style="display:grid; grid-template-rows:1fr 1fr; gap:14px; height:100%; min-height:0;">
-            <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
-              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: clamp(11px,.92vw,14px); font-weight:700;">표정 → 감정 분석</span>
-              <video src="assets/moca_face_emotion.mp4" autoplay loop muted playsinline aria-label="얼굴 표정에서 감정을 분석하는 화면" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+            <div class="media-frame contain" style="display:grid; grid-template-rows:minmax(0, 1fr) auto; gap:6px; height:100%; min-height:0;">
+              <video src="assets/moca_face_emotion.mp4" autoplay loop muted playsinline aria-label="얼굴 표정에서 감정을 분석하는 화면" style="width: 100%; height: 100%; min-height:0; object-fit: contain; display: block; background: white; padding: 0;"></video>
+              <span style="color: var(--muted-text); font-size: var(--type-micro); font-weight:700; text-align:center;">표정에서 반응 읽기</span>
             </div>
-            <div class="media-frame contain" style="position:relative; height:100%; min-height:0;">
-              <span style="position:absolute; left:12px; top:12px; z-index:3; padding:4px 10px; border-radius:999px; background: color-mix(in srgb, var(--secondary) 86%, black); color:white; font-size: clamp(11px,.92vw,14px); font-weight:700;">V·A 추이 평활</span>
-              <video src="assets/moca_va_ema.mp4" autoplay loop muted playsinline aria-label="Valence·Arousal 좌표와 EMA 추이 분석" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+            <div class="media-frame contain" style="display:grid; grid-template-rows:minmax(0, 1fr) auto; gap:6px; height:100%; min-height:0;">
+              <video src="assets/moca_va_ema.mp4" autoplay loop muted playsinline aria-label="Valence·Arousal 좌표와 EMA 추이 분석" style="width: 100%; height: 100%; min-height:0; object-fit: contain; display: block; background: white; padding: 0;"></video>
+              <span style="color: var(--muted-text); font-size: var(--type-micro); font-weight:700; text-align:center;">V·A 추이 EMA 보정</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
-          <p class="section-mark">11-11 / 기능 및 기술</p>
-          <h2>모객 기술 ⑤: 3계층 안전과 학술 토대</h2>
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: 안전 보장</h2>
         </div>
-        <div class="content two-col">
-          <div class="stack">
-            <div class="card">
-              <h3>성격이 다른 3겹 안전</h3>
-              <ul class="tech-list">
-                <li><strong>① 물리</strong>: Hard SafetyCheck — 배터리 &lt;20%, LiDAR 0.25~1.0m 정지</li>
-                <li><strong>② 운영</strong>: PauseGate — IEC 60204-1 Cat2, 감시된 정지 후 자동 재개</li>
-                <li><strong>③ 사회</strong>: EmotionMonitor — V&lt;-0.5 ∧ A&gt;+0.4 시 모객 중단·사과·후퇴</li>
-              </ul>
-              <p style="margin-top:4px; padding-top:10px; border-top:1px dashed var(--line); color: color-mix(in srgb, var(--text) 56%, white); font-size: clamp(12px,1.02vw,15px); line-height:1.45; word-break:keep-all;">※ <b style="color: var(--secondary); font-weight:700;">LiDAR</b> 레이저로 거리를 재는 센서 · <b style="color: var(--secondary); font-weight:700;">IEC 60204-1</b> 기계 안전 정지 국제표준 · <b style="color: var(--secondary); font-weight:700;">V·A</b> 감정 좌표(Valence·Arousal)</p>
-            </div>
-            <div class="card">
-              <h3>학술 6-Layer</h3>
-              <p>Russell'80(V·A) · Isla'05(BT) · Salichs'14(신호 융합) · Castro-González'16(게임 친밀) · Marzinotto'14 · Iovino'22 — 45년 6편이 행동·감정 두 줄기로 수렴한다.</p>
-            </div>
+        <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
+          <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">기계 안전과 감정 안전</p>
+            <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
+              <li><strong>물리 · 배터리 / LiDAR</strong><br>장애물과 로봇 상태 확인</li>
+              <li><strong>운영 · PauseGate</strong><br>위험 상황 즉시 일시정지</li>
+              <li><strong>사회 · V·A 반응</strong><br>불쾌 감지 시 사과하고 후퇴</li>
+              <li><strong>근거 · IEC 60204-1 / BT / 신호 융합</strong></li>
+            </ul>
           </div>
-          <div class="media-frame contain">
-            <video src="assets/moca_abort.mp4" autoplay loop muted playsinline aria-label="고객의 화남을 감지해 모객을 중단하는 감정 모니터 대응" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white; padding: 8px;"></video>
+          <div class="media-frame contain" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-height:0; background:white;">
+            <video src="assets/moca_abort.mp4" autoplay loop muted playsinline aria-label="고객의 화남을 감지해 모객을 중단하는 감정 모니터 대응" style="width:auto; height:auto; max-width:100%; max-height:calc(100% - 30px); object-fit:contain; display:block; background:white; padding:0;"></video>
+            <span style="color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">불쾌 반응 감지 → 중단</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 슬라이드 D: 모객 추종 트러블슈팅 (제조 트러블슈팅과 동일 형식) -->
+      <section class="slide feature-slide" data-kicker="Technology">
+        <div class="header">
+          <p class="section-mark">04 / 주요 기술</p>
+          <h2>모객: 추종 진동 개선</h2>
+        </div>
+        <div class="content" style="display:grid; grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.55fr); gap: 28px; align-items: center;">
+          <div style="display:grid; gap: 22px; align-content:center; min-height:0;">
+            <p style="font-size: clamp(26px, 2.35vw, 38px); line-height:1.22; font-weight:900; color:var(--dark);">작은 흔들림은 걸러내고 천천히 보정</p>
+            <ul class="tech-list" style="gap: 14px; padding-left: 1.1em;">
+              <li><strong>문제</strong><br>bbox 떨림이 cmd_vel에 바로 전달되어 좌우 진동</li>
+              <li><strong>해결</strong><br>게인 인하 · EMA · align_gate 적용</li>
+              <li><strong>결과</strong><br>사람을 더 안정적으로 따라감</li>
+            </ul>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; height:100%; min-height:0;">
+            <div style="display:grid; grid-template-rows:minmax(0,1fr) auto; gap: 10px; min-height:0;">
+              <div class="media-frame" style="height: 100%; min-height:0;"><img src="assets/attract_follow/zigzag_fail.gif" alt="지그재그 진동 문제" style="object-fit: contain; padding: 0;"></div>
+              <h3 style="margin: 0; color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">개선 전</h3>
+            </div>
+            <div style="display:grid; grid-template-rows:minmax(0,1fr) auto; gap: 10px; min-height:0;">
+              <div class="media-frame" style="height: 100%; min-height:0;"><img src="assets/attract_follow/follow_single.gif" alt="안정적 추종 해결" style="object-fit: contain; padding: 0;"></div>
+              <h3 style="margin: 0; color: var(--muted-text); font-size: var(--type-caption); font-weight:700; text-align:center;">개선 후</h3>
+            </div>
           </div>
         </div>
       </section>
@@ -3025,7 +3020,7 @@
       <section class="slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>음성 인식: 정확도 개선과 향후 응답 지연 단축</h2>
+          <h2>음성 인식: 정확도 개선</h2>
         </div>
         <div class="content" style="grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); align-items: stretch;">
 
@@ -3033,45 +3028,59 @@
           <div style="display: grid; grid-template-rows: auto auto 1fr; gap: clamp(12px, 1.4vw, 18px);">
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 6px; align-content: start;">
               <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">① 문제</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">메뉴·수량어 오인식 <span style="color: var(--text);">(핫도그→핫독)</span></span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">메뉴·수량어 오인식</span>
             </div>
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 6px; align-content: start;">
               <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 원인</span>
-              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">0.6B 경량 모델 한계 · 정확도 65% / WER 30%</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">경량 ASR 한계 · 65% / WER 30%</span>
             </div>
             <div style="background: var(--surface-soft); border: 1px solid var(--line); border-left: 4px solid #1b9e5a; border-radius: var(--radius-card); padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 10px; align-content: start; min-height: 0;">
-              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 해결 · 컨텍스트 바이어싱</span>
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">③ 해결 · ASR Context</span>
               <div style="background: #1e1e2e; border: 1px solid #2c2c3d; border-radius: 10px; padding: clamp(16px, 1.6vw, 24px); overflow: hidden;">
-                <div style="font-size: clamp(15px, 1.25vw, 20px); font-weight: 700; color: #aab6ff; margin-bottom: 12px;">실제 주입한 컨텍스트 (텍스트 1줄)</div>
-                <pre style="margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(13px, 1.2vw, 18px); line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: #d4d4d4;"><span style="color: #6a9a6a;">// 메뉴 + 수량/세는 말을 ASR context 로 미리 바이어싱</span>
+                <div style="font-size: var(--type-caption); font-weight: 700; color: #aab6ff; margin-bottom: 12px;">주입 컨텍스트</div>
+                <pre style="margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: var(--type-micro); line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: #d4d4d4;"><span style="color: #6a9a6a;">// 메뉴·수량어 bias</span>
 <span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">ASR_CONTEXT</span> = <span style="color: #ce9178;">'매장 주문. 핫도그, 콜라, 커피. '</span>
   + <span style="color: #ce9178;">'자주 쓰는 말: 하나, 한 개, 한 잔, 둘, 두 개, 두 잔, 개, 잔.'</span>;
 
-<span style="color: #6a9a6a;">// 호출부 — 음성마다 같은 1줄을 함께 전송</span>
+<span style="color: #6a9a6a;">// 음성마다 context 전송</span>
 <span style="color: #9cdcfe;">fd</span>.<span style="color: #dcdcaa;">append</span>(<span style="color: #ce9178;">'context'</span>, <span style="color: #9cdcfe;">ASR_CONTEXT</span>);   <span style="color: #6a9a6a;">// → POST /asr/transcribe</span></pre>
               </div>
               <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
-                <span style="font-size: clamp(22px, 2.4vw, 34px); font-weight: 800; line-height: 1;"><span style="color: var(--primary); text-decoration: line-through;">65%</span> <span style="color: var(--muted-text);">→</span> <span style="color: #1b9e5a;">95%</span></span>
-                <span style="font-size: var(--content-small-size); color: var(--muted-text);">WER 30%→5% · 추가비용 0</span>
+                <span style="font-size: var(--type-highlight); font-weight: 800; line-height: 1;"><span style="color: var(--primary); text-decoration: line-through;">65%</span> <span style="color: var(--muted-text);">→</span> <span style="color: #1b9e5a;">95%</span></span>
+                <span style="font-size: var(--content-small-size); color: var(--muted-text);">WER 30%→5%</span>
               </div>
             </div>
           </div>
 
           <!-- 우: 향후 개선 방향 -->
           <div style="background: var(--surface-tint); border: 1px solid var(--line); border-left: 6px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(18px, 1.9vw, 26px); display: grid; grid-template-rows: auto auto auto 1fr auto; gap: clamp(12px, 1.5vw, 20px); align-content: start;">
-            <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--secondary);">향후 개선 방향 · 스트리밍</span>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">현재 비스트리밍 → 발화 종료 후 STT·LLM·TTS 순차 진행 → 응답 지연</span>
-            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM</span>
-              <span style="color: var(--secondary); font-weight: 800;">→</span>
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
-              <span style="color: var(--secondary); font-weight: 800;">→</span>
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
+            <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--secondary);">개선 방안: 응답 지연시간 단축</span>
+            <div style="display: grid; gap: clamp(8px, 1vw, 12px);">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">① 스트리밍 STT 전환</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">비스트리밍 STT → 스트리밍 모델 · 발화 중 추론·합성</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
+              </div>
             </div>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45; align-self: start;">발화 도중부터 미리 추론·합성해 대화 간격 단축</span>
+            <div style="display: grid; gap: clamp(8px, 1vw, 12px);">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 응답 음성 사전 생성</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">응답이 정형화 → 음성파일 사전 준비로 합성 시간 단축</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">정형 응답</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">음성 사전 생성</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">즉시 재생</span>
+              </div>
+            </div>
+            <div></div>
             <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: clamp(10px, 1.2vw, 16px);">
               <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
-              <b style="font-size: clamp(26px, 3.2vw, 44px); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
+              <b style="font-size: var(--type-highlight); line-height: 1; color: var(--secondary);">≈ 0.5초</b>
               <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준</span>
             </div>
           </div>
@@ -3082,32 +3091,32 @@
       <section class="slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>SLAM / Navigation 트러블슈팅: 주행 실패 사례</h2>
+          <h2>SLAM/Navigation: 실패 사례</h2>
         </div>
         <div class="content" style="grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; align-items: stretch;">
           <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
             <div class="media-frame contain" style="flex: 1; min-height: 0;">
               <img data-media="serving_driving/좁은곳 통과 실패.png" alt="좁은 통로 통과 실패 사례">
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">좁은 통로 통과 실패</strong> · 협소 구간 경로 생성 실패</p>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">좁은 통로</strong> · 경로 생성 실패</p>
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
             <div class="media-frame contain" style="flex: 1; min-height: 0;">
               <img data-media="serving_driving/골포즈 위치 실패.png" alt="골 포즈 도달 실패 사례">
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">골 포즈 도달 실패</strong> · 목표 지점 정렬·정지 실패</p>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">골 포즈</strong> · 정렬 실패</p>
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
             <div class="media-frame contain" style="flex: 1; min-height: 0;">
               <img data-media="serving_driving/후미충돌.png" alt="후미 충돌 사례">
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">후미 충돌</strong> · 주행 중 로봇 후미가 장애물과 충돌</p>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">후미 충돌</strong> · 장애물 접촉</p>
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px; min-height: 0;">
             <div class="media-frame contain" style="flex: 1; min-height: 0;">
               <img data-media="serving_driving/외벽 충돌 판정.png" alt="외벽 충돌 판정 사례">
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">외벽 충돌 판정</strong> · 코스트맵상 외벽과 충돌로 주행 중단</p>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);"><strong style="color: var(--text);">외벽 충돌</strong> · 코스트맵 중단</p>
           </div>
         </div>
       </section>
@@ -3115,17 +3124,17 @@
       <section class="slide feature-slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>서빙: 픽업·운반·제공을 연결하는 자율주행</h2>
+          <h2>서빙: 자율주행 연동</h2>
         </div>
         <div class="content">
-          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: start;">
-            <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="stack" style="grid-template-columns: 1fr 1fr; align-items: stretch; height: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-height: 0;">
               <div class="media-frame" style="min-height: 0;">
                 <img data-media="serving_driving/rvizhome-_t03ㄱ_2x.gif" alt="RViz 경로 시각화 home에서 t03">
               </div>
               <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">RViz · home → t03</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; min-height: 0;">
               <div class="media-frame" style="min-height: 0;">
                 <img data-media="serving_driving/rvizt03-__home_2x.gif" alt="RViz 경로 시각화 t03에서 home">
               </div>
@@ -3138,30 +3147,30 @@
       <section class="slide" data-kicker="Technology">
         <div class="header">
           <p class="section-mark">04 / 주요 기술</p>
-          <h2>향후 개선 방향: 충돌 블랙박스 · Depth 카메라</h2>
+          <h2>향후 개선: 충돌 블랙박스·Depth</h2>
         </div>
         <div class="content" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
           <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
             <div class="media-frame contain" style="flex: 1; min-height: 0;">
               <img data-media="serving_driving/collision.png" alt="주행 중 장애물 충돌 상황 일러스트">
             </div>
-            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">주행 중 장애물 충돌 상황</p>
+            <p style="text-align: center; font-size: var(--content-small-size); color: var(--muted-text);">충돌 상황</p>
           </div>
           <div class="stack" style="grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; min-height: 0;">
             <div class="card" style="align-content: center; gap: 0.9em;">
               <h3>충돌 블랙박스</h3>
               <ul class="tech-list" style="gap: 0.45em;">
-                <li>충돌·복구 이벤트 자동 기록</li>
+                <li>충돌·복구 기록</li>
                 <li>센서·주행 데이터 저장</li>
-                <li>사고 직전 구간 재생·원인 분석</li>
+                <li>직전 구간 재생</li>
               </ul>
             </div>
             <div class="card" style="align-content: center; gap: 0.9em;">
-              <h3>Depth 카메라 기반 장애물 인지</h3>
+              <h3>Depth 장애물 인지</h3>
               <ul class="tech-list" style="gap: 0.45em;">
-                <li>한계 · 2D LiDAR는 특정 높이만 감지</li>
-                <li>보강 · Depth 카메라로 거리값 확보</li>
-                <li>목표 · 다양한 높이의 장애물 회피</li>
+                <li>2D LiDAR 높이 한계</li>
+                <li>Depth 거리값 보강</li>
+                <li>다양한 높이 회피</li>
               </ul>
             </div>
           </div>
@@ -3177,7 +3186,6 @@
           <ul>
             <li>프로젝트 운영</li>
             <li>프로젝트 문서 관리</li>
-            <li>코드 형상 관리</li>
             <li>담당 업무</li>
           </ul>
         </div>
@@ -3188,14 +3196,17 @@
           <p class="section-mark">05 / 결론</p>
           <h2>프로젝트 관리</h2>
         </div>
-        <div class="content">
-          <div class="stack">
+        <div class="content" style="grid-template-columns: minmax(320px, 0.42fr) minmax(0, 1fr); align-items: stretch;">
+          <div class="card" style="align-content: start;">
             <h3>프로젝트 운영</h3>
             <ul>
-              <li>SCRUM 방식으로 주 단위 sprint를 계획하고 프로젝트 진행 상황을 관리</li>
-              <li>Jira를 활용해 sprint 목표, 담당 작업, 진행 상태를 추적</li>
-              <li>총 7번의 sprint를 기획, 설계, 전체 구현, 상세 구현, 통합 테스트 단계로 운영</li>
+              <li>주 단위 Scrum sprint</li>
+              <li>Jira 목표·담당·상태 추적</li>
+              <li>7개 sprint 운영</li>
             </ul>
+          </div>
+          <div class="media-frame contain" style="min-height: 0; height: 100%; background: var(--surface);">
+            <img src="assets/project/jira.png" alt="Jira sprint backlog 화면" style="max-height: none; object-fit: contain; padding: 0;">
           </div>
         </div>
       </section>
@@ -3205,14 +3216,17 @@
           <p class="section-mark">05 / 결론</p>
           <h2>프로젝트 관리</h2>
         </div>
-        <div class="content">
-          <div class="stack">
+        <div class="content" style="grid-template-columns: minmax(320px, 0.42fr) minmax(0, 1fr); align-items: stretch;">
+          <div class="card" style="align-content: start;">
             <h3>프로젝트 문서 관리</h3>
             <ul>
-              <li>Confluence를 활용해 개발 문서 작업과 관리 체계를 운영</li>
-              <li>필요한 자료와 문서를 one-source로 관리</li>
-              <li>클라우드 기반 공동 문서 작업으로 항상 최신 문서와 동일한 설계를 기준으로 협업</li>
+              <li>Confluence 문서화</li>
+              <li>자료 one-source 관리</li>
+              <li>최신 설계 공유</li>
             </ul>
+          </div>
+          <div class="media-frame contain" style="min-height: 0; height: 100%; background: var(--surface);">
+            <img src="assets/project/confluence.png" alt="프로젝트 문서 구조와 소프트웨어 아키텍처 문서 화면" style="max-height: none; object-fit: contain; padding: 0;">
           </div>
         </div>
       </section>
@@ -3258,59 +3272,66 @@
               </div>
             </div>
             <div class="role-card">
-              <div class="role-photo" data-src=""></div>
+              <div class="role-photo" data-src="assets/assigned/deokhyeon.jpg">
+                <img src="assets/assigned/deokhyeon.jpg" alt="김덕현 촬영 이미지" style="object-position: center bottom; transform: scale(1.12);">
+              </div>
               <div class="role-body">
                 <h4>김덕현</h4>
                 <ul>
-                  <li>양팔 로봇 제어 기반 제조 기능 구현</li>
-                  <li>제조 시뮬레이션 구축 및 검증</li>
-                  <li>제조 공간 설계 및 제작</li>
-                  <li>실물 로봇 제조 동작 연동 및 실행 검증</li>
-                  <li>프로젝트 발표</li>
+                  <li>양팔 제조 제어</li>
+                  <li>제조 시뮬레이션</li>
+                  <li>제조 공간 설계</li>
+                  <li>실물 동작 검증</li>
+                  <li>발표</li>
                 </ul>
               </div>
             </div>
             <div class="role-card">
-              <div class="role-photo" data-src=""></div>
+              <div class="role-photo" data-src="assets/assigned/jaesang.heic">
+                <img src="assets/assigned/jaesang.jpg" alt="류재상 촬영 이미지">
+              </div>
               <div class="role-body">
                 <h4>류재상</h4>
                 <ul>
-                  <li>제조 로봇 동작</li>
-                  <li>비전 기반 조작</li>
-                  <li>실물 동작 보정</li>
+                  <li>서빙 모방학습 모델 학습</li>
+                  <li>서빙 모방학습 모델 검증</li>
                 </ul>
               </div>
             </div>
             <div class="role-card">
-              <div class="role-photo" data-src=""></div>
+              <div class="role-photo" data-src="assets/assigned/KakaoTalk_20260604_113142931.jpg">
+                <img src="assets/assigned/KakaoTalk_20260604_113142931.jpg" alt="김진우 촬영 이미지" style="object-position: 64% 30%; transform: scale(1.15);">
+              </div>
               <div class="role-body">
                 <h4>김진우</h4>
                 <ul>
                   <li>주문 서버 구현</li>
-                  <li>고객 자연어 주문 기능 구현</li>
-                  <li>서빙 관련 주행 구현</li>
+                  <li>자연어 주문</li>
+                  <li>서빙 주행</li>
                 </ul>
               </div>
             </div>
             <div class="role-card">
-              <div class="role-photo" data-src=""></div>
+              <div class="role-photo" data-src="assets/assigned/soonhyuk.png">
+                <img src="assets/assigned/soonhyuk.png" alt="안순혁 촬영 이미지">
+              </div>
               <div class="role-body">
                 <h4>안순혁</h4>
                 <ul>
-                  <li>모객 인터랙션</li>
-                  <li>감정 분석 기능</li>
+                  <li>모객 추종 구현</li>
                   <li>고객 응대 흐름</li>
                 </ul>
               </div>
             </div>
             <div class="role-card">
-              <div class="role-photo" data-src=""></div>
+              <div class="role-photo" data-src="assets/assigned/kookjin.png">
+                <img src="assets/assigned/kookjin.png" alt="공국진 촬영 이미지">
+              </div>
               <div class="role-body">
                 <h4>공국진</h4>
                 <ul>
-                  <li>통합 테스트</li>
-                  <li>발표 자료 구성</li>
-                  <li>시연 흐름 점검</li>
+                  <li>서빙 로봇 FSM 기반 모드 제어</li>
+                  <li>모객 감정 분석 구현</li>
                 </ul>
               </div>
             </div>
@@ -3473,6 +3494,13 @@
     }, { passive: false });
 
     window.addEventListener("keydown", (event) => {
+      if (event.altKey && !event.ctrlKey && !event.metaKey && event.key.toLowerCase() === "f") {
+        event.preventDefault();
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen?.();
+        }
+        return;
+      }
       if (event.ctrlKey && event.key.toLowerCase() === "m") {
         event.preventDefault();
         setAgendaOpen(!agendaOpen);
