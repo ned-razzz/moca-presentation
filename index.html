@@ -426,6 +426,14 @@
       padding: 0;
     }
 
+    .media-frame.fit-media-box {
+      flex: 0 1 auto;
+      align-self: center;
+      justify-self: center;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
     .architecture-slide .content {
       padding: clamp(8px, 1vw, 14px);
       overflow: hidden;
@@ -1028,6 +1036,26 @@
       display: grid;
       grid-template-rows: auto minmax(0, 1fr);
       gap: 14px;
+    }
+
+    .real-robot-validation-slide .validation-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      align-self: start;
+      align-items: start;
+    }
+
+    .real-robot-validation-slide .validation-item {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 8px;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .real-robot-validation-slide .media-frame.fill {
+      aspect-ratio: 16 / 9;
+      height: auto;
     }
 
     .content.rows-title-media {
@@ -2527,23 +2555,23 @@
         </div>
       </section>
 
-      <section class="slide feature-slide" data-kicker="Functions">
+      <section class="slide feature-slide real-robot-validation-slide" data-kicker="Functions">
         <div class="header">
           <p class="section-mark">03 / 주요 기능</p>
           <h2>제조</h2>
         </div>
         <div class="content rows-heading-media">
           <h3>실물 로봇 동작 검증</h3>
-          <div class="stack" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; height: 100%;">
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+          <div class="stack validation-grid">
+            <div class="validation-item">
               <div class="media-frame fill"><img src="assets/openarm/manufacturing/빵.gif" alt="실물 빵 배치"></div>
               <p class="caption">① 빵 배치</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+            <div class="validation-item">
               <div class="media-frame fill"><img src="assets/openarm/manufacturing/소시지.gif" alt="실물 소시지 배치"></div>
               <p class="caption">② 소시지 배치</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0; min-width: 0; min-height: 0;">
+            <div class="validation-item">
               <div class="media-frame fill"><img src="assets/openarm/manufacturing/케첩.gif" alt="실물 케첩 도포"></div>
               <p class="caption">③ 케첩 도포</p>
             </div>
@@ -3858,9 +3886,58 @@
       el.src = ASSET_BASE + el.dataset.media;
     });
 
+    let mediaFitFrameId = 0;
+
+    function getMediaSize(media) {
+      if (media.tagName === "VIDEO") {
+        return { width: media.videoWidth, height: media.videoHeight };
+      }
+      return { width: media.naturalWidth, height: media.naturalHeight };
+    }
+
+    function fitMediaFrame(media) {
+      const frame = media.closest(".media-frame");
+      if (!frame) return;
+
+      const size = getMediaSize(media);
+      if (!size.width || !size.height) return;
+
+      frame.classList.remove("fit-media-box");
+      frame.style.removeProperty("width");
+      frame.style.removeProperty("height");
+
+      const rect = frame.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      const mediaRatio = size.width / size.height;
+      const frameRatio = rect.width / rect.height;
+      const fittedWidth = frameRatio > mediaRatio ? rect.height * mediaRatio : rect.width;
+      const fittedHeight = frameRatio > mediaRatio ? rect.height : rect.width / mediaRatio;
+
+      frame.style.width = `${Math.floor(fittedWidth)}px`;
+      frame.style.height = `${Math.floor(fittedHeight)}px`;
+      frame.classList.add("fit-media-box");
+    }
+
+    function fitAllMediaFrames() {
+      document.querySelectorAll(".media-frame > img, .media-frame > video").forEach(fitMediaFrame);
+    }
+
+    function scheduleMediaFrameFit() {
+      window.cancelAnimationFrame(mediaFitFrameId);
+      mediaFitFrameId = window.requestAnimationFrame(fitAllMediaFrames);
+    }
+
+    document.querySelectorAll(".media-frame > img, .media-frame > video").forEach((media) => {
+      const eventName = media.tagName === "VIDEO" ? "loadedmetadata" : "load";
+      media.addEventListener(eventName, scheduleMediaFrameFit);
+    });
+    window.addEventListener("resize", scheduleMediaFrameFit);
+
     const fromHash = Number.parseInt(location.hash.replace("#", ""), 10);
     buildAgenda();
     setSlide(Number.isFinite(fromHash) ? fromHash - 1 : 0);
+    scheduleMediaFrameFit();
 
     function toggleVideo(id, btn) {
       const vid = document.getElementById(id);
