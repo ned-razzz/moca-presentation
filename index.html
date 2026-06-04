@@ -2760,10 +2760,22 @@
             <div class="context-panel before">
               <p class="panel-title">기존 시도: Language Prompt (SmolVLA)</p>
               <ul class="context-list">
-                <li>좌/우 방향 판단을 텍스트 지시어로 세분화하여 학습</li>
-                <li class="is-strong">프롬프트 지시를 제대로 이해하지 X</li>
+                <li>좌/우 방향 판단을 텍스트 지시어로 세분화하여 학습
+                  <div style="margin-top: 5px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; font-family: monospace; font-size: clamp(8px, 0.56vw, 10px); color: var(--muted-text); display: grid; gap: 2px; line-height: 1.45;">
+                    <span><strong>0</strong>  serve cup to the left</span>
+                    <span><strong>1</strong>  serve cup to the right</span>
+                    <span><strong>2</strong>  place plate at center</span>
+                    <span><strong>3</strong>  return to home</span>
+                    <span><strong>4</strong>  serve cup to the left and place plate at center</span>
+                    <span><strong>5</strong>  serve cup to the right and place plate at center</span>
+                  </div>
+                </li>
+                <li class="is-strong">Prompt → 행동 연계 부실</li>
                 <li class="is-strong">모델 추론 비용 증가로 실시간 제어 병목 발생</li>
               </ul>
+              <div class="media-frame context-media" style="flex: 1; min-height: 0;">
+                <img src="assets/serving_act/palm_detection.png" alt="MediaPipe Hand Tracking">
+              </div>
             </div>
 
             <!-- 우: 최종 해결 -->
@@ -2771,11 +2783,16 @@
               <p class="panel-title">최종 해결: Vision Context 주입 (ACT Policy)</p>
               <ul class="context-list">
                 <li>Language를 배제하고 Vision 정보에 목적지(좌/우)를 직접 주입</li>
-                <li class="is-strong">Vision → Place 행동 연계 성공</li>
+                <li class="is-strong">Vision → 행동 연계 성공</li>
                 <li class="is-strong">VRAM 절감 + 제어 실시간성 보장</li>
               </ul>
-              <div class="media-frame context-media">
-                <img src="assets/serving_act/palm_detection.png" alt="MediaPipe Hand Tracking">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(4px, .5vw, 8px); min-height: 0;">
+                <div class="media-frame context-media">
+                  <img src="assets/serving_act/place_left.png" alt="Place Left">
+                </div>
+                <div class="media-frame context-media">
+                  <img src="assets/serving_act/place_right.png" alt="Place Right">
+                </div>
               </div>
             </div>
           </div>
