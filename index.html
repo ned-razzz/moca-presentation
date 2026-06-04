@@ -3032,19 +3032,33 @@
 
           <!-- 우: 향후 개선 방향 -->
           <div style="background: var(--surface-tint); border: 1px solid var(--line); border-left: 6px solid var(--secondary); border-radius: var(--radius-card); padding: clamp(18px, 1.9vw, 26px); display: grid; grid-template-rows: auto auto auto 1fr auto; gap: clamp(12px, 1.5vw, 20px); align-content: start;">
-            <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--secondary);">향후: 스트리밍 응답</span>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">비스트리밍 → 응답 지연</span>
-            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM</span>
-              <span style="color: var(--secondary); font-weight: 800;">→</span>
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
-              <span style="color: var(--secondary); font-weight: 800;">→</span>
-              <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
+            <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--secondary);">개선 방안: 응답 지연시간 단축</span>
+            <div style="display: grid; gap: clamp(8px, 1vw, 12px);">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">① 스트리밍 STT 전환</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">비스트리밍 STT → 스트리밍 모델 · 발화 중 추론·합성</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, #1b9e5a 12%, white); border: 1px solid #1b9e5a; font-size: var(--content-small-size); font-weight: 700; color: #14794a;">발화 중 STT·LLM</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">스트리밍 TTS</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">음성 응답</span>
+              </div>
             </div>
-            <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45; align-self: start;">발화 중 추론·합성</span>
+            <div style="display: grid; gap: clamp(8px, 1vw, 12px);">
+              <span style="font-size: var(--content-body-size); font-weight: 800; color: var(--text);">② 응답 음성 사전 생성</span>
+              <span style="font-size: var(--content-small-size); color: var(--muted-text); line-height: 1.45;">응답이 정형화 → 음성파일 사전 준비로 합성 시간 단축</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">정형 응답</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--line); font-size: var(--content-small-size); font-weight: 700; color: var(--text);">음성 사전 생성</span>
+                <span style="color: var(--secondary); font-weight: 800;">→</span>
+                <span style="padding: 7px 14px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--secondary) 12%, white); border: 1px solid var(--secondary); font-size: var(--content-small-size); font-weight: 700; color: var(--secondary);">즉시 재생</span>
+              </div>
+            </div>
+            <div></div>
             <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: clamp(10px, 1.2vw, 16px);">
               <span style="font-size: var(--content-small-size); color: var(--muted-text);">목표 응답 지연</span>
-              <b style="font-size: var(--type-highlight); line-height: 1; color: var(--secondary);">≈ 0.3초</b>
+              <b style="font-size: var(--type-highlight); line-height: 1; color: var(--secondary);">≈ 0.5초</b>
               <span style="font-size: var(--content-small-size); color: var(--muted-text);">사람 대화 평균 수준</span>
             </div>
           </div>
